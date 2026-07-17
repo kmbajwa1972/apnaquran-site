@@ -1,0 +1,110 @@
+/* Home page (loads after style.css) */
+
+.hero{
+  max-width:var(--maxw); margin:0 auto; padding:56px 20px 10px;
+  text-align:center;
+}
+.hero .kicker{
+  font-family:'Marcellus',serif; letter-spacing:2.4px; text-transform:uppercase;
+  font-size:12.5px; color:var(--gold); margin-bottom:14px;
+}
+.hero .star-medal{
+  width:46px; height:46px; margin:0 auto 18px; color:var(--gold);
+}
+.hero h1{
+  font-family:'Marcellus',serif; font-weight:400;
+  font-size:clamp(30px,5vw,46px); letter-spacing:.5px; margin-bottom:14px;
+}
+.hero p.lead{ color:var(--muted); max-width:520px; margin:0 auto 30px; }
+.hero .cta-row{ display:flex; gap:12px; justify-content:center; flex-wrap:wrap; }
+
+/* ---------- flanking images (Prophet's Mosque / Kaaba) ---------- */
+.kicker-row{
+  display:flex; align-items:center; justify-content:space-between;
+  margin-bottom:14px;
+}
+.hero .kicker{ margin-bottom:0; flex:1; }
+.hero-img{
+  width:2in; height:2in; object-fit:cover; flex:none;
+  border-radius:var(--radius); border:1px solid var(--line);
+  box-shadow:var(--shadow);
+}
+.hero-img.left{ margin-right:16px; }
+.hero-img.right{ margin-left:16px; }
+@media (max-width:900px){
+  .hero-img{ width:1.3in; height:1.3in; }
+}
+@media (max-width:640px){
+  .kicker-row{ flex-wrap:wrap; justify-content:center; gap:10px; }
+  .hero .kicker{ order:1; flex:0 0 100%; }
+  .hero-img.left{ order:2; margin-right:0; }
+  .hero-img.right{ order:3; margin-left:0; }
+  .hero-img{ width:1in; height:1in; }
+}
+
+/* ---------- daily ayah ---------- */
+.ayah-card{
+  max-width:760px; margin:0 auto; padding:34px 30px; text-align:center;
+}
+.ayah-card .label{
+  font-family:'Marcellus',serif; letter-spacing:1.6px; text-transform:uppercase;
+  font-size:12px; color:var(--gold); margin-bottom:18px;
+}
+.ayah-card .ar{ font-size:26px; margin-bottom:16px; }
+.ayah-card .ur{ font-size:17px; margin-bottom:10px; }
+.ayah-card .en{ color:var(--muted); font-size:14.5px; font-style:italic; }
+.ayah-card .ref{
+  margin-top:18px; font-family:'Marcellus',serif; font-size:13px; color:var(--gold-hi);
+}
+.ayah-card .actions{ margin-top:16px; display:flex; gap:10px; justify-content:center; }
+.ayah-card .actions a, .ayah-card .actions button{
+  background:none; border:1px solid var(--line); color:var(--muted);
+  border-radius:9px; padding:6px 14px; font-size:13px; font-family:'Marcellus',serif;
+}
+.ayah-card .actions a:hover, .ayah-card .actions button:hover{ border-color:var(--gold); color:var(--gold-hi); text-decoration:none; }
+
+/* ---------- mini prayer strip ---------- */
+.mini-prayer{
+  max-width:760px; margin:26px auto 0; padding:18px 22px;
+  display:flex; align-items:center; justify-content:space-between; gap:14px; flex-wrap:wrap;
+}
+.mini-prayer .who{ color:var(--muted); font-size:13.5px; }
+.mini-prayer .next{ text-align:right; }
+.mini-prayer .next .p{ font-family:'Marcellus',serif; color:var(--gold-hi); font-size:15px; }
+.mini-prayer .next .t{ font-variant-numeric:tabular-nums; font-size:20px; }
+
+/* ---------- quick links ---------- */
+.quick-grid{
+  max-width:var(--maxw); margin:52px auto 0; padding:0 20px;
+  display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+  gap:16px;
+}
+.quick-card{
+  padding:26px 22px; transition:border-color .15s, transform .15s;
+}
+.quick-card:hover{ border-color:var(--gold); transform:translateY(-3px); text-decoration:none; }
+.quick-card svg{ width:26px; height:26px; color:var(--gold); margin-bottom:14px; }
+.quick-card h3{
+  font-family:'Marcellus',serif; font-weight:400; font-size:17px; color:var(--ink);
+  margin-bottom:6px; letter-spacing:.3px;
+}
+.quick-card p{ color:var(--muted); font-size:13.5px; }
+
+.resume-strip{
+  max-width:var(--maxw); margin:20px auto 0; padding:0 20px;
+}
+.resume-strip .card{
+  padding:16px 20px; display:flex; align-items:center; justify-content:space-between;
+  gap:14px; flex-wrap:wrap;
+}
+.resume-strip .txt{ font-size:14.5px; }
+.resume-strip .txt b{ color:var(--gold-hi); font-family:'Marcellus',serif; font-weight:400; }
+
+.section-divider{
+  max-width:var(--maxw); margin:60px auto 20px; padding:0 20px;
+  display:flex; align-items:center; gap:14px; color:var(--muted);
+}
+.section-divider::before, .section-divider::after{
+  content:""; flex:1; height:1px; background:var(--line);
+}
+.section-divider span{ font-family:'Marcellus',serif; font-size:13px; letter-spacing:1px; }

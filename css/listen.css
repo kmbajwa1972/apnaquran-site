@@ -1,0 +1,84 @@
+/* Listen page — full-surah player styles (loads after style.css) */
+
+.player-card{
+  padding:26px 24px;
+  margin-bottom:26px;
+  text-align:center;
+}
+.player-card .now-ar{
+  font-size:40px; color:var(--gold-hi); line-height:1.7;
+}
+.player-card .now-en{
+  font-family:'Marcellus',serif; font-size:19px; letter-spacing:.6px;
+}
+.player-card .now-meta{
+  color:var(--muted); font-size:13.5px; margin-top:4px;
+}
+
+.seek-row{
+  display:flex; align-items:center; gap:12px;
+  margin:20px 0 6px;
+}
+.seek-row time{
+  font-size:12.5px; color:var(--muted); min-width:44px;
+  font-variant-numeric:tabular-nums;
+}
+#seek{
+  flex:1; accent-color:var(--gold); height:26px; cursor:pointer;
+}
+
+.ctrl-row{
+  display:flex; align-items:center; justify-content:center; gap:14px;
+  margin-top:10px; flex-wrap:wrap;
+}
+.ctrl{
+  background:var(--panel-2); border:1px solid var(--line); color:var(--ink);
+  width:46px; height:46px; border-radius:50%;
+  display:inline-flex; align-items:center; justify-content:center;
+  transition:border-color .15s, transform .1s;
+}
+.ctrl:hover{ border-color:var(--gold); }
+.ctrl:active{ transform:scale(.94); }
+.ctrl.big{
+  width:62px; height:62px;
+  background:var(--gold); border-color:var(--gold); color:#14261F;
+}
+.ctrl.big:hover{ background:var(--gold-hi); }
+
+.mini-row{
+  display:flex; align-items:center; justify-content:center; gap:10px;
+  margin-top:16px; flex-wrap:wrap;
+}
+.chip{
+  background:transparent; border:1px solid var(--line); color:var(--muted);
+  border-radius:999px; padding:5px 13px; font-size:13px;
+  display:inline-flex; align-items:center; gap:6px;
+}
+.chip:hover{ color:var(--gold-hi); border-color:var(--gold); text-decoration:none; }
+.chip.on{ color:var(--gold-hi); border-color:var(--gold); }
+
+.track-list{ display:flex; flex-direction:column; gap:8px; }
+.track{
+  display:flex; align-items:center; gap:14px;
+  padding:12px 16px; width:100%; text-align:left;
+  background:var(--panel); border:1px solid var(--line);
+  border-radius:12px; color:var(--ink);
+  transition:border-color .15s;
+}
+.track:hover{ border-color:var(--gold); }
+.track .names{ flex:1; min-width:0; }
+.track .names b{ font-family:'Marcellus',serif; font-weight:400; font-size:16px; display:block; }
+.track .names small{ color:var(--muted); }
+.track .arname{ font-size:20px; color:var(--gold-hi); white-space:nowrap; }
+.track .eq{ display:none; width:18px; height:14px; flex:none; gap:2px; align-items:flex-end; }
+.track .eq i{ width:3px; background:var(--gold-hi); animation:eq 1s infinite ease-in-out; }
+.track .eq i:nth-child(2){ animation-delay:.2s; }
+.track .eq i:nth-child(3){ animation-delay:.4s; }
+@keyframes eq{ 0%,100%{ height:4px; } 50%{ height:14px; } }
+.track.current{ border-color:var(--gold); background:var(--panel-2); }
+.track.current .eq{ display:inline-flex; }
+.track.current.paused .eq i{ animation-play-state:paused; }
+
+@media (max-width:560px){
+  .player-card .now-ar{ font-size:32px; }
+}

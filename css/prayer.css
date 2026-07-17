@@ -1,0 +1,143 @@
+/* Prayer Times + Qibla pages (loads after style.css) */
+
+/* ---------- location bar ---------- */
+.loc-bar{
+  display:flex; gap:10px; flex-wrap:wrap; align-items:center;
+  margin-bottom:22px;
+}
+.loc-bar input{
+  flex:1; min-width:150px;
+  padding:11px 14px; background:var(--panel); border:1px solid var(--line);
+  border-radius:11px; color:var(--ink); font:inherit;
+}
+.loc-bar input::placeholder{ color:var(--muted); }
+
+/* ---------- today card ---------- */
+.today-card{ padding:26px 24px; margin-bottom:22px; text-align:center; }
+.today-card .place{
+  font-family:'Marcellus',serif; font-size:22px; letter-spacing:.5px;
+}
+.today-card .dates{ color:var(--muted); font-size:14px; margin-top:4px; }
+.today-card .dates .hijri{ color:var(--gold-hi); }
+
+.countdown{ margin:20px 0 6px; }
+.countdown .label{
+  font-family:'Marcellus',serif; font-size:12px; letter-spacing:1.6px;
+  text-transform:uppercase; color:var(--gold);
+}
+.countdown .prayer{
+  font-family:'Marcellus',serif; font-size:30px; margin-top:2px;
+}
+.countdown .timer{
+  font-size:38px; font-variant-numeric:tabular-nums;
+  color:var(--gold-hi); letter-spacing:2px;
+}
+
+.times-grid{
+  display:grid; grid-template-columns:repeat(auto-fit,minmax(105px,1fr));
+  gap:10px; margin-top:20px;
+}
+.time-cell{
+  background:var(--panel-2); border:1px solid var(--line);
+  border-radius:12px; padding:14px 8px;
+}
+.time-cell .p{
+  font-family:'Marcellus',serif; font-size:13px; letter-spacing:.8px;
+  color:var(--muted);
+}
+.time-cell .p .ur-name{ display:block; font-size:12px; }
+.time-cell .t{
+  font-size:18px; margin-top:4px; font-variant-numeric:tabular-nums;
+}
+.time-cell.next{
+  border-color:var(--gold); background:color-mix(in srgb, var(--gold) 10%, var(--panel-2));
+}
+.time-cell.next .p{ color:var(--gold-hi); }
+
+/* ---------- settings row ---------- */
+.pt-settings{
+  display:flex; gap:10px; flex-wrap:wrap; margin-bottom:22px;
+}
+.pt-settings select{
+  background:var(--panel); border:1px solid var(--line); color:var(--ink);
+  border-radius:10px; padding:9px 12px; font:inherit; flex:1; min-width:160px;
+}
+
+/* ---------- month table ---------- */
+.month-wrap{ overflow-x:auto; border-radius:var(--radius); }
+table.month{
+  width:100%; border-collapse:collapse; min-width:620px;
+  background:var(--panel); border:1px solid var(--line);
+  border-radius:var(--radius); overflow:hidden;
+}
+table.month th, table.month td{
+  padding:9px 10px; text-align:center; font-size:14px;
+  border-bottom:1px solid var(--line);
+  font-variant-numeric:tabular-nums;
+}
+table.month th{
+  font-family:'Marcellus',serif; font-weight:400; letter-spacing:.6px;
+  color:var(--gold); background:var(--panel-2); font-size:13px;
+}
+table.month td:first-child{ text-align:left; white-space:nowrap; }
+table.month td .hj{ display:block; color:var(--muted); font-size:11.5px; }
+table.month tr.today td{
+  background:color-mix(in srgb, var(--gold) 12%, var(--panel));
+  color:var(--gold-hi);
+}
+table.month tr:last-child td{ border-bottom:0; }
+
+/* ---------- qibla compass ---------- */
+.qibla-card{ padding:30px 24px; text-align:center; }
+.compass-wrap{
+  position:relative; width:min(300px,78vw); aspect-ratio:1;
+  margin:24px auto 10px;
+}
+.compass-dial{
+  position:absolute; inset:0; border-radius:50%;
+  border:2px solid var(--gold);
+  background:
+    radial-gradient(circle at 50% 50%, color-mix(in srgb, var(--gold) 6%, transparent) 0 60%, transparent 61%),
+    var(--panel-2);
+  transition:transform .15s linear;
+}
+.compass-dial .dir{
+  position:absolute; font-family:'Marcellus',serif; font-size:15px; color:var(--muted);
+  left:50%; top:50%;
+}
+.compass-dial .dir.n{ transform:translate(-50%,-50%) translateY(calc(min(300px,78vw)/-2 + 20px)); color:var(--danger); }
+.compass-dial .dir.e{ transform:translate(-50%,-50%) translateX(calc(min(300px,78vw)/2 - 20px)); }
+.compass-dial .dir.s{ transform:translate(-50%,-50%) translateY(calc(min(300px,78vw)/2 - 20px)); }
+.compass-dial .dir.w{ transform:translate(-50%,-50%) translateX(calc(min(300px,78vw)/-2 + 20px)); }
+.compass-dial .tick{
+  position:absolute; left:50%; top:4px; width:1.5px; height:10px;
+  background:var(--line); transform-origin:50% calc(min(300px,78vw)/2 - 4px);
+}
+.needle{
+  position:absolute; left:50%; top:50%;
+  transform-origin:center;
+  transition:transform .15s linear;
+  width:0; height:0;
+}
+.needle .kaaba{
+  position:absolute; left:50%; transform:translateX(-50%);
+  top:calc(min(300px,78vw)/-2 + 34px);
+  font-size:26px; line-height:1;
+  filter:drop-shadow(0 2px 6px rgba(0,0,0,.4));
+}
+.needle .shaft{
+  position:absolute; left:-1.5px; width:3px;
+  top:calc(min(300px,78vw)/-2 + 64px); height:calc(min(300px,78vw)/2 - 70px);
+  background:linear-gradient(var(--gold-hi), transparent);
+  border-radius:3px;
+}
+.compass-hub{
+  position:absolute; left:50%; top:50%; transform:translate(-50%,-50%);
+  width:14px; height:14px; border-radius:50%;
+  background:var(--gold); border:2px solid var(--bg); z-index:2;
+}
+.qibla-deg{
+  font-size:30px; color:var(--gold-hi); font-variant-numeric:tabular-nums;
+}
+.qibla-note{ color:var(--muted); font-size:14px; max-width:420px; margin:10px auto 0; }
+.qibla-dist{ margin-top:14px; font-family:'Marcellus',serif; letter-spacing:.5px; }
