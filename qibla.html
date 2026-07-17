@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Qibla Direction — Find the Direction of the Kaaba</title>
+<meta name="description" content="Find the accurate Qibla direction toward the Kaaba in Makkah from your current location, with a live compass and distance.">
+
+<link rel="canonical" href="https://apnaquran.com/qibla.html">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="AL-QURAN">
+<meta property="og:title" content="Qibla Direction — Find the Direction of the Kaaba">
+<meta property="og:description" content="Find the accurate Qibla direction toward the Kaaba in Makkah from your current location, with a live compass and distance.">
+<meta property="og:url" content="https://apnaquran.com/qibla.html">
+<meta property="og:image" content="https://apnaquran.com/img/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="en_US">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Qibla Direction — Find the Direction of the Kaaba">
+<meta name="twitter:description" content="Find the accurate Qibla direction toward the Kaaba in Makkah from your current location, with a live compass and distance.">
+<meta name="twitter:image" content="https://apnaquran.com/img/og-image.jpg">
+
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="manifest" href="site.webmanifest">
+<meta name="theme-color" content="#0C221D">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Amiri+Quran&family=Noto+Nastaliq+Urdu:wght@400;600&family=Marcellus&family=Spectral:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/prayer.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="nav-inner">
+    <a class="brand" href="index.html">
+      <svg class="star" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="5" y="5" width="14" height="14" rx="1.5"/><rect x="5" y="5" width="14" height="14" rx="1.5" transform="rotate(45 12 12)"/></svg>
+      Al‑Quran
+    </a>
+    <nav class="nav-links" id="navLinks">
+      <a href="index.html">Home</a>
+      <a href="read.html">Read Quran</a>
+      <a href="listen.html">Listen</a>
+      <a href="prayer-times.html">Prayer Times</a>
+      <a href="qibla.html">Qibla</a>
+      <a href="names.html">99 Names</a>
+      <a href="duas.html">Duas</a>
+    </nav>
+    <button class="icon-btn" id="themeToggle" aria-label="Toggle theme"></button>
+    <button class="icon-btn nav-toggle" id="navToggle" aria-label="Menu">
+      <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+    </button>
+  </div>
+</header>
+
+<main class="wrap" style="max-width:640px">
+  <h1 class="page-title">Qibla Direction</h1>
+  <p class="page-sub">Point your phone flat and rotate — the needle points toward the Kaaba in Makkah.</p>
+
+  <div class="card qibla-card">
+    <div id="qiblaState">
+      <div class="loader"><div class="star8"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="5" y="5" width="14" height="14" rx="1.5"/><rect x="5" y="5" width="14" height="14" rx="1.5" transform="rotate(45 12 12)"/></svg></div><span>Waiting for location…</span></div>
+    </div>
+
+    <div id="qiblaCompassWrap" style="display:none">
+      <div class="compass-wrap">
+        <div class="compass-dial" id="compassDial">
+          <span class="dir n">N</span>
+          <span class="dir e">E</span>
+          <span class="dir s">S</span>
+          <span class="dir w">W</span>
+        </div>
+        <div class="needle" id="needle">
+          <span class="kaaba">🕋</span>
+          <span class="shaft"></span>
+        </div>
+        <div class="compass-hub"></div>
+      </div>
+      <div class="qibla-deg" id="qiblaDeg">—°</div>
+      <p class="qibla-note" id="qiblaNote">Direction from true North to the Kaaba, measured clockwise.</p>
+      <div class="qibla-dist" id="qiblaDist"></div>
+      <button class="btn gold" id="compassBtn" style="margin-top:18px">Enable live compass</button>
+    </div>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <span class="ar">فَوَلِّ وَجْهَكَ شَطْرَ الْمَسْجِدِ الْحَرَامِ</span>
+  A sadaqah‑e‑jariah project · Location used only in your browser, never stored on a server
+</footer>
+
+<script src="js/app.js"></script>
+<script src="js/qibla.js"></script>
+</body>
+</html>
