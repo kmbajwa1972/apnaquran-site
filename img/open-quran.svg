@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160" role="img" aria-label="Open Quran with soft نور">
+<defs><radialGradient id="n" cx="50%" cy="38%" r="52%"><stop offset="0" stop-color="#f8e6a5" stop-opacity=".95"/><stop offset=".45" stop-color="#d9b65c" stop-opacity=".35"/><stop offset="1" stop-color="#d9b65c" stop-opacity="0"/></radialGradient><linearGradient id="p" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#fff8df"/><stop offset="1" stop-color="#d9c38b"/></linearGradient></defs>
+<circle cx="80" cy="65" r="58" fill="url(#n)"/>
+<path d="M80 127C68 112 50 101 27 99V48c22 2 39 9 53 23v56Z" fill="url(#p)" stroke="#b9974b" stroke-width="2"/>
+<path d="M80 127c12-15 30-26 53-28V48c-22 2-39 9-53 23v56Z" fill="url(#p)" stroke="#b9974b" stroke-width="2"/>
+<path d="M80 71v56M36 62c14 3 28 9 39 18M124 62c-14 3-28 9-39 18" fill="none" stroke="#b9974b" stroke-width="1.5" opacity=".75"/>
+<path d="M43 78h25M43 86h25M92 78h25M92 86h25" stroke="#b9974b" stroke-width="1" opacity=".6"/>
+<path d="M58 31l4 8 8 4-8 4-4 8-4-8-8-4 8-4 4-8ZM103 25l3 6 6 3-6 3-3 6-3-6-6-3 6-3 3-6Z" fill="#f6dfa0" opacity=".9"/>
+</svg>
