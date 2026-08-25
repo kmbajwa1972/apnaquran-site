@@ -1,18 +1,18 @@
-/* Approved homepage hero alignment overrides. Keep the existing design; only correct scale, order and language rendering. */
-.hero{max-width:1536px;padding:42px 30px 24px}
-.kicker-row{gap:42px;margin-bottom:16px}
+/* Approved homepage hero alignment — preserve the approved design; tune only positioning/scale. */
+.hero{max-width:1536px;padding:30px 30px 24px}
+.kicker-row{gap:42px;margin-bottom:12px}
 .hero-img{width:190px;height:190px}
-.hero .kicker{max-width:560px}
+.hero .kicker{max-width:560px;transform:translateY(-8px)}
 .hero .bismillah-ar{font-family:'Amiri Quran','Amiri',serif;font-size:30px!important;line-height:1.35;direction:rtl!important;unicode-bidi:isolate;color:var(--gold-hi);white-space:nowrap;margin:0 0 5px}
 .hero .bismillah-trans{font-family:'Spectral',Georgia,serif;font-size:15px!important;line-height:1.45;direction:ltr!important;unicode-bidi:isolate;white-space:nowrap}
 .hero .kicker::after{margin-top:13px;width:390px}
-.quran-title{direction:ltr!important;unicode-bidi:isolate;gap:16px;margin-top:17px;font-size:clamp(62px,6.4vw,98px);line-height:1!important;white-space:nowrap}
+.quran-title{direction:ltr!important;unicode-bidi:isolate;gap:14px;margin-top:13px;font-size:clamp(62px,6.4vw,98px);line-height:1!important;white-space:nowrap;align-items:center}
 .quran-title span{order:1;direction:rtl!important;unicode-bidi:isolate;display:inline-block;white-space:nowrap}
-.quran-title img{order:2;width:88px;height:88px;object-fit:contain;flex:none}
-.quran-name{direction:ltr!important;unicode-bidi:isolate;font-size:24px;margin:7px auto 5px}
+.quran-title img{order:2;width:88px;height:88px;object-fit:contain;flex:none;align-self:center;transform:translateY(2px)}
+.quran-name{direction:ltr!important;unicode-bidi:isolate;font-size:24px;margin:16px auto 7px;line-height:1.25}
 .quran-subtitle{direction:ltr!important;unicode-bidi:isolate;font-size:18px;margin:6px auto 17px}
 .hero p.lead{font-size:18px;max-width:790px;line-height:1.65;margin-bottom:23px}
 .hero .cta-row .btn{min-height:48px;padding:11px 24px;font-size:16px}
-@media(max-width:1180px){.hero-img{width:165px;height:165px}.kicker-row{gap:28px}.quran-title{font-size:clamp(56px,6.5vw,84px)}.quran-title img{width:76px;height:76px}}
-@media(max-width:900px){.hero-img{width:125px;height:125px}.hero .bismillah-ar{font-size:27px!important}.quran-title{font-size:55px}.quran-title img{width:70px;height:70px}}
-@media(max-width:640px){.hero{padding:30px 14px 22px}.hero-img{width:76px;height:76px}.hero .bismillah-ar{font-size:23px!important;white-space:normal}.hero .bismillah-trans{font-size:12px!important;white-space:normal}.quran-title{font-size:39px;gap:6px}.quran-title img{width:54px;height:54px}.quran-name{font-size:16px}.quran-subtitle{font-size:11px}.hero p.lead{font-size:15px}}
+@media(max-width:1180px){.hero-img{width:165px;height:165px}.kicker-row{gap:28px}.quran-title{font-size:clamp(56px,6.5vw,84px)}}
+@media(max-width:900px){.hero-img{width:125px;height:125px}.hero .kicker{transform:translateY(-5px)}.hero .bismillah-ar{font-size:27px!important}.quran-title{font-size:55px}.quran-title img{width:76px;height:76px}}
+@media(max-width:640px){.hero{padding:30px 14px 22px}.kicker-row{gap:10px;margin-bottom:14px}.hero .kicker{transform:none}.hero-img{width:76px;height:76px}.hero .bismillah-ar{font-size:23px!important;white-space:normal}.hero .bismillah-trans{font-size:12px!important;white-space:normal}.quran-title{font-size:39px;gap:6px}.quran-title img{width:54px;height:54px}.quran-name{font-size:16px;margin-top:14px}.quran-subtitle{font-size:11px}.hero p.lead{font-size:15px}}
