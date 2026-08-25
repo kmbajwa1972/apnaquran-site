@@ -62,6 +62,105 @@ function localTZ() {
 
 let ptCountdownTimer = null;
 
+/* ---------- Adhan audio ---------- */
+/* Public-domain (CC0) Adhan recording hosted by Wikimedia Commons. */
+const ADHAN_AUDIO_URL = 'https://commons.wikimedia.org/wiki/Special:Redirect/file/Adhan.ogg';
+let adhanAudio = null;
+let adhanLastPlayedKey = null;
+
+function adhanSettings() {
+  return { enabled: store.get('aq_adhan_enabled', false) === true };
+}
+
+function setupAdhan() {
+  const settings = adhanSettings();
+  adhanAudio = new Audio(ADHAN_AUDIO_URL);
+  adhanAudio.preload = 'auto';
+  adhanAudio.volume = 0.9;
+
+  const host = $('#todaySlot');
+  if (!host || $('#adhanPanel')) return;
+
+  const panel = document.createElement('section');
+  panel.id = 'adhanPanel';
+  panel.className = 'card adhan-panel';
+  panel.innerHTML = `
+    <div class="adhan-copy">
+      <div class="adhan-ar">حَيَّ عَلَى الصَّلَاةِ</div>
+      <div class="adhan-title">Adhan Reminder</div>
+      <div class="adhan-note">Play one Adhan automatically when each prayer time begins.</div>
+    </div>
+    <div class="adhan-actions">
+      <button class="btn gold" id="adhanToggle" type="button"></button>
+      <button class="btn" id="adhanTest" type="button">Test Adhan</button>
+    </div>
+    <div class="adhan-status" id="adhanStatus"></div>
+  `;
+  host.parentNode.insertBefore(panel, host);
+
+  const toggle = $('#adhanToggle');
+  const test = $('#adhanTest');
+  const status = $('#adhanStatus');
+
+  function paint() {
+    const on = adhanSettings().enabled;
+    toggle.textContent = on ? 'Adhan Enabled' : 'Enable Adhan';
+    status.textContent = on
+      ? 'Adhan is armed for the prayer times shown below.'
+      : 'Tap Enable Adhan once so your browser permits scheduled audio.';
+  }
+
+  toggle.addEventListener('click', async () => {
+    const next = !adhanSettings().enabled;
+    store.set('aq_adhan_enabled', next);
+    if (next) {
+      try {
+        await adhanAudio.play();
+        adhanAudio.pause();
+        adhanAudio.currentTime = 0;
+        status.textContent = 'Adhan enabled. It will play at each prayer time.';
+      } catch {
+        status.textContent = 'Adhan is enabled. Tap Test Adhan once if your browser requires audio permission.';
+      }
+    }
+    paint();
+  });
+
+  test.addEventListener('click', async () => {
+    try {
+      await adhanAudio.play();
+      status.textContent = 'Playing Adhan…';
+    } catch {
+      status.textContent = 'Your browser blocked audio. Please tap Enable Adhan first.';
+    }
+  });
+
+  paint();
+}
+
+function maybePlayAdhan(cells, now) {
+  if (!adhanAudio || !adhanSettings().enabled) return;
+
+  for (const c of cells.filter(x => x.key !== 'Sunrise')) {
+    const [h, m] = c.time.split(':').map(Number);
+    if (now.getHours() !== h || now.getMinutes() !== m || now.getSeconds() > 8) continue;
+
+    const key = `${now.getFullYear()}-${now.getMonth()+1}-${now.getDate()}-${c.key}`;
+    if (adhanLastPlayedKey === key) return;
+
+    adhanLastPlayedKey = key;
+    adhanAudio.currentTime = 0;
+    adhanAudio.play().catch(() => {
+      const status = $('#adhanStatus');
+      if (status) status.textContent = 'Prayer time reached, but the browser blocked automatic audio. Tap Test Adhan to allow sound.';
+    });
+    const cell = document.querySelector(`.time-cell[data-key="${c.key}"]`);
+    if (cell) cell.classList.add('adhan-now');
+    setTimeout(() => cell && cell.classList.remove('adhan-now'), 6000);
+    return;
+  }
+}
+
 async function loadToday(place) {
   const slot = $('#todaySlot');
   slot.innerHTML = '<div class="loader"><div class="star8">' + starSVG() + '</div><span>Getting prayer times…</span></div>';
@@ -122,7 +221,6 @@ function startCountdown(cells) {
 
   // Build today's Date objects for Fajr..Isha (skip Sunrise for "next prayer" purposes,
   // but keep it in the grid)
-  const now0 = new Date();
   const order = cells.filter(c => c.key !== 'Sunrise');
 
   function toToday(hhmm) {
@@ -134,6 +232,7 @@ function startCountdown(cells) {
 
   function tick() {
     const now = new Date();
+    maybePlayAdhan(cells, now);
     let next = null;
     for (const c of order) {
       const d = toToday(c.time);
@@ -242,6 +341,7 @@ function searchCity() {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
+  setupAdhan();
   const s = ptSettings();
 
   // populate method select
