@@ -1,0 +1,45 @@
+/* Read Quran — spiritual / modern index treatment. Content and reader logic remain unchanged. */
+.read-page-shell{position:relative;}
+
+.read-page-shell::before{content:"";position:absolute;left:0;right:0;top:0;height:180px;pointer-events:none;background:radial-gradient(circle at 50% 20%,rgba(201,162,39,.12),transparent 58%);opacity:.9;}
+
+.read-page-hero{position:relative;text-align:center;padding:28px 20px 22px;margin:0 auto 24px;overflow:hidden;border-bottom:1px solid color-mix(in srgb,var(--gold) 35%,transparent);}
+.read-page-hero::before,.read-page-hero::after{content:"";position:absolute;width:72px;height:72px;border:1px solid var(--gold);opacity:.25;transform:rotate(45deg);top:38px;}
+.read-page-hero::before{left:-32px}.read-page-hero::after{right:-32px}
+.read-page-hero .ornament{display:inline-flex;align-items:center;gap:12px;color:var(--gold);font-family:'Marcellus',serif;font-size:12px;letter-spacing:2px;text-transform:uppercase;margin-bottom:10px}
+.read-page-hero .ornament::before,.read-page-hero .ornament::after{content:"";width:48px;height:1px;background:linear-gradient(90deg,transparent,var(--gold));}
+.read-page-hero .ornament::after{background:linear-gradient(90deg,var(--gold),transparent)}
+.read-page-hero .page-title{margin:0;font-size:clamp(30px,4.5vw,42px);color:var(--gold-hi);letter-spacing:.7px}
+.read-page-hero .page-title-ar{font-family:'Amiri Quran','Amiri',serif;direction:rtl;color:var(--gold-hi);font-size:clamp(27px,3.6vw,38px);line-height:1.55;margin:2px 0 2px}
+.read-page-hero .page-sub{max-width:700px;margin:5px auto 0;color:var(--muted);font-size:15.5px}
+
+.read-page-tools{position:relative;display:flex;gap:12px;flex-wrap:wrap;align-items:center;margin-bottom:22px}
+.read-page-tools .search-box{min-width:280px}
+.read-page-tools .search-box input{height:48px;border-radius:14px;background:linear-gradient(180deg,var(--panel),var(--panel-2));border-color:color-mix(in srgb,var(--gold) 25%,var(--line));box-shadow:0 8px 24px rgba(0,0,0,.14)}
+.read-page-tools .tabs{border-radius:14px;padding:4px;background:var(--panel-2);border-color:color-mix(in srgb,var(--gold) 22%,var(--line))}
+.read-page-tools .tabs button{padding:9px 20px}
+
+.resume-card{border-radius:16px;background:linear-gradient(135deg,var(--panel),var(--panel-2));border-color:color-mix(in srgb,var(--gold) 38%,var(--line));box-shadow:0 12px 30px rgba(0,0,0,.18);}
+.resume-card .star8{color:var(--gold-hi)}
+
+.surah-grid{grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px}
+.surah-card{position:relative;min-height:92px;padding:16px 18px;border-radius:15px;background:linear-gradient(145deg,var(--panel),var(--panel-2));border-color:color-mix(in srgb,var(--gold) 16%,var(--line));overflow:hidden}
+.surah-card::after{content:"";position:absolute;right:-25px;bottom:-30px;width:80px;height:80px;border:1px solid var(--gold);transform:rotate(45deg);opacity:.12}
+.surah-card:hover{transform:translateY(-3px);box-shadow:0 12px 28px rgba(0,0,0,.2);border-color:color-mix(in srgb,var(--gold) 65%,var(--line))}
+.surah-card .star8{background:color-mix(in srgb,var(--gold) 9%,transparent);border-radius:50%}
+.surah-card .names b{font-size:17.5px;color:var(--ink)}
+.surah-card .arname{font-size:23px;color:var(--gold-hi)}
+
+.section-h{color:var(--gold-hi);}
+
+@media(max-width:640px){
+ .read-page-hero{padding:22px 10px 18px}
+ .read-page-hero::before,.read-page-hero::after{display:none}
+ .read-page-hero .page-title{font-size:29px}
+ .read-page-hero .page-title-ar{font-size:28px}
+ .read-page-tools{gap:9px}
+ .read-page-tools .search-box{min-width:100%}
+ .read-page-tools .tabs{width:100%;justify-content:center}
+ .read-page-tools .tabs button{flex:1}
+ .surah-grid{grid-template-columns:1fr}
+}
