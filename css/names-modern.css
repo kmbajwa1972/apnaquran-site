@@ -1,0 +1,24 @@
+/* APNAQURAN — Modern Asma-ul-Husna styling */
+.names-hero{text-align:center;max-width:900px;margin:8px auto 28px;padding:28px 22px 24px;background:linear-gradient(180deg,rgba(16,57,48,.78),rgba(8,39,32,.38));border:1px solid rgba(201,163,39,.42);border-radius:22px;box-shadow:0 18px 45px rgba(0,0,0,.18),inset 0 1px rgba(255,255,255,.03)}
+.names-hero .hero-ar{font-family:'Amiri Quran',serif;font-size:38px;line-height:1.7;color:var(--gold-hi);text-shadow:0 0 24px rgba(201,163,39,.18)}
+.names-hero .hero-rule{width:150px;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);margin:8px auto 14px}
+.names-hero .hero-kicker{font-family:'Marcellus',serif;color:var(--gold-hi);letter-spacing:2px;text-transform:uppercase;font-size:12px}
+.names-hero p{max-width:700px;margin:10px auto 0;color:var(--muted);line-height:1.7}
+.names-grid{grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:16px;margin-top:8px}
+.name-card{position:relative;overflow:hidden;padding:22px 17px 20px;text-align:center;cursor:pointer;background:linear-gradient(145deg,rgba(17,61,51,.92),rgba(8,38,32,.94));border:1px solid rgba(201,163,39,.25);border-radius:16px;box-shadow:0 10px 24px rgba(0,0,0,.12),inset 0 1px rgba(255,255,255,.025);transition:border-color .2s,transform .2s,box-shadow .2s}
+.name-card::before{content:'✦';position:absolute;top:8px;right:12px;color:rgba(201,163,39,.3);font-size:11px}
+.name-card:hover{border-color:var(--gold);transform:translateY(-3px);box-shadow:0 15px 30px rgba(0,0,0,.18),0 0 0 1px rgba(201,163,39,.08)}
+.name-card .n{width:32px;height:32px;margin:0 auto 11px;border-radius:50%;background:rgba(201,163,39,.08);border:1px solid rgba(201,163,39,.62);display:flex;align-items:center;justify-content:center;font-size:12px;color:var(--gold-hi);font-family:'Marcellus',serif}
+.name-card .ar{font-family:'Amiri Quran',serif;font-size:30px;line-height:1.65;color:var(--gold-hi);margin-bottom:5px;text-shadow:0 0 16px rgba(201,163,39,.12)}
+.name-card .translit{font-family:'Marcellus',serif;font-size:15px;letter-spacing:.35px;color:var(--ink)}
+.name-card .meaning-en{color:var(--muted);font-size:13px;margin-top:5px;line-height:1.45}
+.name-card .meaning-ur{font-family:'Noto Nastaliq Urdu',serif;direction:rtl;font-size:15px;margin-top:7px;color:var(--ink);line-height:1.8}
+#nameSearch{background:rgba(8,38,32,.75)}
+.name-modal .backdrop{background:rgba(0,18,14,.76);backdrop-filter:blur(5px)}
+.name-modal .box{max-width:460px;padding:36px 28px 32px;background:linear-gradient(145deg,#103b31,#08261f);border:1px solid var(--gold);border-radius:20px;box-shadow:0 25px 70px rgba(0,0,0,.45)}
+.name-modal .ar{font-size:50px;line-height:1.7;color:var(--gold-hi)}
+.name-modal .translit{font-size:21px;margin-top:6px}
+.name-modal .meaning-en{line-height:1.6}
+.name-modal .meaning-ur{font-size:20px;line-height:1.9}
+@media(max-width:640px){.names-hero{padding:22px 16px;margin-bottom:24px}.names-hero .hero-ar{font-size:29px}.names-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.name-card{padding:17px 10px}.name-card .ar{font-size:25px}.name-card .translit{font-size:13px}.name-card .meaning-en{font-size:12px}.name-card .meaning-ur{font-size:13px}}
+@media(max-width:390px){.names-grid{grid-template-columns:1fr}}
