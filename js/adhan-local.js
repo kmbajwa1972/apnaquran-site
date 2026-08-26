@@ -42,4 +42,23 @@
     }
     return originalPlay.call(this);
   };
+
+  /* The site should not expose a Test Adhan control. Keep the normal
+     Enable Adhan control for the user's one-time browser audio permission. */
+  function removeTestButton() {
+    const test = document.querySelector('#adhanTest');
+    if (test) test.remove();
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', removeTestButton);
+  } else {
+    removeTestButton();
+  }
+
+  /* prayer.js inserts the Adhan panel during DOMContentLoaded, so make sure
+     the Test button is removed immediately after that panel is created. */
+  const observer = new MutationObserver(removeTestButton);
+  observer.observe(document.documentElement, { childList: true, subtree: true });
+  setTimeout(() => observer.disconnect(), 5000);
 })();
