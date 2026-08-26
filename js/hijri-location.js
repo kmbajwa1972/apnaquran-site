@@ -5,67 +5,73 @@
    the displayed Hijri date where an official/local calendar differs
    from the calculated API date.
 
-   IMPORTANT: never infer Pakistan from the browser timezone alone.
-   A VPN, travel, or a manually selected city can make the browser
-   timezone disagree with the requested location.
+   Country-specific rules are based on official/local calendar sources.
+   Never infer a country from the browser timezone when a city/country
+   was explicitly selected.
    ============================================================ */
 (function () {
   const originalFetch = window.fetch.bind(window);
 
-  function isPakistan(url) {
+  function locationCountry(url) {
     try {
       const u = new URL(url, location.href);
       const country = (u.searchParams.get('country') || '').trim().toLowerCase();
+      if (country) return country;
 
-      // Explicit city/country searches take priority over the device timezone.
-      if (country) return country === 'pakistan';
-
-      // For GPS requests Aladhan receives coordinates instead of a country.
-      // Use Pakistan's geographic bounds rather than the browser/VPN timezone.
       const lat = Number(u.searchParams.get('latitude'));
       const lng = Number(u.searchParams.get('longitude'));
       if (Number.isFinite(lat) && Number.isFinite(lng)) {
-        return lat >= 23.5 && lat <= 37.1 && lng >= 60.8 && lng <= 77.9;
+        if (lat >= 23.5 && lat <= 37.1 && lng >= 60.8 && lng <= 77.9) return 'pakistan';
+        if (lat >= 0.8 && lat <= 7.5 && lng >= 99.5 && lng <= 119.5) return 'malaysia';
       }
     } catch (_) {}
-    return false;
+    return '';
   }
 
-  function pakistanRabi1448(gregorian, hijri) {
-    if (!gregorian || !hijri) return hijri;
-    const g = `${gregorian.year}-${String(gregorian.month.number).padStart(2, '0')}-${String(gregorian.day).padStart(2, '0')}`;
-
-    // Pakistan official calendar: 1 Rabi al-Awwal 1448 = 15 Aug 2026.
-    if (g < '2026-08-15' || g > '2026-09-12') return hijri;
-
+  function shiftHijri(hijri, delta, monthName = 'Rabi al-Awwal', monthArabic = 'Rabīʿ al-Awwal', monthUrdu = 'ربیع الاول', year = 1448) {
     const copy = JSON.parse(JSON.stringify(hijri));
-    const calculatedDay = Number(copy.day);
-    if (!Number.isFinite(calculatedDay)) return hijri;
-
-    // Aladhan's calculated calendar is one day ahead during this period.
-    const day = calculatedDay - 1;
-    if (day < 1) return hijri;
-
-    copy.day = String(day);
+    const day = Number(copy.day);
+    if (!Number.isFinite(day)) return hijri;
+    copy.day = String(day + delta);
     copy.month.number = 3;
-    copy.month.en = 'Rabi al-Awwal';
-    copy.month.ar = 'Rabīʿ al-Awwal';
-    copy.month.ur = 'ربیع الاول';
-    copy.year = 1448;
+    copy.month.en = monthName;
+    copy.month.ar = monthArabic;
+    copy.month.ur = monthUrdu;
+    copy.year = year;
     return copy;
   }
 
-  function adjustData(data) {
+  function countryCorrection(country, gregorian, hijri) {
+    if (!gregorian || !hijri) return hijri;
+    const g = `${gregorian.year}-${String(gregorian.month.number).padStart(2, '0')}-${String(gregorian.day).padStart(2, '0')}`;
+
+    // Pakistan: official 1 Rabi al-Awwal 1448 = 15 Aug 2026.
+    // Aladhan's calculated calendar is one day ahead for this period.
+    if (country === 'pakistan' && g >= '2026-08-15' && g <= '2026-09-12') {
+      return shiftHijri(hijri, -1);
+    }
+
+    // Malaysia: JAKIM/e-Solat lists 12 Rabi al-Awwal 1448 on
+    // 25 Aug 2026, so 26 Aug 2026 is 13 Rabi al-Awwal.
+    // Aladhan's displayed date in this period is one day behind.
+    if ((country === 'malaysia' || country === 'malaysia,') && g >= '2026-08-14' && g <= '2026-09-11') {
+      return shiftHijri(hijri, +1);
+    }
+
+    return hijri;
+  }
+
+  function adjustData(data, country) {
     if (!data) return data;
 
-    if (data.date && data.date.gregorian && data.date.hijri) {
-      data.date.hijri = pakistanRabi1448(data.date.gregorian, data.date.hijri);
+    if (data.date?.gregorian && data.date?.hijri) {
+      data.date.hijri = countryCorrection(country, data.date.gregorian, data.date.hijri);
     }
 
     if (Array.isArray(data)) {
       data.forEach(day => {
         if (day?.date?.gregorian && day?.date?.hijri) {
-          day.date.hijri = pakistanRabi1448(day.date.gregorian, day.date.hijri);
+          day.date.hijri = countryCorrection(country, day.date.gregorian, day.date.hijri);
         }
       });
     }
@@ -76,12 +82,15 @@
     const url = typeof input === 'string' ? input : (input && input.url) || '';
     const response = await originalFetch(input, init);
 
-    if (!/api\.aladhan\.com\/v1\//i.test(url) || !isPakistan(url)) return response;
+    if (!/api\.aladhan\.com\/v1\//i.test(url)) return response;
+
+    const country = locationCountry(url);
+    if (!country) return response;
 
     try {
       const cloned = response.clone();
       const json = await cloned.json();
-      const body = JSON.stringify(Object.assign({}, json, { data: adjustData(json.data) }));
+      const body = JSON.stringify(Object.assign({}, json, { data: adjustData(json.data, country) }));
       return new Response(body, {
         status: response.status,
         statusText: response.statusText,
