@@ -1,88 +1,11 @@
-/* 99 Names + Duas pages (loads after style.css) */
-
-/* ---------- names grid ---------- */
-.names-grid{
-  display:grid; grid-template-columns:repeat(auto-fill,minmax(210px,1fr));
-  gap:14px; margin-top:6px;
-}
-.name-card{
-  padding:20px 16px; text-align:center; cursor:pointer;
-  transition:border-color .15s, transform .15s;
-}
-.name-card:hover{ border-color:var(--gold); transform:translateY(-2px); }
-.name-card .n{
-  width:30px; height:30px; margin:0 auto 10px; border-radius:50%;
-  background:var(--panel-2); border:1px solid var(--gold);
-  display:flex; align-items:center; justify-content:center;
-  font-size:12px; color:var(--gold-hi); font-family:'Marcellus',serif;
-}
-.name-card .ar{
-  font-family:'Amiri Quran', serif; font-size:26px; color:var(--gold-hi);
-  margin-bottom:6px;
-}
-.name-card .translit{
-  font-family:'Marcellus',serif; font-size:15px; letter-spacing:.4px;
-}
-.name-card .meaning-en{ color:var(--muted); font-size:13px; margin-top:4px; }
-.name-card .meaning-ur{
-  font-family:'Noto Nastaliq Urdu',serif; direction:rtl; font-size:15px;
-  margin-top:6px; color:var(--ink);
-}
-
-/* modal for a tapped name */
-.name-modal{
-  position:fixed; inset:0; z-index:90; display:none;
-  align-items:center; justify-content:center; padding:20px;
-}
-.name-modal.open{ display:flex; }
-.name-modal .backdrop{ position:absolute; inset:0; background:rgba(0,0,0,.55); }
-.name-modal .box{
-  position:relative; max-width:420px; width:100%; padding:32px 26px;
-  text-align:center; background:var(--panel); border:1px solid var(--gold);
-  border-radius:var(--radius); box-shadow:var(--shadow);
-}
-.name-modal .close{
-  position:absolute; top:10px; right:12px; background:none; border:0;
-  color:var(--muted); font-size:20px; cursor:pointer; line-height:1;
-}
-.name-modal .ar{ font-family:'Amiri Quran',serif; font-size:44px; color:var(--gold-hi); }
-.name-modal .translit{ font-family:'Marcellus',serif; font-size:20px; margin-top:8px; }
-.name-modal .meaning-en{ color:var(--muted); margin-top:10px; }
-.name-modal .meaning-ur{
-  font-family:'Noto Nastaliq Urdu',serif; direction:rtl; font-size:19px;
-  margin-top:14px; padding-top:14px; border-top:1px solid var(--line);
-}
-
-/* ---------- duas list ---------- */
-.dua-cats{
-  display:flex; gap:8px; flex-wrap:wrap; margin-bottom:20px;
-}
-.dua-cats button{
-  border:1px solid var(--line); background:var(--panel); color:var(--muted);
-  border-radius:999px; padding:7px 16px; font:inherit; font-size:13px;
-  cursor:pointer; transition:border-color .15s, color .15s;
-}
-.dua-cats button:hover{ border-color:var(--gold); }
-.dua-cats button.active{ border-color:var(--gold); color:var(--gold-hi); background:var(--panel-2); }
-
-.dua-card{ padding:22px 20px; margin-bottom:14px; }
-.dua-card .title{
-  font-family:'Marcellus',serif; font-size:16px; letter-spacing:.3px;
-  color:var(--gold-hi); margin-bottom:12px;
-  display:flex; justify-content:space-between; align-items:center; gap:10px;
-}
-.dua-card .copy-btn{
-  background:none; border:1px solid var(--line); color:var(--muted);
-  border-radius:8px; padding:5px 10px; font-size:12px; cursor:pointer; flex:none;
-}
-.dua-card .copy-btn:hover{ border-color:var(--gold); color:var(--gold-hi); }
-.dua-card .ar{
-  font-family:'Amiri Quran',serif; font-size:24px; line-height:2;
-  direction:rtl; margin-bottom:14px;
-}
-.dua-card .ur{
-  font-family:'Noto Nastaliq Urdu',serif; direction:rtl; font-size:17px;
-  line-height:1.9; color:var(--ink); margin-bottom:8px;
-}
-.dua-card .en{ color:var(--muted); font-size:14.5px; line-height:1.7; font-style:italic; }
-.dua-card .ref{ color:var(--muted); font-size:12px; margin-top:10px; }
+/* 99 Names + Duas — spiritual modern theme */
+.content-hero{text-align:center;max-width:860px;margin:10px auto 30px;padding:28px 24px 24px;background:linear-gradient(180deg,rgba(16,57,48,.72),rgba(8,39,32,.38));border:1px solid rgba(201,163,39,.42);border-radius:22px;box-shadow:0 18px 45px rgba(0,0,0,.18),inset 0 1px rgba(255,255,255,.03)}
+.content-hero .hero-ar{font-family:'Amiri Quran',serif;font-size:36px;line-height:1.7;color:var(--gold-hi);text-shadow:0 0 24px rgba(201,163,39,.18)}
+.content-hero .hero-rule{width:150px;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);margin:8px auto 14px}.content-hero .hero-kicker{font-family:'Marcellus',serif;color:var(--gold-hi);letter-spacing:2px;text-transform:uppercase;font-size:12px}.content-hero p{max-width:680px;margin:10px auto 0;color:var(--muted);line-height:1.7}
+.names-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:16px;margin-top:8px}.name-card{position:relative;overflow:hidden;padding:22px 17px 20px;text-align:center;cursor:pointer;background:linear-gradient(145deg,rgba(17,61,51,.9),rgba(8,38,32,.92));border:1px solid rgba(201,163,39,.24);border-radius:16px;box-shadow:0 10px 24px rgba(0,0,0,.12),inset 0 1px rgba(255,255,255,.025);transition:border-color .2s,transform .2s,box-shadow .2s}.name-card:hover{border-color:var(--gold);transform:translateY(-3px);box-shadow:0 15px 30px rgba(0,0,0,.18)}.name-card .n{width:32px;height:32px;margin:0 auto 11px;border-radius:50%;background:rgba(201,163,39,.08);border:1px solid rgba(201,163,39,.62);display:flex;align-items:center;justify-content:center;font-size:12px;color:var(--gold-hi);font-family:'Marcellus',serif}.name-card .ar{font-family:'Amiri Quran',serif;font-size:30px;line-height:1.65;color:var(--gold-hi);margin-bottom:5px}.name-card .translit{font-family:'Marcellus',serif;font-size:15px;letter-spacing:.35px;color:var(--ink)}.name-card .meaning-en{color:var(--muted);font-size:13px;margin-top:5px;line-height:1.45}.name-card .meaning-ur{font-family:'Noto Nastaliq Urdu',serif;direction:rtl;font-size:15px;margin-top:7px;color:var(--ink);line-height:1.8}
+#nameSearch,#duaSearch{background:rgba(8,38,32,.75)}.search-box{display:flex;align-items:center;gap:10px}.search-box svg{width:18px;flex:none}.search-box input{width:100%}
+.name-modal{position:fixed;inset:0;z-index:90;display:none;align-items:center;justify-content:center;padding:20px}.name-modal.open{display:flex}.name-modal .backdrop{position:absolute;inset:0;background:rgba(0,18,14,.76);backdrop-filter:blur(5px)}.name-modal .box{position:relative;max-width:460px;width:100%;padding:36px 28px 32px;text-align:center;background:linear-gradient(145deg,#103b31,#08261f);border:1px solid var(--gold);border-radius:20px;box-shadow:0 25px 70px rgba(0,0,0,.45)}.name-modal .close{position:absolute;top:11px;right:14px;width:32px;height:32px;background:rgba(255,255,255,.03);border:1px solid var(--line);border-radius:50%;color:var(--muted);font-size:20px;cursor:pointer}.name-modal .n{font-family:'Marcellus',serif;color:var(--gold-hi);font-size:13px}.name-modal .ar{font-family:'Amiri Quran',serif;font-size:50px;line-height:1.7;color:var(--gold-hi);margin-top:4px}.name-modal .translit{font-family:'Marcellus',serif;font-size:21px;margin-top:6px}.name-modal .meaning-en{color:var(--muted);margin-top:10px;line-height:1.6}.name-modal .meaning-ur{font-family:'Noto Nastaliq Urdu',serif;direction:rtl;font-size:20px;margin-top:15px;padding-top:15px;border-top:1px solid var(--line);line-height:1.9}
+.dua-cats{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px}.dua-cats button{border:1px solid var(--line);background:var(--panel);color:var(--muted);border-radius:999px;padding:7px 16px;font:inherit;font-size:13px;cursor:pointer;transition:border-color .15s,color .15s}.dua-cats button:hover,.dua-cats button.active{border-color:var(--gold)}.dua-cats button.active{color:var(--gold-hi);background:var(--panel-2)}
+.dua-search{max-width:520px;margin:0 auto 20px}.dua-card{padding:24px 22px;margin-bottom:16px;background:linear-gradient(145deg,rgba(17,61,51,.82),rgba(8,38,32,.9));border:1px solid rgba(201,163,39,.2);border-radius:18px;box-shadow:0 10px 25px rgba(0,0,0,.12)}.dua-card .title{font-family:'Marcellus',serif;font-size:16px;letter-spacing:.3px;color:var(--gold-hi);margin-bottom:14px;display:flex;justify-content:space-between;align-items:center;gap:10px}.dua-card .copy-btn{background:none;border:1px solid var(--line);color:var(--muted);border-radius:8px;padding:5px 10px;font-size:12px;cursor:pointer;flex:none}.dua-card .copy-btn:hover{border-color:var(--gold);color:var(--gold-hi)}.dua-card .ar{font-family:'Amiri Quran',serif;font-size:27px;line-height:2.05;direction:rtl;margin-bottom:14px;color:var(--ink)}.dua-card .ur{font-family:'Noto Nastaliq Urdu',serif;direction:rtl;font-size:18px;line-height:2;color:var(--ink);margin-bottom:10px;padding-top:4px}.dua-card .en{color:var(--muted);font-size:14.5px;line-height:1.75;font-style:italic}.dua-card .ref{display:inline-block;color:var(--gold-hi);font-size:12px;margin-top:13px;padding-top:8px;border-top:1px solid var(--line)}
+@media(max-width:640px){.content-hero{padding:22px 16px;margin-bottom:24px}.content-hero .hero-ar{font-size:29px}.names-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.name-card{padding:17px 10px}.name-card .ar{font-size:25px}.name-card .translit{font-size:13px}.name-card .meaning-en{font-size:12px}.name-card .meaning-ur{font-size:13px}.dua-card{padding:20px 16px}.dua-card .ar{font-size:23px}.dua-card .ur{font-size:16px}.dua-card .title{font-size:14px}}
+@media(max-width:390px){.names-grid{grid-template-columns:1fr}}
