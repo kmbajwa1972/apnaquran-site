@@ -46,17 +46,15 @@
     const g = `${gregorian.year}-${String(gregorian.month.number).padStart(2, '0')}-${String(gregorian.day).padStart(2, '0')}`;
 
     // Pakistan: official 1 Rabi al-Awwal 1448 = 15 Aug 2026.
-    // Aladhan's calculated calendar is one day ahead for this period.
+    // Pakistan officially observes 26 Aug 2026 as 12 Rabi al-Awwal 1448.
     if (country === 'pakistan' && g >= '2026-08-15' && g <= '2026-09-12') {
       return shiftHijri(hijri, -1);
     }
 
-    // Malaysia: JAKIM/e-Solat lists 12 Rabi al-Awwal 1448 on
-    // 25 Aug 2026, so 26 Aug 2026 is 13 Rabi al-Awwal.
-    // Aladhan's displayed date in this period is one day behind.
-    if ((country === 'malaysia' || country === 'malaysia,') && g >= '2026-08-14' && g <= '2026-09-11') {
-      return shiftHijri(hijri, +1);
-    }
+    // Malaysia: JAKIM's official calendar places 26 Aug 2026 at
+    // 13 Rabi al-Awwal 1448. Aladhan already returns the correct
+    // Malaysian date for this period, so DO NOT add or subtract a day.
+    // This is intentionally left unmodified to avoid the previous +1 bug.
 
     return hijri;
   }
