@@ -1,0 +1,26 @@
+/* ============================================================
+   APNAQURAN — Qibla page spiritual / modern styling
+   ============================================================ */
+.qibla-page{max-width:900px!important;padding-bottom:72px}
+.qibla-intro{text-align:center;margin-bottom:28px}
+.qibla-arabic{font-family:"Amiri Quran",serif;color:#d9aa2b;font-size:1.35rem;margin:0 0 8px;line-height:1.8}
+.qibla-card{position:relative;overflow:hidden;border:1px solid rgba(217,170,43,.28);background:linear-gradient(145deg,rgba(11,47,39,.96),rgba(5,32,27,.98));box-shadow:0 18px 55px rgba(0,0,0,.28)}
+.qibla-card:before,.qibla-card:after{content:"";position:absolute;width:150px;height:150px;border:1px solid rgba(217,170,43,.12);transform:rotate(45deg);pointer-events:none}
+.qibla-card:before{top:-95px;left:-95px}.qibla-card:after{bottom:-95px;right:-95px}
+.qibla-inner{position:relative;z-index:1;text-align:center;padding:34px 24px 38px}
+.qibla-badge{display:inline-flex;align-items:center;gap:8px;padding:7px 14px;border:1px solid rgba(217,170,43,.35);border-radius:999px;color:#e4bd4e;font-size:.78rem;letter-spacing:.13em;text-transform:uppercase;margin-bottom:22px}
+.qibla-badge span{width:7px;height:7px;border-radius:50%;background:#d9aa2b;box-shadow:0 0 12px rgba(217,170,43,.7)}
+.compass-wrap{width:min(430px,78vw);aspect-ratio:1;margin:0 auto 22px;position:relative;border-radius:50%;background:radial-gradient(circle at 50% 45%,rgba(35,83,68,.95),rgba(4,31,26,.98) 68%);border:2px solid rgba(217,170,43,.72);box-shadow:0 0 0 8px rgba(217,170,43,.07),0 0 45px rgba(217,170,43,.12),inset 0 0 40px rgba(0,0,0,.4)}
+.compass-wrap:before,.compass-wrap:after{content:"";position:absolute;inset:18px;border:1px solid rgba(217,170,43,.22);border-radius:50%;pointer-events:none}.compass-wrap:after{inset:42px;border-style:dashed;opacity:.7}
+.compass-dial{position:absolute;inset:0;border-radius:50%;transition:transform .18s ease-out}
+.compass-dial:before{content:"";position:absolute;left:50%;top:30px;bottom:30px;width:1px;background:linear-gradient(to bottom,transparent,rgba(217,170,43,.25),transparent);transform:translateX(-50%)}
+.dir{position:absolute;color:#d9aa2b;font-weight:600;font-size:1rem;letter-spacing:.08em}.dir.n{top:13px;left:50%;transform:translateX(-50%)}.dir.e{right:16px;top:50%;transform:translateY(-50%)}.dir.s{bottom:13px;left:50%;transform:translateX(-50%)}.dir.w{left:16px;top:50%;transform:translateY(-50%)}
+.needle{position:absolute;left:50%;top:50%;width:0;height:0;transform-origin:50% 50%;transition:transform .2s ease-out;z-index:3}
+.needle .kaaba{position:absolute;left:-27px;top:-145px;width:54px;height:54px;border-radius:50%;display:grid;place-items:center;background:rgba(217,170,43,.14);border:1px solid rgba(217,170,43,.65);font-size:27px;box-shadow:0 0 22px rgba(217,170,43,.18)}
+.needle .shaft{position:absolute;left:-2px;top:-92px;width:4px;height:82px;border-radius:4px;background:linear-gradient(to bottom,#f0c64e,#d9aa2b);box-shadow:0 0 12px rgba(217,170,43,.5)}
+.compass-hub{position:absolute;left:50%;top:50%;width:20px;height:20px;border-radius:50%;transform:translate(-50%,-50%);background:#d9aa2b;border:4px solid #0a3027;box-shadow:0 0 0 1px rgba(217,170,43,.65);z-index:5}
+.qibla-deg{font-size:2.4rem;color:#f1ca58;font-family:Marcellus,Georgia,serif;line-height:1;margin-top:2px}.qibla-note{color:rgba(239,232,210,.72);font-size:.92rem;margin:10px auto 6px;max-width:560px}.qibla-dist{color:#d7c9a0;font-size:.95rem;margin-top:12px}
+.qibla-actions{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin-top:24px}.qibla-actions .btn{min-width:190px}
+.qibla-location{margin-top:24px;padding:14px 18px;border-radius:12px;background:rgba(0,0,0,.14);border:1px solid rgba(217,170,43,.12);color:rgba(239,232,210,.78);font-size:.9rem}
+.qibla-location strong{color:#e4bd4e}
+@media(max-width:600px){.qibla-inner{padding:26px 14px 30px}.compass-wrap{width:min(350px,86vw)}.qibla-deg{font-size:2rem}.qibla-arabic{font-size:1.15rem}.qibla-actions .btn{width:100%}}
