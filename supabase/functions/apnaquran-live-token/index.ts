@@ -43,8 +43,8 @@ Deno.serve(async (req: Request) => {
   if (!ALLOWED_ORIGINS.has(origin)) return json({ error: "Origin not allowed." }, 403, origin);
   if (req.method !== "POST") return json({ error: "Method not allowed." }, 405, origin);
 
-  const apiKey = Deno.env.get("GEMINI_API_KEY");
-  if (!apiKey) return json({ error: "GEMINI_API_KEY is not configured." }, 503, origin);
+  const apiKey = Deno.env.get("GEMINI_LIVE_API_KEY");
+  if (!apiKey) return json({ error: "GEMINI_LIVE_API_KEY is not configured." }, 503, origin);
 
   try {
     // Mint a short-lived, single-use token. The permanent API key never reaches the browser.
