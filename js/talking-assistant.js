@@ -40,6 +40,25 @@
   const SUPABASE_PUBLIC_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InlheWxqbXFlbG1zbWNzdWh4cWRqIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODM3ODUyOTMsImV4cCI6MjA5OTM2MTI5M30.XITDKls3bKtsXVssJuGQvy8iE4gwl2VtDF1F3dbrDcs';
   const history = [];
   let busy = false;
+  function detectReplyLanguage(text) {
+    // Urdu script is the strongest signal, including Urdu typed with a keyboard.
+    if (/[\u0600-\u06FF]/.test(text)) return 'ur';
+
+    // Require multiple Roman Urdu markers so English questions about Quran or namaz
+    // do not automatically switch to Urdu.
+    const normalized = text.toLowerCase().replace(/[^a-z\s']/g, ' ').replace(/\s+/g, ' ').trim();
+    const markers = [
+      'kya', 'kaise', 'kaisay', 'kyun', 'mujhe', 'mujhay', 'aap', 'apka',
+      'hai', 'hain', 'hoon', 'hun', 'tha', 'thi', 'the', 'batao', 'batayein',
+      'samjhao', 'samjhayen', 'mein', 'main', 'mera', 'meri', 'mere',
+      'nahi', 'nahin', 'karo', 'karein', 'ka', 'ki', 'ke', 'ko', 'se',
+      'aur', 'lekin', 'shukriya', 'assalam', 'alaikum', 'parha', 'parhne'
+    ];
+    const words = new Set(normalized.split(' ').filter(Boolean));
+    const markerCount = markers.reduce((count, word) => count + (words.has(word) ? 1 : 0), 0);
+    const strongPhrase = /\b(kya hai|kaise karun|kaise karoon|mujhe batao|mujhe samjhao|aap bataein|iska matlab|is ka matlab|kya matlab)\b/.test(normalized);
+    return markerCount >= 2 || strongPhrase ? 'ur' : 'en';
+  }
   function speak(text, lang) {
     if (!('speechSynthesis' in window)) return false;
     try {
@@ -98,7 +117,7 @@
     send.disabled = true;
     mic.disabled = true;
     input.disabled = true;
-    const replyLanguage = language.value === 'en' ? 'en' : language.value === 'ur' ? 'ur' : (/[\u0600-\u06FF]/.test(value) || /\b(kya|kaise|mujhe|aap|hai|hain|batao|quran|namaz|assalam|alaikum|urdu|mein|nahi|shukriya)\b/i.test(value) ? 'ur' : 'en');
+    const replyLanguage = language.value === 'en' ? 'en' : language.value === 'ur' ? 'ur' : detectReplyLanguage(value);
     status.textContent = 'Thinking…';
     try {
       const response = await fetch(API_URL, {
@@ -148,7 +167,9 @@
       return;
     }
     const recognition = new Recognition();
-    recognition.lang = language.value === 'en' ? 'en-US' : 'ur-PK';
+    // SpeechRecognition requires one locale. In Auto mode, use English for dictation;
+    // users can select Urdu when speaking Urdu, and the transcript is then language-detected.
+    recognition.lang = language.value === 'ur' ? 'ur-PK' : 'en-US';
     recognition.interimResults = false;
     recognition.maxAlternatives = 1;
     mic.disabled = true;
