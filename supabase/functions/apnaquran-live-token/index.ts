@@ -59,21 +59,20 @@ Deno.serve(async (req: Request) => {
         uses: 1,
         newSessionExpireTime: new Date(now + 60_000).toISOString(),
         expireTime: new Date(now + 30 * 60_000).toISOString(),
-        liveConnectConstraints: {
+        bidiGenerateContentSetup: {
           model: MODEL,
-          config: {
+          generationConfig: {
             responseModalities: ["AUDIO"],
-            inputAudioTranscription: {},
-            outputAudioTranscription: {},
-            sessionResumption: {},
-            systemInstruction: { parts: [{ text: SYSTEM_INSTRUCTION }] },
-            thinkingConfig: { thinkingLevel: "LOW" },
             speechConfig: {
               voiceConfig: {
                 prebuiltVoiceConfig: { voiceName: "Puck" },
               },
             },
           },
+          inputAudioTranscription: {},
+          outputAudioTranscription: {},
+          sessionResumption: {},
+          systemInstruction: { parts: [{ text: SYSTEM_INSTRUCTION }] },
         },
       }),
     });
