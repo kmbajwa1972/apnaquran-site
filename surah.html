@@ -7,6 +7,16 @@
 <meta name="description" content="Read this surah of the Holy Quran in Uthmani script with Urdu and English translation, Urdu tafseer, and ayah-by-ayah recitation by Qari Saud Al-Shuraim.">
 
 <link rel="canonical" href="https://apnaquran.com/surah.html">
+<script>
+/* Set a Surah-specific canonical immediately, before external data loads. */
+(function () {
+  const params = new URLSearchParams(window.location.search);
+  const requested = Number.parseInt(params.get('s'), 10);
+  const surah = Number.isInteger(requested) && requested >= 1 && requested <= 114 ? requested : 1;
+  const canonical = document.querySelector('link[rel="canonical"]');
+  if (canonical) canonical.href = `https://apnaquran.com/surah.html?s=${surah}`;
+})();
+</script>
 
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="AL-QURAN">
