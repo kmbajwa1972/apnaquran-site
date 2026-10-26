@@ -63,6 +63,7 @@ Deno.serve(async (req: Request) => {
           model: MODEL,
           config: {
             responseModalities: ["AUDIO"],
+            thinkingConfig: { thinkingLevel: "LOW" },
             speechConfig: { voiceConfig: { prebuiltVoiceConfig: { voiceName: "Puck" } } },
             inputAudioTranscription: {},
             outputAudioTranscription: {},
