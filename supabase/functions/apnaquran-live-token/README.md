@@ -21,7 +21,7 @@ This is an isolated prototype for a real-time, two-way spoken assistant using Go
 
 ## Required secret
 
-Set `GEMINI_API_KEY` in Supabase Edge Function Secrets. Never put it in HTML or browser JavaScript.
+Set `GEMINI_LIVE_API_KEY` in Supabase Edge Function Secrets. This is a separate secret from `GEMINI_API_KEY`, so testing the Live prototype will not require replacing the existing assistant's key. Never put it in HTML or browser JavaScript.
 
 ## Reference
 
