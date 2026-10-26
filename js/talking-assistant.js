@@ -36,11 +36,11 @@
   const messages = document.getElementById('aqAssistantMessages');
   const status = document.getElementById('aqAssistantStatus');
   const speech = window.speechSynthesis;
-  function setOpen(open) {
+  function setOpen(open, focusInput) {
     panel.hidden = !open;
     launch.hidden = open;
     launch.setAttribute('aria-expanded', String(open));
-    if (open) input.focus({ preventScroll: true });
+    if (open && focusInput) input.focus({ preventScroll: true });
   }
   function addBubble(text, isUser) {
     const bubble = document.createElement('div');
@@ -50,8 +50,11 @@
     messages.scrollTop = messages.scrollHeight;
   }
   function speakWelcome() {
-    if (!('speechSynthesis' in window) || sessionStorage.getItem('aqWelcomeSpoken')) return;
-    sessionStorage.setItem('aqWelcomeSpoken', '1');
+    if (!('speechSynthesis' in window)) return;
+    try {
+      if (sessionStorage.getItem('aqWelcomeSpoken')) return;
+      sessionStorage.setItem('aqWelcomeSpoken', '1');
+    } catch (_) { /* Storage may be disabled; continue with best-effort greeting. */ }
     const utterance = new SpeechSynthesisUtterance('Welcome to ApnaQuran! How can I help you today?');
     utterance.lang = 'en-US';
     utterance.rate = 0.92;
@@ -65,7 +68,7 @@
     addBubble('Thank you for your question. The AI answer service is not connected in this preview yet, so I do not want to guess about Quranic verses or religious guidance.', false);
     status.textContent = 'Preview only — AI answers are not connected yet.';
   }
-  launch.addEventListener('click', function () { setOpen(true); });
+  launch.addEventListener('click', function () { setOpen(true, true); });
   close.addEventListener('click', function () { setOpen(false); });
   send.addEventListener('click', sendMessage);
   input.addEventListener('keydown', function (event) { if (event.key === 'Enter') sendMessage(); });
