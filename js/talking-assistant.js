@@ -19,7 +19,7 @@
   const messages = document.getElementById('aqAssistantMessages'), status = document.getElementById('aqAssistantStatus');
   const API_URL = 'https://yayljmqelmsmcsuhxqdj.supabase.co/functions/v1/apnaquran-assistant';
   const LIVE_TOKEN_URL = 'https://yayljmqelmsmcsuhxqdj.supabase.co/functions/v1/apnaquran-live-token';
-  const SUPABASE_PUBLIC_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InlheWxqbXFlbG1zY3VoeHFkajEiLCJyb2xlIjoiYW5vbiIsImlhdCI6MTc4Mzc4NTI5MywiZXhwIjoyMDk5MzYxMjkzfQ.XITDKls3bKtsXVssJuGQvy8iE4gwl2VtDF1F3dbrDcs';
+  const SUPABASE_PUBLIC_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InlheWxqbXFlbG1zY3N1aHhxZGoiLCJyb2xlIjoiYW5vbiIsImlhdCI6MTc4Mzc4NTI5MywiZXhwIjoyMDk5MzYxMjkzfQ.XITDKls3bKtsXVssJuGQvy8iE4gwl2VtDF1F3dbrDcs';
   const SYSTEM_INSTRUCTION = 'You are the voice assistant for ApnaQuran.com. Be respectful, warm, concise, and clear. Help visitors navigate this website and discuss general Islamic learning carefully. Never invent Quran verses, surah/ayah references, hadith wording, citations, or scholarly rulings. If you cannot verify a religious claim, say so and direct the visitor to the Quran reader on ApnaQuran.com or a qualified scholar. Do not claim to be a scholar. Speak in the language the visitor uses when possible.';
   const history = [];
   let busy = false, liveSocket = null, liveStream = null, audioContext = null, processor = null, source = null, muteNode = null;
