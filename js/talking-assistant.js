@@ -22,7 +22,7 @@
   const SUPABASE_PUBLIC_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InlheWxqbXFlbG1zY3VoeHFkajEiLCJyb2xlIjoiYW5vbiIsImlhdCI6MTc4Mzc4NTI5MywiZXhwIjoyMDk5MzYxMjkzfQ.XITDKls3bKtsXVssJuGQvy8iE4gwl2VtDF1F3dbrDcs';
   const SYSTEM_INSTRUCTION = 'You are the voice assistant for ApnaQuran.com. Be respectful, warm, concise, and clear. Help visitors navigate this website and discuss general Islamic learning carefully. Never invent Quran verses, surah/ayah references, hadith wording, citations, or scholarly rulings. If you cannot verify a religious claim, say so and direct the visitor to the Quran reader on ApnaQuran.com or a qualified scholar. Do not claim to be a scholar. Speak in the language the visitor uses when possible.';
   const history = [];
-  let busy = false, liveSocket = null, liveStream = null, audioContext = null, processor = null, source = null;
+  let busy = false, liveSocket = null, liveStream = null, audioContext = null, processor = null, source = null, muteNode = null;
   let playbackCursor = 0, liveActive = false, assistantTurn = '';
   function setOpen(open, focusInput) { panel.hidden = !open; launch.hidden = open; launch.setAttribute('aria-expanded', String(open)); if (open && focusInput) input.focus({ preventScroll: true }); }
   function addBubble(text, isUser) {
@@ -49,6 +49,7 @@
     liveActive = false;
     if (processor) { processor.onaudioprocess = null; try { processor.disconnect(); } catch (_) {} processor = null; }
     if (source) { try { source.disconnect(); } catch (_) {} source = null; }
+    if (muteNode) { try { muteNode.disconnect(); } catch (_) {} muteNode = null; }
     if (liveStream) { liveStream.getTracks().forEach(track => track.stop()); liveStream = null; }
     if (liveSocket) { try { liveSocket.close(); } catch (_) {} liveSocket = null; }
     if (audioContext) { try { audioContext.close(); } catch (_) {} audioContext = null; }
@@ -82,7 +83,7 @@
             const pcm = downsampleTo16k(audioEvent.inputBuffer.getChannelData(0), audioContext.sampleRate);
             if (pcm.length) liveSocket.send(JSON.stringify({ realtimeInput: { audio: { mimeType: 'audio/pcm;rate=16000', data: bytesToBase64(new Uint8Array(pcm.buffer)) } } }));
           };
-          source.connect(processor); processor.connect(audioContext.destination); mic.disabled = false; mic.textContent = '■'; mic.setAttribute('aria-label', 'Stop live voice conversation');
+          muteNode = audioContext.createGain(); muteNode.gain.value = 0; source.connect(processor); processor.connect(muteNode); muteNode.connect(audioContext.destination); mic.disabled = false; mic.textContent = '■'; mic.setAttribute('aria-label', 'Stop live voice conversation');
           status.textContent = 'Listening now. Speak naturally; tap ■ to stop.';
         }
         const server = data.serverContent || data;
