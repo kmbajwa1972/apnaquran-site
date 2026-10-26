@@ -17,6 +17,7 @@
         <div class="aq-assistant-bubble">Welcome to ApnaQuran! How can I help you today?</div>
       </div>
       <div class="aq-assistant-note">AI-generated answers may need verification. For exact Quran quotations or religious rulings, consult trusted sources or a qualified scholar.</div>
+      <div class="aq-assistant-language"><label for="aqAssistantLanguage">Language / زبان</label><select id="aqAssistantLanguage" aria-label="Choose assistant language"><option value="auto">Auto detect / خودکار</option><option value="en">English</option><option value="ur">اردو (Urdu)</option></select></div>
       <div class="aq-assistant-controls">
         <button class="aq-assistant-action" id="aqAssistantMic" type="button" aria-label="Speak your message" title="Speak your message">🎙</button>
         <input class="aq-assistant-input" id="aqAssistantInput" type="text" maxlength="500" placeholder="Ask in English or Urdu…" aria-label="Type your message">
@@ -33,20 +34,15 @@
   const send = document.getElementById('aqAssistantSend');
   const messages = document.getElementById('aqAssistantMessages');
   const status = document.getElementById('aqAssistantStatus');
+  const language = document.getElementById('aqAssistantLanguage');
   const speech = window.speechSynthesis;
   const API_URL = 'https://yayljmqelmsmcsuhxqdj.supabase.co/functions/v1/apnaquran-assistant';
   const SUPABASE_PUBLIC_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InlheWxqbXFlbG1zbWNzdWh4cWRqIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODM3ODUyOTMsImV4cCI6MjA5OTM2MTI5M30.XITDKls3bKtsXVssJuGQvy8iE4gwl2VtDF1F3dbrDcs';
   const history = [];
   let busy = false;
-  function speak(text) {
-    if (!( 'speechSynthesis' in window)) return;
-    try {
-      speech.cancel();
-      const utterance = new SpeechSynthesisUtterance(text);
-      utterance.lang = /[\u0600-\u06FF]/.test(text) ? 'ur-PK' : 'en-US';
-      utterance.rate = 0.94;
-      speech.speak(utterance);
-    } catch (_) { /* Browser speech is best-effort. */ }
+  function speak(text, lang) {
+    if (!('speechSynthesis' in window)) return;
+    try { speech.cancel(); const utterance = new SpeechSynthesisUtterance(text); const requested = lang === 'ur' || /[\u0600-\u06FF]/.test(text) ? 'ur-PK' : 'en-US'; utterance.lang = requested; utterance.rate = 0.92; const voices = speech.getVoices(); const voice = voices.find(v => requested === 'ur-PK' ? /^ur(-|$)/i.test(v.lang) || /urdu/i.test(v.name) : /^en(-|$)/i.test(v.lang)); if (voice) utterance.voice = voice; speech.speak(utterance); } catch (_) { /* Browser speech is best-effort. */ }
   }
   function setOpen(open, focusInput) {
     panel.hidden = !open;
@@ -81,6 +77,7 @@
     send.disabled = true;
     mic.disabled = true;
     input.disabled = true;
+    const replyLanguage = language.value === 'en' ? 'en' : language.value === 'ur' ? 'ur' : (/[\u0600-\u06FF]/.test(value) || /\b(kya|kaise|mujhe|aap|hai|hain|batao|quran|namaz|assalam|alaikum|urdu|mein|nahi|shukriya)\b/i.test(value) ? 'ur' : 'en');
     status.textContent = 'Thinking…';
     try {
       const response = await fetch(API_URL, {
@@ -90,7 +87,7 @@
           'apikey': SUPABASE_PUBLIC_KEY,
           'Authorization': 'Bearer ' + SUPABASE_PUBLIC_KEY
         },
-        body: JSON.stringify({ message: value, history: history.slice(-6) })
+        body: JSON.stringify({ message: value, language: replyLanguage, history: history.slice(-6) })
       });
       const data = await response.json().catch(() => ({}));
       if (!response.ok) throw new Error(data.error || 'The assistant is temporarily unavailable.');
@@ -99,8 +96,8 @@
       addBubble(answer, false);
       history.push({ role: 'user', text: value }, { role: 'model', text: answer });
       if (history.length > 8) history.splice(0, history.length - 8);
-      status.textContent = 'Answer ready · spoken reply attempted';
-      speak(answer);
+      status.textContent = replyLanguage === 'ur' ? 'جواب تیار ہے · اردو آواز کی کوشش کی گئی' : 'Answer ready · spoken reply attempted';
+      speak(answer, replyLanguage);
     } catch (error) {
       addBubble(error instanceof Error ? error.message : 'Connection failed. Please try again.', false);
       status.textContent = 'Could not reach the assistant. Please try again.';
@@ -123,7 +120,7 @@
       return;
     }
     const recognition = new Recognition();
-    recognition.lang = document.documentElement.lang === 'ur' ? 'ur-PK' : 'en-US';
+    recognition.lang = language.value === 'en' ? 'en-US' : 'ur-PK';
     recognition.interimResults = false;
     recognition.maxAlternatives = 1;
     mic.disabled = true;
