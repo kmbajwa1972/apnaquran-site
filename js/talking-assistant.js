@@ -41,8 +41,24 @@
   const history = [];
   let busy = false;
   function speak(text, lang) {
-    if (!('speechSynthesis' in window)) return;
-    try { speech.cancel(); const utterance = new SpeechSynthesisUtterance(text); const requested = lang === 'ur' || /[\u0600-\u06FF]/.test(text) ? 'ur-PK' : 'en-US'; utterance.lang = requested; utterance.rate = 0.92; const voices = speech.getVoices(); const voice = voices.find(v => requested === 'ur-PK' ? /^ur(-|$)/i.test(v.lang) || /urdu/i.test(v.name) : /^en(-|$)/i.test(v.lang)); if (voice) utterance.voice = voice; speech.speak(utterance); } catch (_) { /* Browser speech is best-effort. */ }
+    if (!('speechSynthesis' in window)) return false;
+    try {
+      speech.cancel();
+      const utterance = new SpeechSynthesisUtterance(text);
+      const isUrdu = lang === 'ur' || /[\u0600-\u06FF]/.test(text);
+      const requested = isUrdu ? 'ur-PK' : 'en-US';
+      const voices = speech.getVoices();
+      const voice = voices.find(v => isUrdu
+        ? /^ur(-|$)/i.test(v.lang) || /urdu/i.test(v.name)
+        : /^en(-|$)/i.test(v.lang));
+      // Do not silently read Urdu text with an English voice; that sounds incorrect.
+      if (isUrdu && !voice) return false;
+      utterance.lang = requested;
+      utterance.rate = 0.88;
+      if (voice) utterance.voice = voice;
+      speech.speak(utterance);
+      return true;
+    } catch (_) { return false; }
   }
   function setOpen(open, focusInput) {
     panel.hidden = !open;
@@ -52,7 +68,12 @@
   }
   function addBubble(text, isUser) {
     const bubble = document.createElement('div');
+    const hasUrduScript = /[\u0600-\u06FF]/.test(text);
     bubble.className = 'aq-assistant-bubble' + (isUser ? ' aq-user' : '');
+    bubble.lang = hasUrduScript ? 'ur' : 'en';
+    bubble.dir = hasUrduScript ? 'rtl' : 'auto';
+    bubble.style.textAlign = hasUrduScript ? 'right' : 'left';
+    bubble.style.unicodeBidi = 'plaintext';
     bubble.textContent = text;
     messages.appendChild(bubble);
     messages.scrollTop = messages.scrollHeight;
@@ -96,8 +117,15 @@
       addBubble(answer, false);
       history.push({ role: 'user', text: value }, { role: 'model', text: answer });
       if (history.length > 8) history.splice(0, history.length - 8);
-      status.textContent = replyLanguage === 'ur' ? 'جواب تیار ہے · اردو آواز کی کوشش کی گئی' : 'Answer ready · spoken reply attempted';
-      speak(answer, replyLanguage);
+      if (replyLanguage === 'ur') {
+        status.textContent = speak(answer, replyLanguage)
+          ? 'جواب تیار ہے · اردو آواز چل رہی ہے'
+          : 'جواب اردو میں تیار ہے، لیکن اس براؤزر میں اردو آواز دستیاب نہیں۔ اردو آواز کے بغیر انگریزی آواز نہیں چلائی گئی۔';
+      } else {
+        status.textContent = speak(answer, replyLanguage)
+          ? 'Answer ready · speaking'
+          : 'Answer ready · speech playback is unavailable in this browser.';
+      }
     } catch (error) {
       addBubble(error instanceof Error ? error.message : 'Connection failed. Please try again.', false);
       status.textContent = 'Could not reach the assistant. Please try again.';
