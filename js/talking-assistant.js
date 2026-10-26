@@ -1,6 +1,4 @@
-/* ApnaQuran talking assistant prototype.
-   This stage provides the welcome, browser speech and text UI only.
-   A trusted AI answer service is not connected yet; no Quran answers are fabricated. */
+/* ApnaQuran talking assistant. Gemini requests use a Supabase Edge Function. */
 (function () {
   'use strict';
   if (document.getElementById('aqAssistantPanel')) return;
@@ -12,16 +10,16 @@
     <section class="aq-assistant-panel" id="aqAssistantPanel" role="dialog" aria-label="ApnaQuran talking assistant">
       <header class="aq-assistant-head">
         <div class="aq-assistant-mark" aria-hidden="true">۞</div>
-        <div class="aq-assistant-heading"><strong>ApnaQuran Assistant</strong><small>Voice &amp; text preview</small></div>
+        <div class="aq-assistant-heading"><strong>ApnaQuran Assistant</strong><small>Voice &amp; text assistant</small></div>
         <button class="aq-assistant-iconbtn" id="aqAssistantClose" type="button" aria-label="Minimize assistant">−</button>
       </header>
       <div class="aq-assistant-messages" id="aqAssistantMessages" aria-live="polite">
         <div class="aq-assistant-bubble">Welcome to ApnaQuran! How can I help you today?</div>
       </div>
-      <div class="aq-assistant-note">This is the first interface preview. AI-powered answers will be connected in the next step. Please verify religious guidance with trusted sources.</div>
+      <div class="aq-assistant-note">AI-generated answers may need verification. For exact Quran quotations or religious rulings, consult trusted sources or a qualified scholar.</div>
       <div class="aq-assistant-controls">
         <button class="aq-assistant-action" id="aqAssistantMic" type="button" aria-label="Speak your message" title="Speak your message">🎙</button>
-        <input class="aq-assistant-input" id="aqAssistantInput" type="text" maxlength="500" placeholder="Type your message…" aria-label="Type your message">
+        <input class="aq-assistant-input" id="aqAssistantInput" type="text" maxlength="500" placeholder="Ask in English or Urdu…" aria-label="Type your message">
         <button class="aq-assistant-action" id="aqAssistantSend" type="button">Send</button>
       </div>
       <div class="aq-assistant-status" id="aqAssistantStatus" role="status">Tap the microphone to try voice input.</div>
@@ -36,6 +34,20 @@
   const messages = document.getElementById('aqAssistantMessages');
   const status = document.getElementById('aqAssistantStatus');
   const speech = window.speechSynthesis;
+  const API_URL = 'https://yayljmqelmsmcsuhxqdj.supabase.co/functions/v1/apnaquran-assistant';
+  const SUPABASE_PUBLIC_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InlheWxqbXFlbG1zbWNzdWh4cWRqIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODM3ODUyOTMsImV4cCI6MjA5OTM2MTI5M30.XITDKls3bKtsXVssJuGQvy8iE4gwl2VtDF1F3dbrDcs';
+  const history = [];
+  let busy = false;
+  function speak(text) {
+    if (!( 'speechSynthesis' in window)) return;
+    try {
+      speech.cancel();
+      const utterance = new SpeechSynthesisUtterance(text);
+      utterance.lang = /[\u0600-\u06FF]/.test(text) ? 'ur-PK' : 'en-US';
+      utterance.rate = 0.94;
+      speech.speak(utterance);
+    } catch (_) { /* Browser speech is best-effort. */ }
+  }
   function setOpen(open, focusInput) {
     panel.hidden = !open;
     launch.hidden = open;
@@ -60,13 +72,45 @@
     utterance.rate = 0.92;
     try { speech.speak(utterance); } catch (_) { /* Browsers may block autoplay speech. */ }
   }
-  function sendMessage() {
+  async function sendMessage() {
     const value = input.value.trim();
-    if (!value) return;
+    if (!value || busy) return;
     addBubble(value, true);
     input.value = '';
-    addBubble('Thank you for your question. The AI answer service is not connected in this preview yet, so I do not want to guess about Quranic verses or religious guidance.', false);
-    status.textContent = 'Preview only — AI answers are not connected yet.';
+    busy = true;
+    send.disabled = true;
+    mic.disabled = true;
+    input.disabled = true;
+    status.textContent = 'Thinking…';
+    try {
+      const response = await fetch(API_URL, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'apikey': SUPABASE_PUBLIC_KEY,
+          'Authorization': 'Bearer ' + SUPABASE_PUBLIC_KEY
+        },
+        body: JSON.stringify({ message: value, history: history.slice(-6) })
+      });
+      const data = await response.json().catch(() => ({}));
+      if (!response.ok) throw new Error(data.error || 'The assistant is temporarily unavailable.');
+      if (typeof data.reply !== 'string' || !data.reply.trim()) throw new Error('I could not prepare an answer just now. Please try again.');
+      const answer = data.reply.trim();
+      addBubble(answer, false);
+      history.push({ role: 'user', text: value }, { role: 'model', text: answer });
+      if (history.length > 8) history.splice(0, history.length - 8);
+      status.textContent = 'Answer ready · spoken reply attempted';
+      speak(answer);
+    } catch (error) {
+      addBubble(error instanceof Error ? error.message : 'Connection failed. Please try again.', false);
+      status.textContent = 'Could not reach the assistant. Please try again.';
+    } finally {
+      busy = false;
+      send.disabled = false;
+      mic.disabled = false;
+      input.disabled = false;
+      input.focus({ preventScroll: true });
+    }
   }
   launch.addEventListener('click', function () { setOpen(true, true); });
   close.addEventListener('click', function () { setOpen(false); });
@@ -86,7 +130,8 @@
     status.textContent = 'Listening… speak now.';
     recognition.onresult = function (event) {
       input.value = event.results[0][0].transcript;
-      status.textContent = 'Voice captured. Press Send to continue.';
+      status.textContent = 'Voice captured. Sending your question…';
+      sendMessage();
       input.focus();
     };
     recognition.onerror = function () { status.textContent = 'Could not hear you. Check microphone permission or type instead.'; };
