@@ -70,7 +70,7 @@
       liveSocket = new WebSocket('wss://generativelanguage.googleapis.com/ws/google.ai.generativelanguage.v1beta.GenerativeService.BidiGenerateContentConstrained?access_token=' + encodeURIComponent(tokenData.token));
       liveSocket.onopen = function () {
         if (!liveActive) return;
-        liveSocket.send(JSON.stringify({ setup: { model: tokenData.model || 'models/gemini-3.8-live-extended-thinking', generationConfig: { responseModalities: ['AUDIO'], speechConfig: { voiceConfig: { prebuiltVoiceConfig: { voiceName: 'Puck' } } } }, inputAudioTranscription: {}, outputAudioTranscription: {}, systemInstruction: { parts: [{ text: SYSTEM_INSTRUCTION }] } } }));
+        liveSocket.send(JSON.stringify({ setup: { model: tokenData.model || 'models/gemini-3.8-live-extended-thinking', generationConfig: { responseModalities: ['AUDIO'], speechConfig: { voiceConfig: { prebuiltVoiceConfig: { voiceName: 'Puck' } } }, thinkingConfig: { thinkingLevel: 'LOW' } }, inputAudioTranscription: {}, outputAudioTranscription: {}, systemInstruction: { parts: [{ text: SYSTEM_INSTRUCTION }] } } }));
         status.textContent = 'Connecting microphone…';
       };
       liveSocket.onmessage = function (event) {
