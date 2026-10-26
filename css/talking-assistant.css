@@ -1,0 +1,21 @@
+/* ApnaQuran talking assistant — shared, lightweight UI */
+.aq-assistant-launch{position:fixed;right:22px;bottom:22px;z-index:9998;border:1px solid var(--gold-hi,#E4C563);border-radius:999px;background:var(--panel,#12312A);color:var(--ink,#EFE9D8);box-shadow:0 8px 28px #0005;padding:12px 17px;display:flex;align-items:center;gap:9px;font:600 14px/1.2 inherit;cursor:pointer}
+.aq-assistant-launch .aq-orb{width:11px;height:11px;border-radius:50%;background:var(--gold-hi,#E4C563);box-shadow:0 0 12px #E4C56388}
+.aq-assistant-panel{position:fixed;right:22px;bottom:84px;z-index:9999;width:min(370px,calc(100vw - 28px));max-height:min(570px,calc(100vh - 115px));display:flex;flex-direction:column;background:var(--panel,#12312A);color:var(--ink,#EFE9D8);border:1px solid var(--line,#1E4A3F);border-radius:18px;box-shadow:0 18px 55px #0008;overflow:hidden;font-family:inherit}
+.aq-assistant-panel[hidden]{display:none}
+.aq-assistant-head{display:flex;align-items:center;gap:11px;padding:15px 16px;background:var(--panel-2,#0F2A24);border-bottom:1px solid var(--line,#1E4A3F)}
+.aq-assistant-mark{width:38px;height:38px;border-radius:50%;display:grid;place-items:center;background:#C9A22720;border:1px solid var(--gold,#C9A227);color:var(--gold-hi,#E4C563);font-size:20px}
+.aq-assistant-heading{flex:1;min-width:0}.aq-assistant-heading strong{display:block;font-size:15px}.aq-assistant-heading small{display:block;color:var(--muted,#9FB8AD);font-size:12px;margin-top:3px}
+.aq-assistant-iconbtn{border:0;background:transparent;color:inherit;font-size:22px;cursor:pointer;padding:4px 7px;border-radius:8px}
+.aq-assistant-iconbtn:hover{background:#ffffff12}
+.aq-assistant-messages{padding:17px;overflow:auto;display:flex;flex-direction:column;gap:12px;min-height:130px}
+.aq-assistant-bubble{padding:12px 13px;border-radius:13px;background:var(--panel-2,#0F2A24);border:1px solid var(--line,#1E4A3F);font-size:14px;line-height:1.55;overflow-wrap:anywhere}
+.aq-assistant-bubble.aq-user{align-self:flex-end;background:#C9A22718;border-color:#C9A22766;max-width:90%}
+.aq-assistant-note{font-size:11px;line-height:1.45;color:var(--muted,#9FB8AD);padding:0 17px 12px}
+.aq-assistant-controls{padding:12px;border-top:1px solid var(--line,#1E4A3F);display:flex;gap:8px;align-items:center}
+.aq-assistant-input{flex:1;min-width:0;border:1px solid var(--line,#1E4A3F);border-radius:11px;background:var(--bg,#0C221D);color:var(--ink,#EFE9D8);padding:11px 12px;font:inherit;font-size:14px}
+.aq-assistant-action{border:1px solid var(--gold,#C9A227);border-radius:11px;background:#C9A227;color:#15231d;padding:10px 12px;font-weight:700;cursor:pointer}
+.aq-assistant-action[disabled]{opacity:.45;cursor:not-allowed}
+.aq-assistant-status{font-size:12px;color:var(--muted,#9FB8AD);padding:0 14px 12px;min-height:18px}
+@media(max-width:480px){.aq-assistant-launch{right:14px;bottom:14px;padding:11px 14px}.aq-assistant-panel{right:10px;bottom:74px;width:calc(100vw - 20px);max-height:calc(100vh - 95px)}}
+@media(prefers-reduced-motion:reduce){.aq-assistant-panel,.aq-assistant-launch{scroll-behavior:auto}}
