@@ -59,6 +59,29 @@
     const strongPhrase = /\b(kya hai|kaise karun|kaise karoon|mujhe batao|mujhe samjhao|aap bataein|iska matlab|is ka matlab|kya matlab)\b/.test(normalized);
     return markerCount >= 2 || strongPhrase ? 'ur' : 'en';
   }
+  async function speakReply(text, lang) {
+    // Prefer server-generated Pakistani Urdu audio; the Azure key stays server-side.
+    if (lang === 'ur') {
+      try {
+        const response = await fetch(API_URL, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'apikey': SUPABASE_PUBLIC_KEY,
+            'Authorization': 'Bearer ' + SUPABASE_PUBLIC_KEY
+          },
+          body: JSON.stringify({ action: 'tts', text, language: 'ur' })
+        });
+        if (response.ok && (response.headers.get('content-type') || '').includes('audio/')) {
+          const audio = new Audio(URL.createObjectURL(await response.blob()));
+          await audio.play();
+          audio.addEventListener('ended', () => URL.revokeObjectURL(audio.src), { once: true });
+          return 'azure';
+        }
+      } catch (_) { /* Fall back to browser voice if configured server TTS is unavailable. */ }
+    }
+    return speak(text, lang) ? 'browser' : false;
+  }
   function speak(text, lang) {
     if (!('speechSynthesis' in window)) return false;
     try {
@@ -136,14 +159,15 @@
       addBubble(answer, false);
       history.push({ role: 'user', text: value }, { role: 'model', text: answer });
       if (history.length > 8) history.splice(0, history.length - 8);
+      const speechMode = await speakReply(answer, replyLanguage);
       if (replyLanguage === 'ur') {
-        status.textContent = speak(answer, replyLanguage)
-          ? 'جواب تیار ہے · اردو آواز چل رہی ہے'
-          : 'جواب اردو میں تیار ہے، لیکن اس براؤزر میں اردو آواز دستیاب نہیں۔ اردو آواز کے بغیر انگریزی آواز نہیں چلائی گئی۔';
+        status.textContent = speechMode === 'azure'
+          ? 'جواب تیار ہے · پاکستانی اردو آواز چل رہی ہے'
+          : speechMode
+            ? 'جواب تیار ہے · اردو آواز چل رہی ہے'
+            : 'جواب اردو میں تیار ہے، لیکن اردو آواز ابھی ترتیب نہیں دی گئی۔';
       } else {
-        status.textContent = speak(answer, replyLanguage)
-          ? 'Answer ready · speaking'
-          : 'Answer ready · speech playback is unavailable in this browser.';
+        status.textContent = speechMode ? 'Answer ready · speaking' : 'Answer ready · speech playback is unavailable in this browser.';
       }
     } catch (error) {
       addBubble(error instanceof Error ? error.message : 'Connection failed. Please try again.', false);
