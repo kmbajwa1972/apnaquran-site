@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Weekly Verse Publisher — ApnaQuran</title>
+<meta name="robots" content="noindex,nofollow">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/weekly-verse.css">
+</head>
+<body>
+<header class="site-header"><div class="nav-inner">
+<a class="brand" href="index.html">۞ ApnaQuran</a>
+<nav class="nav-links" id="navLinks"><a href="index.html">Visit website</a><a href="read.html">Read Quran</a></nav>
+<button class="icon-btn" id="themeToggle" aria-label="Toggle theme"></button>
+<button class="icon-btn nav-toggle" id="navToggle" aria-label="Menu">☰</button>
+</div></header>
+<main class="wrap weekly-admin">
+<div class="admin-kicker">PRIVATE WORKSPACE · PHASE 1</div>
+<h1 class="page-title">Weekly Verse Publisher</h1>
+<p class="page-sub">Prepare one verified verse post for the week, then use the same saved text as you share it with your groups.</p>
+<div class="notice"><strong>Publishing mode: manual test.</strong> Facebook removed its Groups API in 2024, so this dashboard will not log in to Facebook or post automatically. It prepares the post, copies it, and opens your chosen group for you to publish safely.</div>
+<section class="card admin-card">
+<div class="section-head"><div><h2>This week's verse</h2><p id="weekStatus">Checking saved weekly post…</p></div><button class="btn gold" id="generateBtn">Generate / refresh</button></div>
+<div id="versePreview" class="verse-preview"><p class="muted">Loading the current Verse of the Day…</p></div>
+<div class="field"><label for="postIntro">Optional short introduction</label><textarea id="postIntro" rows="2" maxlength="280" placeholder="A short invitation to read and reflect (optional). Do not add unverified Quran quotations."></textarea></div>
+<div class="field"><label for="postLink">Website link</label><input id="postLink" type="url" value="https://apnaquran.com/"></div>
+<div class="actions"><button class="btn gold" id="saveWeekBtn">Save as this week's post</button><button class="btn" id="copyBtn">Copy post text</button></div>
+<p class="helper" id="copyStatus" role="status"></p>
+</section>
+<section class="card admin-card">
+<div class="section-head"><div><h2>Facebook group test</h2><p>Add one group now; more can be added later.</p></div></div>
+<div class="field"><label for="groupName">Group name</label><input id="groupName" value="Test group"></div>
+<div class="field"><label for="groupUrl">Facebook group URL</label><input id="groupUrl" type="url" value="https://www.facebook.com/groups/1562114467374982" required></div>
+<div class="actions"><button class="btn" id="saveGroupBtn">Save group</button><button class="btn gold" id="openGroupBtn">Open group to publish</button></div>
+<p class="helper" id="groupStatus" role="status">When you have published manually, mark the day's attempt below.</p>
+</section>
+<section class="card admin-card">
+<div class="section-head"><div><h2>Weekly publishing log</h2><p>Records are saved in this browser only for this first test.</p></div><button class="btn" id="markPostedBtn">Mark posted today</button></div>
+<div id="logList" class="log-list"><p class="muted">No attempts logged yet.</p></div>
+</section>
+<section class="card admin-card">
+<h2>How the weekly cycle works</h2>
+<ol class="steps">
+<li>The site’s existing Verse of the Day supplies the Arabic text and selected translations.</li>
+<li>Save one snapshot for the week. The daily homepage verse can continue changing without changing this saved post.</li>
+<li>Copy the post, open the saved group, and publish manually. Mark the attempt in the log.</li>
+<li>At the next weekly cycle, generate a new verse and save it as the new week's post.</li>
+</ol>
+<p class="helper">Important: this first version stores its draft and log in this browser, not in a shared database. Do not treat this page's noindex setting or an obscure URL as account security. Before adding sensitive controls or multi-device access, we should add proper Supabase authentication and server-side storage.</p>
+</section>
+</main>
+<script src="js/app.js"></script>
+<script src="js/weekly-verse.js"></script>
+</body></html>
