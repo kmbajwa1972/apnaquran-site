@@ -1,5 +1,5 @@
 /**
- * ApnaQuran publisher password gate for Cloudflare Pages.
+ * ApnaQuran publisher password gate for Cloudflare Pages. Redeploy check.
  * Requires AUTH_PASSWORD and AUTH_SECRET environment variables in Pages.
  * Fails closed if either secret is missing.
  */
