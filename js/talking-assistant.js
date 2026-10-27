@@ -60,25 +60,27 @@
     return markerCount >= 2 || strongPhrase ? 'ur' : 'en';
   }
   async function speakReply(text, lang) {
-    // Prefer server-generated Pakistani Urdu audio; the Azure key stays server-side.
     if (lang === 'ur') {
-      try {
-        const response = await fetch(API_URL, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            'apikey': SUPABASE_PUBLIC_KEY,
-            'Authorization': 'Bearer ' + SUPABASE_PUBLIC_KEY
-          },
-          body: JSON.stringify({ action: 'tts', text, language: 'ur' })
-        });
-        if (response.ok && (response.headers.get('content-type') || '').includes('audio/')) {
-          const audio = new Audio(URL.createObjectURL(await response.blob()));
-          await audio.play();
-          audio.addEventListener('ended', () => URL.revokeObjectURL(audio.src), { once: true });
-          return 'azure';
-        }
-      } catch (_) { /* Fall back to browser voice if configured server TTS is unavailable. */ }
+      const response = await fetch(API_URL, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'apikey': SUPABASE_PUBLIC_KEY,
+          'Authorization': 'Bearer ' + SUPABASE_PUBLIC_KEY
+        },
+        body: JSON.stringify({ action: 'tts', text, language: 'ur' })
+      });
+      const contentType = response.headers.get('content-type') || '';
+      if (!response.ok || !contentType.includes('audio/')) {
+        const data = await response.json().catch(() => ({}));
+        throw new Error(data.error || 'Urdu speech service could not create audio.');
+      }
+      const url = URL.createObjectURL(await response.blob());
+      const audio = new Audio(url);
+      audio.addEventListener('ended', () => URL.revokeObjectURL(url), { once: true });
+      audio.addEventListener('error', () => URL.revokeObjectURL(url), { once: true });
+      await audio.play();
+      return 'freetts';
     }
     return speak(text, lang) ? 'browser' : false;
   }
@@ -159,15 +161,21 @@
       addBubble(answer, false);
       history.push({ role: 'user', text: value }, { role: 'model', text: answer });
       if (history.length > 8) history.splice(0, history.length - 8);
-      const speechMode = await speakReply(answer, replyLanguage);
-      if (replyLanguage === 'ur') {
-        status.textContent = speechMode === 'azure'
-          ? 'جواب تیار ہے · پاکستانی اردو آواز چل رہی ہے'
-          : speechMode
+      try {
+        const speechMode = await speakReply(answer, replyLanguage);
+        if (replyLanguage === 'ur') {
+          status.textContent = speechMode === 'freetts'
             ? 'جواب تیار ہے · اردو آواز چل رہی ہے'
-            : 'جواب اردو میں تیار ہے، لیکن اردو آواز ابھی ترتیب نہیں دی گئی۔';
-      } else {
-        status.textContent = speechMode ? 'Answer ready · speaking' : 'Answer ready · speech playback is unavailable in this browser.';
+            : speechMode
+              ? 'جواب تیار ہے · آواز چل رہی ہے'
+              : 'جواب تیار ہے، مگر آواز دستیاب نہیں۔';
+        } else {
+          status.textContent = speechMode ? 'Answer ready · speaking' : 'Answer ready · speech playback is unavailable in this browser.';
+        }
+      } catch (speechError) {
+        status.textContent = replyLanguage === 'ur'
+          ? 'اردو آواز کی خرابی: ' + (speechError instanceof Error ? speechError.message : 'براہِ کرم دوبارہ کوشش کریں۔')
+          : 'Speech playback error: ' + (speechError instanceof Error ? speechError.message : 'Please try again.');
       }
     } catch (error) {
       addBubble(error instanceof Error ? error.message : 'Connection failed. Please try again.', false);
