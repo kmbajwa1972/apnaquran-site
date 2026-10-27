@@ -76,6 +76,11 @@ export async function onRequest(context) {
     });
   }
 
+  // A fresh click from the public site must always require the password, even if a prior session cookie exists.
+  if (url.pathname === "/" && url.searchParams.get("login") === "1") {
+    return html(loginForm());
+  }
+
   if (url.pathname === "/__aq_logout") {
     return new Response(null, { status: 303, headers: {
       "Location": "/",
