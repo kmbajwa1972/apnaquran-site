@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Weekly Verse Publisher — ApnaQuran</title>
+<meta name="robots" content="noindex,nofollow">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/weekly-verse.css">
+</head>
+<body>
+<header class="site-header"><div class="nav-inner">
+<a class="brand" href="index.html">۞ ApnaQuran</a>
+<nav class="nav-links" id="navLinks"><a href="index.html">Visit website</a><a href="read.html">Read Quran</a></nav>
+<button class="icon-btn" id="themeToggle" aria-label="Toggle theme"></button>
+<button class="icon-btn nav-toggle" id="navToggle" aria-label="Menu">☰</button>
+</div></header>
+<main class="wrap weekly-admin">
+<div class="admin-kicker">PRIVATE WORKSPACE · 7-DAY TRIAL</div>
+<h1 class="page-title">Weekly Verse Publisher</h1>
+<p class="page-sub">Prepare one verified verse post for the week, then use the same saved text as you share it with your groups. This week is a practical trial before we decide what to build next.</p>
+<div class="notice"><strong>Manual publishing is enabled.</strong> Facebook removed its Groups API in 2024, so this dashboard does not log in to Facebook or post automatically. It prepares the post, copies it, and opens your chosen group for you to publish yourself.</div>
+<section class="card admin-card">
+<div class="section-head"><div><h2>This week's verse</h2><p id="weekStatus">Checking saved weekly post…</p></div><button class="btn gold" id="generateBtn">Generate / refresh</button></div>
+<div id="versePreview" class="verse-preview"><p class="muted">Loading the current Verse of the Day…</p></div>
+<div class="field"><label for="postIntro">Optional short introduction</label><textarea id="postIntro" rows="2" maxlength="280" placeholder="A short invitation to read and reflect (optional). Do not add unverified Quran quotations."></textarea></div>
+<div class="field"><label for="postLink">Website link</label><input id="postLink" type="url" value="https://apnaquran.com/"></div>
+<div class="actions"><button class="btn gold" id="saveWeekBtn">Save as this week's post</button><button class="btn" id="copyBtn">Copy post text</button></div>
+<p class="helper" id="copyStatus" role="status"></p>
+</section>
+<section class="card admin-card">
+<div class="section-head"><div><h2>Facebook publishing mode</h2><p>Choose whether to work through one group per day or share today's saved verse with every group.</p></div></div>
+<div class="field"><label for="publishingMode">Publishing schedule</label><select id="publishingMode"><option value="daily">One group per day (daily rotation)</option><option value="all-today">All groups today (same verse)</option></select></div>
+<p class="helper" id="modeStatus" role="status">Daily rotation suggests one group for today.</p>
+<div class="section-head"><div><h2>Facebook groups</h2><p>Add the groups you personally belong to. In “All groups today” mode, the dashboard moves to the next group after you mark each attempt.</p></div></div>
+<div class="field"><label for="groupName">Group name</label><input id="groupName" value="Test group" maxlength="100"></div>
+<div class="field"><label for="groupUrl">Facebook group URL</label><input id="groupUrl" type="url" value="https://www.facebook.com/groups/1562114467374982" required></div>
+<div class="actions"><button class="btn gold" id="saveGroupBtn">Add / save group</button><button class="btn" id="clearGroupFormBtn" type="button">Clear form</button></div>
+<div id="groupList" class="group-list" aria-live="polite"></div>
+<div class="field"><label for="todayGroup">Today's suggested group</label><select id="todayGroup"></select></div>
+<div class="actions"><button class="btn gold" id="openGroupBtn">Open selected group to publish</button></div>
+<p class="helper" id="groupStatus" role="status">After you publish manually, mark the attempt below. The dashboard cannot confirm publication with Facebook.</p>
+</section>
+<section class="card admin-card">
+<div class="section-head"><div><h2>Weekly publishing log</h2><p>Trial records are stored in this browser only. They are not shared across devices.</p></div><button class="btn" id="markPostedBtn">Mark posted today</button></div>
+<div id="logList" class="log-list"><p class="muted">No attempts logged yet.</p></div>
+</section>
+<section class="card admin-card">
+<h2>How the weekly cycle works</h2>
+<ol class="steps">
+<li>The existing Verse of the Day source supplies the Arabic text and selected translations.</li>
+<li>Save one snapshot for the week. The daily homepage verse can continue changing without changing this saved post.</li>
+<li>Copy the post, open the saved group, and publish manually. Mark the attempt in the log.</li>
+<li>At the end of the 7-day trial, review the workflow and decide whether shared storage or additional platforms are needed.</li>
+</ol>
+<p class="helper">Trial limitation: the saved verse, group list, mode, and log are stored in this browser, not a shared database. Do not treat the noindex setting or an obscure URL as account security. No Glimerz credentials or social integrations are used by this feature.</p>
+</section>
+</main>
+<script src="js/app.js"></script>
+<script src="js/weekly-verse.js"></script>
+</body></html>
