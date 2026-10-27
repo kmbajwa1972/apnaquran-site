@@ -37,15 +37,11 @@
   const language = document.getElementById('aqAssistantLanguage');
   const speech = window.speechSynthesis;
   const API_URL = 'https://yayljmqelmsmcsuhxqdj.supabase.co/functions/v1/apnaquran-assistant';
-  const SUPABASE_PUBLIC_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InlheWxqbXFlbG1zbWNzdWh4cWRqIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODM3ODUyOTMsImV4cCI6MjA5OTM2MTI5M30.XITDKls3bKtsXVssJuGQvy8iE4gwl2VtDF1F3dbrDcs';
+  const SUPABASE_PUBLIC_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImF5bGxqbXFlbG1zbWNzdWh4cWRqIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODM3ODUyOTMsImV4cCI6MjA5OTM2MTI5M30.XITDKls3bKtsXVssJuGQvy8iE4gwl2VtDF1F3dbrDcs';
   const history = [];
   let busy = false;
   function detectReplyLanguage(text) {
-    // Urdu script is the strongest signal, including Urdu typed with a keyboard.
     if (/[\u0600-\u06FF]/.test(text)) return 'ur';
-
-    // Require multiple Roman Urdu markers so English questions about Quran or namaz
-    // do not automatically switch to Urdu.
     const normalized = text.toLowerCase().replace(/[^a-z\s']/g, ' ').replace(/\s+/g, ' ').trim();
     const markers = [
       'kya', 'kaise', 'kaisay', 'kyun', 'mujhe', 'mujhay', 'aap', 'apka',
@@ -59,46 +55,15 @@
     const strongPhrase = /\b(kya hai|kaise karun|kaise karoon|mujhe batao|mujhe samjhao|aap bataein|iska matlab|is ka matlab|kya matlab)\b/.test(normalized);
     return markerCount >= 2 || strongPhrase ? 'ur' : 'en';
   }
-  async function speakReply(text, lang) {
-    if (lang === 'ur') {
-      const response = await fetch(API_URL, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'apikey': SUPABASE_PUBLIC_KEY,
-          'Authorization': 'Bearer ' + SUPABASE_PUBLIC_KEY
-        },
-        body: JSON.stringify({ action: 'tts', text, language: 'ur' })
-      });
-      const contentType = response.headers.get('content-type') || '';
-      if (!response.ok || !contentType.includes('audio/')) {
-        const data = await response.json().catch(() => ({}));
-        throw new Error(data.error || 'Urdu speech service could not create audio.');
-      }
-      const url = URL.createObjectURL(await response.blob());
-      const audio = new Audio(url);
-      audio.addEventListener('ended', () => URL.revokeObjectURL(url), { once: true });
-      audio.addEventListener('error', () => URL.revokeObjectURL(url), { once: true });
-      await audio.play();
-      return 'freetts';
-    }
-    return speak(text, lang) ? 'browser' : false;
-  }
-  function speak(text, lang) {
+  function speakReply(text) {
+    // Always use the browser's English voice. No external TTS service or API key is used.
     if (!('speechSynthesis' in window)) return false;
     try {
       speech.cancel();
       const utterance = new SpeechSynthesisUtterance(text);
-      const isUrdu = lang === 'ur' || /[\u0600-\u06FF]/.test(text);
-      const requested = isUrdu ? 'ur-PK' : 'en-US';
-      const voices = speech.getVoices();
-      const voice = voices.find(v => isUrdu
-        ? /^ur(-|$)/i.test(v.lang) || /urdu/i.test(v.name)
-        : /^en(-|$)/i.test(v.lang));
-      // Do not silently read Urdu text with an English voice; that sounds incorrect.
-      if (isUrdu && !voice) return false;
-      utterance.lang = requested;
+      utterance.lang = 'en-US';
       utterance.rate = 0.88;
+      const voice = speech.getVoices().find(v => /^en(-|$)/i.test(v.lang));
       if (voice) utterance.voice = voice;
       speech.speak(utterance);
       return true;
@@ -131,6 +96,8 @@
     const utterance = new SpeechSynthesisUtterance('Welcome to ApnaQuran! How can I help you today?');
     utterance.lang = 'en-US';
     utterance.rate = 0.92;
+    const voice = speech.getVoices().find(v => /^en(-|$)/i.test(v.lang));
+    if (voice) utterance.voice = voice;
     try { speech.speak(utterance); } catch (_) { /* Browsers may block autoplay speech. */ }
   }
   async function sendMessage() {
@@ -161,22 +128,10 @@
       addBubble(answer, false);
       history.push({ role: 'user', text: value }, { role: 'model', text: answer });
       if (history.length > 8) history.splice(0, history.length - 8);
-      try {
-        const speechMode = await speakReply(answer, replyLanguage);
-        if (replyLanguage === 'ur') {
-          status.textContent = speechMode === 'freetts'
-            ? 'جواب تیار ہے · اردو آواز چل رہی ہے'
-            : speechMode
-              ? 'جواب تیار ہے · آواز چل رہی ہے'
-              : 'جواب تیار ہے، مگر آواز دستیاب نہیں۔';
-        } else {
-          status.textContent = speechMode ? 'Answer ready · speaking' : 'Answer ready · speech playback is unavailable in this browser.';
-        }
-      } catch (speechError) {
-        status.textContent = replyLanguage === 'ur'
-          ? 'اردو آواز کی خرابی: ' + (speechError instanceof Error ? speechError.message : 'براہِ کرم دوبارہ کوشش کریں۔')
-          : 'Speech playback error: ' + (speechError instanceof Error ? speechError.message : 'Please try again.');
-      }
+      const speechAvailable = speakReply(answer);
+      status.textContent = speechAvailable
+        ? (replyLanguage === 'ur' ? 'جواب تیار ہے · انگریزی آواز چل رہی ہے' : 'Answer ready · English voice speaking')
+        : (replyLanguage === 'ur' ? 'جواب تیار ہے، مگر آواز دستیاب نہیں۔' : 'Answer ready · speech playback is unavailable in this browser.');
     } catch (error) {
       addBubble(error instanceof Error ? error.message : 'Connection failed. Please try again.', false);
       status.textContent = 'Could not reach the assistant. Please try again.';
@@ -199,8 +154,6 @@
       return;
     }
     const recognition = new Recognition();
-    // SpeechRecognition requires one locale. In Auto mode, use English for dictation;
-    // users can select Urdu when speaking Urdu, and the transcript is then language-detected.
     recognition.lang = language.value === 'ur' ? 'ur-PK' : 'en-US';
     recognition.interimResults = false;
     recognition.maxAlternatives = 1;
@@ -217,6 +170,5 @@
     try { recognition.start(); } catch (_) { mic.disabled = false; status.textContent = 'Microphone could not start. Please try again or type instead.'; }
   });
   setOpen(true);
-  // Autoplay is best-effort; browser policy may require the visitor to interact first.
   window.addEventListener('load', function () { window.setTimeout(speakWelcome, 450); }, { once: true });
 })();
