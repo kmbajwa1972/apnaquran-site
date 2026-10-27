@@ -99,13 +99,19 @@ export async function onRequest(context) {
     const timestamp = String(Math.floor(Date.now() / 1000));
     const signature = await sign(secret, timestamp);
     return new Response(null, { status: 303, headers: {
-      "Location": "/",
+      "Location": "/weekly-verse.html",
       "Set-Cookie": `${COOKIE_NAME}=${timestamp}.${signature}; Path=/; HttpOnly; Secure; SameSite=Strict; Max-Age=${SESSION_SECONDS}`,
       "Cache-Control": "no-store"
     }});
   }
 
-  if (await validSession(request, secret)) return context.next();
+  if (await validSession(request, secret)) {
+    // The publisher domain should open the publisher dashboard, not the public Quran homepage.
+    if (url.pathname === "/") {
+      return new Response(null, { status: 302, headers: { "Location": "/weekly-verse.html", "Cache-Control": "no-store" } });
+    }
+    return context.next();
+  }
 
   if (request.method !== "GET" && request.method !== "HEAD") {
     return new Response("Authentication required", { status: 401, headers: { "Cache-Control": "no-store" } });
