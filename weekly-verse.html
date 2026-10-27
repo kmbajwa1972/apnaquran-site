@@ -15,10 +15,10 @@
 <button class="icon-btn nav-toggle" id="navToggle" aria-label="Menu">☰</button>
 </div></header>
 <main class="wrap weekly-admin">
-<div class="admin-kicker">PRIVATE WORKSPACE · PHASE 1</div>
+<div class="admin-kicker">PRIVATE WORKSPACE · 7-DAY TRIAL</div>
 <h1 class="page-title">Weekly Verse Publisher</h1>
-<p class="page-sub">Prepare one verified verse post for the week, then use the same saved text as you share it with your groups.</p>
-<div class="notice"><strong>Publishing mode: manual test.</strong> Facebook removed its Groups API in 2024, so this dashboard will not log in to Facebook or post automatically. It prepares the post, copies it, and opens your chosen group for you to publish safely.</div>
+<p class="page-sub">Prepare one verified verse post for the week, then use the same saved text as you share it with your groups. This week is a practical trial before we decide what to build next.</p>
+<div class="notice"><strong>Manual publishing is enabled.</strong> Facebook removed its Groups API in 2024, so this dashboard does not log in to Facebook or post automatically. It prepares the post, copies it, and opens your chosen group for you to publish yourself.</div>
 <section class="card admin-card">
 <div class="section-head"><div><h2>This week's verse</h2><p id="weekStatus">Checking saved weekly post…</p></div><button class="btn gold" id="generateBtn">Generate / refresh</button></div>
 <div id="versePreview" class="verse-preview"><p class="muted">Loading the current Verse of the Day…</p></div>
@@ -28,10 +28,10 @@
 <p class="helper" id="copyStatus" role="status"></p>
 </section>
 <section class="card admin-card">
-<div class="section-head"><div><h2>Facebook publishing mode</h2><p>Choose whether to work through one group per day or publish today's verse to every saved group.</p></div></div>
+<div class="section-head"><div><h2>Facebook publishing mode</h2><p>Choose whether to work through one group per day or share today's saved verse with every group.</p></div></div>
 <div class="field"><label for="publishingMode">Publishing schedule</label><select id="publishingMode"><option value="daily">One group per day (daily rotation)</option><option value="all-today">All groups today (same verse)</option></select></div>
 <p class="helper" id="modeStatus" role="status">Daily rotation suggests one group for today.</p>
-<div class="section-head"><div><h2>Facebook groups</h2><p>Add your groups once. In “All groups today” mode, the dashboard moves to the next group after you mark each attempt.</p></div></div>
+<div class="section-head"><div><h2>Facebook groups</h2><p>Add the groups you personally belong to. In “All groups today” mode, the dashboard moves to the next group after you mark each attempt.</p></div></div>
 <div class="field"><label for="groupName">Group name</label><input id="groupName" value="Test group" maxlength="100"></div>
 <div class="field"><label for="groupUrl">Facebook group URL</label><input id="groupUrl" type="url" value="https://www.facebook.com/groups/1562114467374982" required></div>
 <div class="actions"><button class="btn gold" id="saveGroupBtn">Add / save group</button><button class="btn" id="clearGroupFormBtn" type="button">Clear form</button></div>
@@ -41,18 +41,18 @@
 <p class="helper" id="groupStatus" role="status">After you publish manually, mark the attempt below. The dashboard cannot confirm publication with Facebook.</p>
 </section>
 <section class="card admin-card">
-<div class="section-head"><div><h2>Weekly publishing log</h2><p>Records are saved in this browser only for this first test.</p></div><button class="btn" id="markPostedBtn">Mark posted today</button></div>
+<div class="section-head"><div><h2>Weekly publishing log</h2><p>Trial records are stored in this browser only. They are not shared across devices.</p></div><button class="btn" id="markPostedBtn">Mark posted today</button></div>
 <div id="logList" class="log-list"><p class="muted">No attempts logged yet.</p></div>
 </section>
 <section class="card admin-card">
 <h2>How the weekly cycle works</h2>
 <ol class="steps">
-<li>The site’s existing Verse of the Day supplies the Arabic text and selected translations.</li>
+<li>The existing Verse of the Day source supplies the Arabic text and selected translations.</li>
 <li>Save one snapshot for the week. The daily homepage verse can continue changing without changing this saved post.</li>
 <li>Copy the post, open the saved group, and publish manually. Mark the attempt in the log.</li>
-<li>At the next weekly cycle, generate a new verse and save it as the new week's post.</li>
+<li>At the end of the 7-day trial, review the workflow and decide whether shared storage or additional platforms are needed.</li>
 </ol>
-<p class="helper">Important: this first version stores its draft and log in this browser, not in a shared database. Do not treat this page's noindex setting or an obscure URL as account security. Before adding sensitive controls or multi-device access, we should add proper Supabase authentication and server-side storage.</p>
+<p class="helper">Trial limitation: the saved verse, group list, mode, and log are stored in this browser, not a shared database. Do not treat the noindex setting or an obscure URL as account security. No Glimerz credentials or social integrations are used by this feature.</p>
 </section>
 </main>
 <script src="js/app.js"></script>
