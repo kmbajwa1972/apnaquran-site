@@ -28,7 +28,10 @@
 <p class="helper" id="copyStatus" role="status"></p>
 </section>
 <section class="card admin-card">
-<div class="section-head"><div><h2>Facebook group rotation</h2><p>Add your groups once. The dashboard suggests one group per day, rotating through your saved list.</p></div></div>
+<div class="section-head"><div><h2>Facebook publishing mode</h2><p>Choose whether to work through one group per day or publish today's verse to every saved group.</p></div></div>
+<div class="field"><label for="publishingMode">Publishing schedule</label><select id="publishingMode"><option value="daily">One group per day (daily rotation)</option><option value="all-today">All groups today (same verse)</option></select></div>
+<p class="helper" id="modeStatus" role="status">Daily rotation suggests one group for today.</p>
+<div class="section-head"><div><h2>Facebook groups</h2><p>Add your groups once. In “All groups today” mode, the dashboard moves to the next group after you mark each attempt.</p></div></div>
 <div class="field"><label for="groupName">Group name</label><input id="groupName" value="Test group" maxlength="100"></div>
 <div class="field"><label for="groupUrl">Facebook group URL</label><input id="groupUrl" type="url" value="https://www.facebook.com/groups/1562114467374982" required></div>
 <div class="actions"><button class="btn gold" id="saveGroupBtn">Add / save group</button><button class="btn" id="clearGroupFormBtn" type="button">Clear form</button></div>
