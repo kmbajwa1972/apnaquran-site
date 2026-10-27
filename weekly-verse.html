@@ -28,11 +28,14 @@
 <p class="helper" id="copyStatus" role="status"></p>
 </section>
 <section class="card admin-card">
-<div class="section-head"><div><h2>Facebook group test</h2><p>Add one group now; more can be added later.</p></div></div>
-<div class="field"><label for="groupName">Group name</label><input id="groupName" value="Test group"></div>
+<div class="section-head"><div><h2>Facebook group rotation</h2><p>Add your groups once. The dashboard suggests one group per day, rotating through your saved list.</p></div></div>
+<div class="field"><label for="groupName">Group name</label><input id="groupName" value="Test group" maxlength="100"></div>
 <div class="field"><label for="groupUrl">Facebook group URL</label><input id="groupUrl" type="url" value="https://www.facebook.com/groups/1562114467374982" required></div>
-<div class="actions"><button class="btn" id="saveGroupBtn">Save group</button><button class="btn gold" id="openGroupBtn">Open group to publish</button></div>
-<p class="helper" id="groupStatus" role="status">When you have published manually, mark the day's attempt below.</p>
+<div class="actions"><button class="btn gold" id="saveGroupBtn">Add / save group</button><button class="btn" id="clearGroupFormBtn" type="button">Clear form</button></div>
+<div id="groupList" class="group-list" aria-live="polite"></div>
+<div class="field"><label for="todayGroup">Today's suggested group</label><select id="todayGroup"></select></div>
+<div class="actions"><button class="btn gold" id="openGroupBtn">Open selected group to publish</button></div>
+<p class="helper" id="groupStatus" role="status">After you publish manually, mark the attempt below. The dashboard cannot confirm publication with Facebook.</p>
 </section>
 <section class="card admin-card">
 <div class="section-head"><div><h2>Weekly publishing log</h2><p>Records are saved in this browser only for this first test.</p></div><button class="btn" id="markPostedBtn">Mark posted today</button></div>
