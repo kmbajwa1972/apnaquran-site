@@ -49,7 +49,7 @@ async function validSession(request, secret) {
   if (dot < 1) return false;
   const timestamp = value.slice(0, dot);
   const signature = value.slice(dot + 1);
-  if (!/^\\d{10,13}$/.test(timestamp) || !/^[a-f0-9]{64}$/.test(signature)) return false;
+  if (!/^\d{10,13}$/.test(timestamp) || !/^[a-f0-9]{64}$/.test(signature)) return false;
   const issued = Number(timestamp);
   const now = Math.floor(Date.now() / 1000);
   if (!Number.isSafeInteger(issued) || issued > now + 60 || now - issued > SESSION_SECONDS) return false;
