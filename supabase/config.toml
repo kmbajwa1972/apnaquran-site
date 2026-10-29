@@ -1,0 +1,3 @@
+[functions.apnaquran-assistant]
+# This public website widget has no visitor login. Authentication is handled at the function level through origin checks and request limits.
+verify_jwt = false
