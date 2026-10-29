@@ -40,6 +40,7 @@
   const SUPABASE_PUBLIC_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImF5bGxqbXFlbG1zbWNzdWh4cWRqIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODM3ODUyOTMsImV4cCI6MjA5OTM2MTI5M30.XITDKls3bKtsXVssJuGQvy8iE4gwl2VtDF1F3dbrDcs';
   const history = [];
   let busy = false;
+  let nextInputWasVoice = false;
   function detectReplyLanguage(text) {
     if (/[\u0600-\u06FF]/.test(text)) return 'ur';
     const normalized = text.toLowerCase().replace(/[^a-z\s']/g, ' ').replace(/\s+/g, ' ').trim();
@@ -122,7 +123,9 @@
     send.disabled = true;
     mic.disabled = true;
     input.disabled = true;
-    const replyLanguage = language.value === 'en' ? 'en' : language.value === 'ur' ? 'ur' : detectReplyLanguage(value);
+    const wasVoiceInput = nextInputWasVoice;
+    nextInputWasVoice = false;
+    const replyLanguage = wasVoiceInput ? 'en' : language.value === 'en' ? 'en' : language.value === 'ur' ? 'ur' : detectReplyLanguage(value);
     status.textContent = 'Thinking…';
     try {
       const response = await fetch(API_URL, {
@@ -140,9 +143,10 @@
       addBubble(answer, false);
       history.push({ role: 'user', text: value }, { role: 'model', text: answer });
       if (history.length > 8) history.splice(0, history.length - 8);
-      const speechResult = speakReply(answer);
+      const answerIsUrdu = replyLanguage === 'ur' || /[\u0600-\u06FF]/.test(answer);
+      const speechResult = answerIsUrdu ? { queued: false, reason: 'urdu-text' } : speakReply(answer);
       if (speechResult.reason === 'urdu-text') {
-        status.textContent = 'جواب تیار ہے · انگریزی آواز اردو متن نہیں پڑھ سکتی۔';
+        status.textContent = 'جواب تیار ہے۔';
       } else if (speechResult.reason === 'unsupported') {
         status.textContent = 'Answer ready · speech playback is unavailable in this browser.';
       } else if (speechResult.reason === 'error') {
@@ -172,14 +176,15 @@
       return;
     }
     const recognition = new Recognition();
-    recognition.lang = language.value === 'ur' ? 'ur-PK' : 'en-US';
+    recognition.lang = 'en-US';
     recognition.interimResults = false;
     recognition.maxAlternatives = 1;
     mic.disabled = true;
     status.textContent = 'Listening… speak now.';
     recognition.onresult = function (event) {
       input.value = event.results[0][0].transcript;
-      status.textContent = 'Voice captured. Sending your question…';
+      nextInputWasVoice = true;
+      status.textContent = 'Voice captured. Sending your English question…';
       sendMessage();
       input.focus();
     };
