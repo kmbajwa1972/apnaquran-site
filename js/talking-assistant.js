@@ -56,18 +56,31 @@
     return markerCount >= 2 || strongPhrase ? 'ur' : 'en';
   }
   function speakReply(text) {
-    // Always use the browser's English voice. No external TTS service or API key is used.
-    if (!('speechSynthesis' in window)) return false;
+    // The configured browser voice is English-only; do not pretend it can read Urdu script.
+    if (!('speechSynthesis' in window)) return { queued: false, reason: 'unsupported' };
+    if (/[\u0600-\u06FF]/.test(text)) return { queued: false, reason: 'urdu-text' };
     try {
       speech.cancel();
       const utterance = new SpeechSynthesisUtterance(text);
       utterance.lang = 'en-US';
       utterance.rate = 0.88;
-      const voice = speech.getVoices().find(v => /^en(-|$)/i.test(v.lang));
+      const voices = speech.getVoices();
+      const voice = voices.find(v => /^en(-|$)/i.test(v.lang));
       if (voice) utterance.voice = voice;
+      utterance.onstart = function () {
+        status.textContent = 'Answer ready · English voice speaking';
+      };
+      utterance.onend = function () {
+        status.textContent = 'Answer ready · voice finished';
+      };
+      utterance.onerror = function (event) {
+        status.textContent = 'Answer ready, but browser speech failed (' + (event.error || 'unknown error') + '). Check your device volume and browser sound settings.';
+      };
       speech.speak(utterance);
-      return true;
-    } catch (_) { return false; }
+      return { queued: true, reason: 'queued' };
+    } catch (_) {
+      return { queued: false, reason: 'error' };
+    }
   }
   function setOpen(open, focusInput) {
     panel.hidden = !open;
@@ -127,10 +140,16 @@
       addBubble(answer, false);
       history.push({ role: 'user', text: value }, { role: 'model', text: answer });
       if (history.length > 8) history.splice(0, history.length - 8);
-      const speechAvailable = speakReply(answer);
-      status.textContent = speechAvailable
-        ? (replyLanguage === 'ur' ? 'جواب تیار ہے · انگریزی آواز چل رہی ہے' : 'Answer ready · English voice speaking')
-        : (replyLanguage === 'ur' ? 'جواب تیار ہے، مگر آواز دستیاب نہیں۔' : 'Answer ready · speech playback is unavailable in this browser.');
+      const speechResult = speakReply(answer);
+      if (speechResult.reason === 'urdu-text') {
+        status.textContent = 'جواب تیار ہے · انگریزی آواز اردو متن نہیں پڑھ سکتی۔';
+      } else if (speechResult.reason === 'unsupported') {
+        status.textContent = 'Answer ready · speech playback is unavailable in this browser.';
+      } else if (speechResult.reason === 'error') {
+        status.textContent = 'Answer ready, but browser speech could not start. Check browser sound settings.';
+      } else {
+        status.textContent = 'Answer ready · starting English voice…';
+      }
     } catch (error) {
       addBubble(error instanceof Error ? error.message : 'Connection failed. Please try again.', false);
       status.textContent = 'Could not reach the assistant. Please try again.';
