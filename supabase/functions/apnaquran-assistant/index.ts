@@ -1,7 +1,7 @@
 import "jsr:@supabase/functions-js/edge-runtime.d.ts";
 
 const GEMINI_API_KEY = Deno.env.get("GEMINI_API_KEY") ?? "";
-const MODELS = ["gemini-3.8-flash", "gemini-3.6-flash"];
+const MODELS = ["gemini-3.8-flash", "gemini-3.6-flash", "gemini-3.5-flash-lite"];
 const FREETTS_API_KEY = Deno.env.get("FREETTS_API_KEY") ?? "";
 const ALLOWED_ORIGINS = new Set([
   "https://apnaquran.com",
