@@ -116,8 +116,7 @@
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'apikey': SUPABASE_PUBLIC_KEY,
-          'Authorization': 'Bearer ' + SUPABASE_PUBLIC_KEY
+          'apikey': SUPABASE_PUBLIC_KEY
         },
         body: JSON.stringify({ message: value, language: replyLanguage, history: history.slice(-6) })
       });
