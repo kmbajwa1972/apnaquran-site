@@ -23,3 +23,8 @@ The function has been deployed to the existing Supabase project **glimerz-review
 ## Deployment status
 
 The UI and function code are on the feature branch and in draft PR #3. The function is deployed but cannot generate answers until `GEMINI_API_KEY` is saved in Supabase. Do not merge the website branch until the secret is set and the function is tested.
+
+
+## Public endpoint authentication
+
+The `apnaquran-assistant` widget is called by visitors without signing in, so `supabase/config.toml` sets `verify_jwt = false` for this function. Do not send the public anon key as a Bearer token; send it only in the `apikey` header. The function must retain its origin allowlist, input limits, and server-side request throttling. Keep `GEMINI_API_KEY` server-side only.
