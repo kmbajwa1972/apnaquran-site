@@ -9,7 +9,7 @@
   function render(){
     const year=shown.getFullYear(), month=shown.getMonth(), first=new Date(year,month,1), count=new Date(year,month+1,0).getDate();
     title.textContent=fmt(first,{month:'long',year:'numeric'},'en-US');
-    const hp=hijriParts(new Date(year,month,15)); hijriTitle.textContent=hp.month+' '+hp.year+' AH (approximate month reference)';
+    const hp=hijriParts(new Date(year,month,15)); hijriTitle.textContent='Hijri date on the 15th: '+hp.month+' '+hp.year+' AH';
     grid.innerHTML='';
     for(let i=0;i<first.getDay();i++){const blank=document.createElement('div');blank.className='calendar-day empty';blank.setAttribute('aria-hidden','true');grid.append(blank);}
     for(let day=1;day<=count;day++){
