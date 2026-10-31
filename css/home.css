@@ -61,7 +61,6 @@ html[data-theme="light"] .aq-footer{background:#173A32;color:#F1EBDD}
 .aq-footer-inner{max-width:1120px;margin:0 auto;display:grid;grid-template-columns:1.08fr .92fr 1fr;column-gap:24px;row-gap:28px}
 .aq-footer-col{display:flex;flex-direction:column;align-items:flex-start;min-width:0}
 .aq-footer-col h2{font-family:'Marcellus',serif;font-size:19px;font-weight:400;color:#E4C563;line-height:1.35;margin:0 0 12px}
-@media(min-width:821px){.aq-footer-subscribe h2{margin-left:36px}}
 .aq-footer-col p{font-size:14px;line-height:1.7;color:#C6D3CC;margin:0 0 14px}
 .aq-footer-eyebrow{font-family:'Marcellus',serif!important;font-size:11px!important;letter-spacing:1.7px;text-transform:uppercase;color:#E4C563!important;margin:0 0 8px!important}
 .aq-footer-col>a{color:#E8E4D8;font-size:14px;line-height:1.9;text-decoration:none}
