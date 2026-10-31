@@ -86,18 +86,17 @@ async function enableCompass() {
   }
 }
 
-function locate() {
-  if (!navigator.geolocation) {
-    $('#qiblaState').innerHTML = '<div class="error-box"><b>Location not supported</b>Your browser can\'t provide location. Try a different browser or device.</div>';
+async function locate() {
+  $('#qiblaState').innerHTML = '<div class="loader"><div class="star8"></div><span>Detecting your location…</span></div>';
+  const place = await AQLocation.resolve();
+  if (!place) {
+    $('#qiblaState').innerHTML = '<div class="error-box"><b>Location unavailable</b>Automatic location detection failed. Please try again later.</div>';
     return;
   }
-  navigator.geolocation.getCurrentPosition(
-    pos => showCompass({ lat: pos.coords.latitude, lng: pos.coords.longitude }),
-    () => {
-      $('#qiblaState').innerHTML = `<div class="error-box"><b>Location access needed</b>Please allow location access to calculate your Qibla direction, then reload this page.</div>`;
-    },
-    { timeout: 10000, enableHighAccuracy: true }
-  );
+  showCompass(place);
+  $('#qiblaNote').textContent = place.source === 'device'
+    ? 'Using your device location. Direction is measured clockwise from true North.'
+    : 'Approximate direction using your internet location (' + place.label + ').';
 }
 
 document.addEventListener('DOMContentLoaded', () => {
