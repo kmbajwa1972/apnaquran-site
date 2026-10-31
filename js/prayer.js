@@ -361,7 +361,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function reload() {
     const place = ptSettings().place;
-    if (place) loadToday(place); else useGeolocation();
+    if (place) loadToday(place);
+    else AQLocation.resolve().then(found => {
+      if (found) loadToday(found);
+      else $('#todaySlot').innerHTML = '<div class="error-box"><b>Location unavailable</b>Please enter your city and country below.</div>';
+    });
   }
 
   // Detect the visitor automatically without triggering a browser prompt.
