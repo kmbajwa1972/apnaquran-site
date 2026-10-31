@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Islamic &amp; Gregorian Calendar — ApnaQuran</title>
+<meta name="description" content="View Gregorian and Hijri dates together in a simple monthly calendar.">
+<link rel="canonical" href="https://apnaquran.com/calendar.html">
+<link rel="icon" href="favicon.ico"><meta name="theme-color" content="#0C221D">
+<link href="https://fonts.googleapis.com/css2?family=Amiri+Quran&family=Marcellus&family=Spectral:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css"><link rel="stylesheet" href="css/resources.css">
+</head><body>
+<header class="site-header"><div class="nav-inner"><a class="brand" href="index.html">Al‑Quran</a><nav class="nav-links" id="navLinks"><a href="index.html">Home</a><a href="read.html">Read Quran</a><a href="listen.html">Listen</a><a href="prayer-times.html">Prayer Times</a><a href="calendar.html">Calendar</a></nav><button class="icon-btn" id="themeToggle" aria-label="Toggle theme"></button><button class="icon-btn nav-toggle" id="navToggle" aria-label="Menu">☰</button></div></header>
+<main class="wrap resource-page">
+<a class="back-link" href="index.html">← Back to home</a>
+<h1 class="page-title">Islamic &amp; Gregorian Calendar</h1>
+<p class="page-sub">Both calendar dates together, with a monthly view.</p>
+<section class="card calendar-shell">
+<div class="calendar-toolbar"><button class="btn" id="prevMonth" aria-label="Previous month">←</button><div><h2 id="monthTitle">Loading…</h2><p id="hijriMonthTitle"></p></div><button class="btn" id="nextMonth" aria-label="Next month">→</button></div>
+<div class="calendar-weekdays"><span>Sun</span><span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span></div>
+<div class="calendar-grid" id="calendarGrid" aria-live="polite"></div>
+<div class="calendar-legend"><span><i class="legend-greg"></i> Gregorian date</span><span><i class="legend-hijri"></i> Hijri date</span><span id="todayLabel"></span></div>
+</section>
+<p class="calendar-note">Hijri dates are calculated using the browser's Islamic calendar (Umm al-Qura where supported). Local moon-sighting announcements may differ by one day, especially for the start of Ramadan and Eid.</p>
+</main>
+<footer class="site-footer"><span class="ar">وَرَتِّلِ الْقُرْآنَ تَرْتِيلًا</span>A sadaqah-e-jariah project</footer>
+<script src="js/app.js"></script><script src="js/calendar.js"></script>
+</body></html>
