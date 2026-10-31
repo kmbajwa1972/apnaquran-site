@@ -66,7 +66,7 @@ html[data-theme="light"] .aq-footer{background:#173A32;color:#F1EBDD}
 .aq-footer-col>a{color:#E8E4D8;font-size:14px;line-height:1.9;text-decoration:none}
 .aq-footer-col>a:hover{color:#E4C563;text-decoration:underline}
 .aq-subscribe-consent{font-size:12px!important;line-height:1.55!important;color:#C6D3CC!important;margin:0 0 10px!important}
-.aq-brevo-form{width:100%;max-width:360px;overflow:hidden;border-radius:8px;background:transparent}
+.aq-brevo-form{width:100%;max-width:360px;overflow:hidden;border-radius:8px;background:transparent;margin-top:-12px}
 .aq-brevo-form iframe{display:block;width:100%;max-width:360px;height:320px!important;border:0;background:transparent}
 .aq-install-btn{border:1px solid #C9A227;border-radius:8px;background:#C9A227;color:#14261F;padding:10px 14px;font:14px 'Marcellus',serif}
 .aq-install-btn{cursor:pointer;margin:0 0 9px}
