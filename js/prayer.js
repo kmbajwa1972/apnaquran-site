@@ -355,21 +355,27 @@ document.addEventListener('DOMContentLoaded', () => {
   $('#schoolSel').addEventListener('change', e => { savePtSettings({ school: Number(e.target.value) }); reload(); });
   $('#clockSel').addEventListener('change', e => { savePtSettings({ clock: Number(e.target.value) }); reload(); });
 
-  $('#geoBtn').addEventListener('click', useGeolocation);
   $('#cityBtn').addEventListener('click', searchCity);
   $('#cityInput').addEventListener('keydown', e => { if (e.key === 'Enter') searchCity(); });
   $('#countryInput').addEventListener('keydown', e => { if (e.key === 'Enter') searchCity(); });
 
   function reload() {
     const place = ptSettings().place;
-    if (place) loadToday(place); else useGeolocation();
+    if (place) loadToday(place);
+    else AQLocation.resolve().then(found => {
+      if (found) loadToday(found);
+      else $('#todaySlot').innerHTML = '<div class="error-box"><b>Location unavailable</b>Please enter your city and country below.</div>';
+    });
   }
 
-  // Prefill city inputs if we have a remembered place
-  if (s.place && s.place.city) {
-    $('#cityInput').value = s.place.city;
-    $('#countryInput').value = s.place.country;
-  }
-
-  if (s.place) loadToday(s.place); else useGeolocation();
+  // Detect the visitor automatically without triggering a browser prompt.
+  AQLocation.resolve().then(place => {
+    if (place) {
+      if (place.city) $('#cityInput').value = place.city;
+      if (place.country) $('#countryInput').value = place.country;
+      loadToday(place);
+    } else {
+      $('#todaySlot').innerHTML = '<div class="error-box"><b>Could not detect your location</b>Please enter your city and country below to view prayer times.</div>';
+    }
+  });
 });

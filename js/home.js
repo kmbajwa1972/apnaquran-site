@@ -46,10 +46,10 @@ async function loadDailyAyah() {
 async function loadMiniPrayer() {
   const strip = $('#miniPrayer');
   const pt = store.get('aq_pt_settings', {});
-  const place = pt.place;
+  const place = await AQLocation.resolve();
   if (!place) {
     strip.innerHTML = `<span class="who">Prayer times</span>
-      <a href="prayer-times.html" class="btn" style="padding:7px 14px">Set your location →</a>`;
+      <a href="prayer-times.html" class="btn" style="padding:7px 14px">View prayer times →</a>`;
     return;
   }
   try {
