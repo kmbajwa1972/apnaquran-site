@@ -4,11 +4,13 @@
     {m:1,d:1,name:'Islamic New Year',note:'Beginning of Muharram'},
     {m:1,d:10,name:'Day of Ashura',note:'10 Muharram'},
     {m:3,d:12,name:'Mawlid an-Nabi',note:'12 Rabi al-Awwal; observance differs among communities'},
+    {m:7,d:27,name:'Isra and Mi‘raj',note:'27 Rajab; commemoration varies among Muslim communities'},
     {m:7,d:27,name:'Isra and Mi‘raj',note:'27 Rajab; commonly commemorated by some communities'},
     {m:8,d:15,name:'Mid-Sha‘ban',note:'15 Sha‘ban; observance and practices vary'},
     {m:9,d:1,name:'First day of Ramadan',note:'Subject to local moon sighting'},
     {m:9,d:17,name:'Battle of Badr',note:'17 Ramadan, traditional date'},
     {m:9,d:21,name:'Last ten nights of Ramadan',note:'Seek Laylat al-Qadr throughout these nights'},
+    {m:9,d:27,name:'27th night of Ramadan',note:'Commonly observed as Laylat al-Qadr; the exact night is not definitively fixed'}
     {m:10,d:1,name:'Eid al-Fitr',note:'Subject to local moon sighting'},
     {m:12,d:9,name:'Day of Arafah',note:'9 Dhul-Hijjah'},
     {m:12,d:10,name:'Eid al-Adha',note:'10 Dhul-Hijjah; subject to local moon sighting'}
