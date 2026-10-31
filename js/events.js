@@ -1,6 +1,5 @@
 (() => {
   const list=document.getElementById('eventsList');
-  const names={1:{10:'Day of Ashura'},3:{12:'Mawlid an-Nabi (observance varies)'},7:{10:'Day of Ashura? '},8:{15:'Mid-Sha‘ban (observance varies)'},9:{1:'First day of Ramadan',17:'Battle of Badr (traditional date)',21:'Last ten nights of Ramadan begin (approx.)'},10:{1:'Eid al-Fitr'},12:{9:'Day of Arafah',10:'Eid al-Adha'}};
   const events=[
     {m:1,d:1,name:'Islamic New Year',note:'Beginning of Muharram'},
     {m:1,d:10,name:'Day of Ashura',note:'10 Muharram'},
