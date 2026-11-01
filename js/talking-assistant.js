@@ -4,7 +4,7 @@
   if (document.getElementById('aqAssistantPanel')) return;
   const root = document.createElement('div');
   root.innerHTML = `
-    <button class="aq-assistant-launch" id="aqAssistantLaunch" type="button" aria-controls="aqAssistantPanel" aria-expanded="true">
+    <button class="aq-assistant-launch" id="aqAssistantLaunch" type="button" aria-controls="aqAssistantPanel" aria-expanded="false">
       <span class="aq-orb" aria-hidden="true"></span><span>Talk to ApnaQuran</span>
     </button>
     <section class="aq-assistant-panel" id="aqAssistantPanel" role="dialog" aria-label="ApnaQuran talking assistant">
@@ -165,8 +165,14 @@
       input.focus({ preventScroll: true });
     }
   }
-  launch.addEventListener('click', function () { setOpen(true, true); });
-  close.addEventListener('click', function () { setOpen(false); });
+  launch.addEventListener('click', function () {
+    try { sessionStorage.removeItem('aqAssistantMinimized'); } catch (_) {}
+    setOpen(true, true);
+  });
+  close.addEventListener('click', function () {
+    try { sessionStorage.setItem('aqAssistantMinimized', '1'); } catch (_) {}
+    setOpen(false);
+  });
   send.addEventListener('click', sendMessage);
   input.addEventListener('keydown', function (event) { if (event.key === 'Enter') sendMessage(); });
   mic.addEventListener('click', function () {
@@ -192,6 +198,8 @@
     recognition.onend = function () { mic.disabled = false; };
     try { recognition.start(); } catch (_) { mic.disabled = false; status.textContent = 'Microphone could not start. Please try again or type instead.'; }
   });
-  setOpen(true);
+  let startOpen = true;
+  try { startOpen = sessionStorage.getItem('aqAssistantMinimized') !== '1'; } catch (_) {}
+  setOpen(startOpen);
   window.addEventListener('load', function () { window.setTimeout(speakWelcome, 450); }, { once: true });
 })();
