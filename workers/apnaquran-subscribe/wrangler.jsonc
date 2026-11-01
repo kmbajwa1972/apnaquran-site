@@ -1,0 +1,20 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "apnaquran-subscribe",
+  "main": "src/index.js",
+  "compatibility_date": "2026-11-01",
+  "workers_dev": true,
+  "routes": [
+    {
+      "pattern": "apnaquran.com/api/subscribe",
+      "zone_name": "apnaquran.com"
+    },
+    {
+      "pattern": "www.apnaquran.com/api/subscribe",
+      "zone_name": "apnaquran.com"
+    }
+  ],
+  "vars": {
+    "BREVO_DOI_TEMPLATE_ID": "1"
+  }
+}
