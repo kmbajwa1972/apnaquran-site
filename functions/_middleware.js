@@ -65,6 +65,9 @@ function loginForm(error = "") {
 export async function onRequest(context) {
   const { request, env } = context;
   const url = new URL(request.url);
+  // Public newsletter endpoint: let its dedicated Pages Function validate and handle this request.
+  if (url.pathname === "/api/subscribe") return context.next();
+
   const password = env.AUTH_PASSWORD;
   const secret = env.AUTH_SECRET;
 
