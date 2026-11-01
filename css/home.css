@@ -87,6 +87,6 @@ html[data-theme="light"] .aq-footer{background:#173A32;color:#F1EBDD}
 @media(max-width:820px){.aq-footer-inner{grid-template-columns:repeat(2,minmax(0,1fr));column-gap:22px;row-gap:28px}.aq-footer-subscribe{grid-column:auto;max-width:none}}
 @media(max-width:560px){.aq-footer{padding:32px 18px 18px}.aq-footer-inner{grid-template-columns:1fr;gap:26px}.aq-footer-subscribe{grid-column:auto}.aq-footer-col h2{font-size:18px}.aq-brevo-form{max-width:360px;height:350px}.aq-brevo-form iframe{height:390px!important;max-width:100%}.aq-footer-bottom{margin-top:26px}.aq-footer-bottom .ar{font-size:18px}}
 
-/* Align subscription headings with the email field's left edge. */
-.aq-footer-subscribe > .aq-footer-eyebrow,
+/* Align the Stay Connected label with the Daily Quran Verse heading. */
+.aq-footer-subscribe > .aq-footer-eyebrow{margin-left:72px}
 .aq-footer-subscribe > h2{margin-left:36px}
