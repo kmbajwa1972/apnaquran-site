@@ -61,6 +61,9 @@ export default {
       const raw = await request.text();
       if (raw.length > 2048) return json({ error: "Invalid request." }, 413, origin);
       data = JSON.parse(raw);
+      if (!data || typeof data !== "object" || Array.isArray(data)) {
+        return json({ error: "Invalid request." }, 400, origin);
+      }
     } catch {
       return json({ error: "Please enter a valid email address." }, 400, origin);
     }
@@ -71,7 +74,7 @@ export default {
     }
 
     const email = typeof data.email === "string" ? data.email.trim().toLowerCase() : "";
-    if (email.length > 254 || !/^[^\s@]+@[^\s@]+\\.[^\s@]+$/.test(email)) {
+    if (email.length > 254 || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
       return json({ error: "Please enter a valid email address." }, 400, origin);
     }
 
