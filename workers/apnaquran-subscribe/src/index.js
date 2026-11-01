@@ -71,7 +71,7 @@ export default {
     }
 
     const email = typeof data.email === "string" ? data.email.trim().toLowerCase() : "";
-    if (email.length > 254 || !/^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/.test(email)) {
+    if (email.length > 254 || !/^[^\s@]+@[^\s@]+\\.[^\s@]+$/.test(email)) {
       return json({ error: "Please enter a valid email address." }, 400, origin);
     }
 
