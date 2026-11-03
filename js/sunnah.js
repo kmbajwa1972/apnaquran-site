@@ -25,7 +25,7 @@
       const pairedArabic=language.value!=='ara'?arabicByNumber.get(String(n)):'';
       const arabicText=pairedArabic?textOf(pairedArabic):'';
       const arabicBlock=language.value!=='ara'
-        ? '<div class="hadith-language-label" lang="en">Arabic original</div><div class="hadith-text hadith-arabic" lang="ar" dir="rtl">'+(arabicText?esc(arabicText):'Arabic text is not available for this Hadith in the selected source edition.')+'</div>'
+        ? '<div class="hadith-language-label" lang="en">Arabic original</div><div class="hadith-text hadith-arabic" lang="ar" dir="rtl">'+(arabicText?esc(arabicText):'No Arabic text available for this Hadith.')+'</div>'
         : '';
       const translationBlock=language.value==='urd'
         ? '<div class="hadith-language-label" lang="en">اردو ترجمہ</div><div class="hadith-text hadith-urdu" lang="ur" dir="rtl">'+esc(txt)+'</div>'
