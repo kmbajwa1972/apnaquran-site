@@ -54,7 +54,7 @@
         if (arabicData.code !== 200 || !Array.isArray(arabicData.data?.ayahs)) {
           throw new Error('Arabic Quran text could not be loaded.');
         }
-        arabicAyahs = new Map(arabicData.data.ayahs.map(item => [Number(item.number), item.text]));
+        arabicAyahs = new Map(arabicData.data.ayahs.map(item => [Number(item.numberInSurah), item.text]));
       }
 
       const commentary = entries.map((item, index) => {
