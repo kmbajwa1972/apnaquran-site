@@ -42,3 +42,12 @@
 .passage-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
 @media(max-width:900px){.tafsir-choices{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:700px){.events-list,.tafsir-choices{grid-template-columns:1fr}.calendar-shell{padding:12px}.calendar-weekdays,.calendar-grid{gap:3px}.calendar-day{min-height:67px;padding:5px 2px}.calendar-day .greg{font-size:16px}.calendar-day .hijri{font-size:10px}.calendar-day .month-mini{font-size:8px}.calendar-toolbar h2{font-size:17px}}
+
+/* Tafseer reader */
+.tafsir-controls select{min-width:250px;max-width:100%;padding:9px 12px;border-radius:8px;border:1px solid var(--line);background:var(--panel-2);color:var(--ink);font:inherit}
+.tafsir-result{margin-top:20px;padding:20px;background:var(--panel-2);border:1px solid var(--line);border-radius:12px}
+.tafsir-result h3{font-family:'Marcellus',serif;font-weight:400;color:var(--gold-hi);font-size:20px;margin-bottom:14px}
+.tafsir-text{white-space:pre-wrap;overflow-wrap:anywhere;line-height:1.9;color:var(--ink)}
+.tafsir-text p{margin:0 0 1.1em}
+.tafsir-text.is-urdu{font-family:'Noto Nastaliq Urdu',serif;font-size:18px;line-height:2.35;text-align:right}
+@media(max-width:700px){.tafsir-result{padding:15px}.tafsir-text.is-urdu{font-size:16px}.tafsir-controls select{width:100%;min-width:0}}
