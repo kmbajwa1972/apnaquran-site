@@ -15,6 +15,13 @@
   };
   const urduIbnKathir = 'ur-tafseer-ibn-e-kaseer';
 
+  function isEnglishSubheading(text) {
+    const value = text.trim();
+    if (!value || value.length > 100) return false;
+    if (/[.!;,:]$/.test(value)) return false;
+    return value.split(/\s+/).length <= 13;
+  }
+
   async function loadTafsir() {
     const surahNumber = Math.min(114, Math.max(1, Number(surah.value) || 1));
     const slug = edition.value;
@@ -65,6 +72,7 @@
       textBox.dir = language === 'ur' ? 'rtl' : 'ltr';
       textBox.lang = language;
       textBox.classList.toggle('is-urdu', language === 'ur');
+      textBox.classList.toggle('is-english', language === 'en');
 
       commentary.forEach(item => {
         const section = document.createElement('section');
@@ -72,17 +80,18 @@
         if (slug === urduIbnKathir) {
           const arabicText = arabicAyahs.get(item.ayah);
           if (!arabicText) throw new Error('Arabic ayah ' + item.ayah + ' could not be matched with the Urdu commentary.');
-          {
-            const arabic = document.createElement('p');
-            arabic.className = 'tafsir-ayah-arabic';
-            arabic.lang = 'ar';
-            arabic.dir = 'rtl';
-            arabic.textContent = arabicText;
-            section.appendChild(arabic);
-          }
+          const arabic = document.createElement('p');
+          arabic.className = 'tafsir-ayah-arabic';
+          arabic.lang = 'ar';
+          arabic.dir = 'rtl';
+          arabic.textContent = arabicText;
+          section.appendChild(arabic);
         }
         const paragraph = document.createElement('p');
         paragraph.textContent = item.body;
+        if (language === 'en' && isEnglishSubheading(item.body)) {
+          paragraph.className = 'tafsir-subheading';
+        }
         section.appendChild(paragraph);
         textBox.appendChild(section);
       });
