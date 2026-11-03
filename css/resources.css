@@ -51,3 +51,10 @@
 .tafsir-text p{margin:0 0 1.1em}
 .tafsir-text.is-urdu{font-family:'Noto Nastaliq Urdu',serif;font-size:18px;line-height:2.35;text-align:right}
 @media(max-width:700px){.tafsir-result{padding:15px}.tafsir-text.is-urdu{font-size:16px}.tafsir-controls select{width:100%;min-width:0}}
+
+/* Arabic Quran text paired with Urdu Ibn Kathir commentary */
+.tafsir-verse{padding:0 0 18px;margin:0 0 18px;border-bottom:1px solid var(--line)}
+.tafsir-verse:last-child{border-bottom:0;margin-bottom:0;padding-bottom:0}
+.tafsir-ayah-arabic{font-family:'Amiri Quran','Amiri',serif;font-size:25px;line-height:2.1;text-align:right;direction:rtl;color:var(--gold-hi);margin:0 0 12px}
+.tafsir-verse>p:not(.tafsir-ayah-arabic){margin:0}
+@media(max-width:700px){.tafsir-ayah-arabic{font-size:22px;line-height:2}}
