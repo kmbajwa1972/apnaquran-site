@@ -16,5 +16,10 @@
   ],
   "vars": {
     "BREVO_DOI_TEMPLATE_ID": "1"
+  },
+  "previews": {
+    "vars": {
+      "BREVO_DOI_TEMPLATE_ID": "1"
+    }
   }
 }
