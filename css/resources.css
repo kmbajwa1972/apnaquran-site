@@ -57,7 +57,7 @@
 /* Arabic Quran text paired with Urdu Ibn Kathir commentary */
 .tafsir-verse{padding:0 0 18px;margin:0 0 18px;border-bottom:1px solid var(--line)}
 .tafsir-verse:last-child{border-bottom:0;margin-bottom:0;padding-bottom:0}
-.tafsir-ayah-arabic{font-family:'Amiri Quran','Amiri',serif;font-size:31px;font-weight:700;line-height:2.25;text-align:right;direction:rtl;color:#fff1d6;margin:0 0 15px;text-shadow:0 1px 0 rgba(0,0,0,.18)}
+.tafsir-ayah-arabic{font-family:'Amiri Quran','Amiri',serif;font-size:31px;font-weight:800;line-height:2.25;text-align:right;direction:rtl;color:#ffe19a;margin:0 0 16px;text-shadow:0 0 .9px currentColor,0 0 1.2px currentColor,0 1px 0 rgba(0,0,0,.2);-webkit-font-smoothing:antialiased}
 .tafsir-surah-arabic{padding:0 0 18px;margin:0 0 22px;border-bottom:1px solid var(--line)}
 .tafsir-surah-arabic .tafsir-ayah-arabic{margin-bottom:12px}
 .tafsir-verse>p:not(.tafsir-ayah-arabic){margin:0;color:#f3eddf}
