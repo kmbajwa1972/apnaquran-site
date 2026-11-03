@@ -13,6 +13,7 @@
     'ur-tafsir-as-saadi-urdu': 'تفسیر السعدی — اردو',
     'en-tafsir-maarif-ul-quran': "Ma'ariful Quran — English"
   };
+  const urduIbnKathir = 'ur-tafseer-ibn-e-kaseer';
 
   async function loadTafsir() {
     const surahNumber = Math.min(114, Math.max(1, Number(surah.value) || 1));
@@ -25,19 +26,38 @@
     status.dir = 'ltr';
     textBox.replaceChildren();
 
-    const url = 'https://cdn.jsdelivr.net/gh/spa5k/tafsir_api@main/tafsir/' +
+    const tafsirUrl = 'https://cdn.jsdelivr.net/gh/spa5k/tafsir_api@main/tafsir/' +
       encodeURIComponent(slug) + '/' + surahNumber + '.json';
 
     try {
-      const response = await fetch(url);
-      if (!response.ok) throw new Error('The source returned HTTP ' + response.status);
-      const data = await response.json();
+      const requests = [fetch(tafsirUrl)];
+      if (slug === urduIbnKathir) {
+        requests.push(fetch('https://api.alquran.cloud/v1/surah/' + surahNumber + '/quran-uthmani'));
+      }
+      const responses = await Promise.all(requests);
+      for (const response of responses) {
+        if (!response.ok) throw new Error('A text source returned HTTP ' + response.status);
+      }
+
+      const data = await responses[0].json();
       const entries = Array.isArray(data) ? data : (Array.isArray(data.ayahs) ? data.ayahs : [data]);
-      const commentary = entries.map(item => {
-        if (typeof item === 'string') return item;
-        const body = item.text || item.tafsir || '';
-        return body && item.ayah ? 'Ayah ' + item.ayah + '\\n\\n' + body : body;
-      }).filter(Boolean);
+      let arabicAyahs = new Map();
+      if (slug === urduIbnKathir) {
+        const arabicData = await responses[1].json();
+        if (arabicData.code !== 200 || !Array.isArray(arabicData.data?.ayahs)) {
+          throw new Error('Arabic Quran text could not be loaded.');
+        }
+        arabicAyahs = new Map(arabicData.data.ayahs.map(item => [Number(item.numberInSurah), item.text]));
+      }
+
+      const commentary = entries.map((item, index) => {
+        if (typeof item === 'string') return { body: item, ayah: index + 1 };
+        return {
+          body: item.text || item.tafsir || '',
+          ayah: Number(item.ayah) || index + 1
+        };
+      }).filter(item => item.body);
+
       if (!commentary.length) throw new Error('No commentary text was found for this Surah.');
 
       heading.textContent = editionNames[slug] + ' — Surah ' + surahNumber;
@@ -45,13 +65,29 @@
       textBox.dir = language === 'ur' ? 'rtl' : 'ltr';
       textBox.lang = language;
       textBox.classList.toggle('is-urdu', language === 'ur');
-      commentary.forEach((part, index) => {
+
+      commentary.forEach(item => {
+        const section = document.createElement('section');
+        section.className = 'tafsir-verse';
+        if (slug === urduIbnKathir) {
+          const arabicText = arabicAyahs.get(item.ayah);
+          if (arabicText) {
+            const arabic = document.createElement('p');
+            arabic.className = 'tafsir-ayah-arabic';
+            arabic.lang = 'ar';
+            arabic.dir = 'rtl';
+            arabic.textContent = arabicText;
+            section.appendChild(arabic);
+          }
+        }
         const paragraph = document.createElement('p');
-        paragraph.textContent = part;
-        textBox.appendChild(paragraph);
+        paragraph.textContent = item.body;
+        section.appendChild(paragraph);
+        textBox.appendChild(section);
       });
+
       result.hidden = false;
-      status.textContent = 'Tafseer loaded. The source text is shown unchanged.';
+      status.textContent = 'Tafseer loaded. Arabic ayahs are shown with the Urdu Ibn Kathir commentary.';
     } catch (error) {
       status.textContent = 'Unable to load this Tafseer right now. Please check your connection and try again. (' + error.message + ')';
     } finally {
