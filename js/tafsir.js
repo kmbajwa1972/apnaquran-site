@@ -32,8 +32,12 @@
       const response = await fetch(url);
       if (!response.ok) throw new Error('The source returned HTTP ' + response.status);
       const data = await response.json();
-      const entries = Array.isArray(data) ? data : [data];
-      const commentary = entries.map(item => typeof item === 'string' ? item : item.text || item.tafsir || '').filter(Boolean);
+      const entries = Array.isArray(data) ? data : (Array.isArray(data.ayahs) ? data.ayahs : [data]);
+      const commentary = entries.map(item => {
+        if (typeof item === 'string') return item;
+        const body = item.text || item.tafsir || '';
+        return body && item.ayah ? 'Ayah ' + item.ayah + '\\n\\n' + body : body;
+      }).filter(Boolean);
       if (!commentary.length) throw new Error('No commentary text was found for this Surah.');
 
       heading.textContent = editionNames[slug] + ' — Surah ' + surahNumber;
