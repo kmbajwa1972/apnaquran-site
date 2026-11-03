@@ -37,10 +37,10 @@
       encodeURIComponent(slug) + '/' + surahNumber + '.json';
 
     try {
-      const requests = [fetch(tafsirUrl)];
-      if (slug === urduIbnKathir) {
-        requests.push(fetch('https://api.alquran.cloud/v1/surah/' + surahNumber + '/quran-uthmani'));
-      }
+      const requests = [
+        fetch(tafsirUrl),
+        fetch('https://api.alquran.cloud/v1/surah/' + surahNumber + '/quran-uthmani')
+      ];
       const responses = await Promise.all(requests);
       for (const response of responses) {
         if (!response.ok) throw new Error('A text source returned HTTP ' + response.status);
@@ -48,14 +48,11 @@
 
       const data = await responses[0].json();
       const entries = Array.isArray(data) ? data : (Array.isArray(data.ayahs) ? data.ayahs : [data]);
-      let arabicAyahs = new Map();
-      if (slug === urduIbnKathir) {
-        const arabicData = await responses[1].json();
-        if (arabicData.code !== 200 || !Array.isArray(arabicData.data?.ayahs)) {
-          throw new Error('Arabic Quran text could not be loaded.');
-        }
-        arabicAyahs = new Map(arabicData.data.ayahs.map(item => [Number(item.numberInSurah), item.text]));
+      const arabicData = await responses[1].json();
+      if (arabicData.code !== 200 || !Array.isArray(arabicData.data?.ayahs)) {
+        throw new Error('Arabic Quran text could not be loaded.');
       }
+      const arabicAyahs = new Map(arabicData.data.ayahs.map(item => [Number(item.numberInSurah), item.text]));
 
       const commentary = entries.map((item, index) => {
         if (typeof item === 'string') return { body: item, ayah: index + 1 };
@@ -73,6 +70,21 @@
       textBox.lang = language;
       textBox.classList.toggle('is-urdu', language === 'ur');
       textBox.classList.toggle('is-english', language === 'en');
+
+      if (slug !== urduIbnKathir) {
+        const arabicBlock = document.createElement('section');
+        arabicBlock.className = 'tafsir-surah-arabic';
+        arabicBlock.setAttribute('aria-label', 'Arabic Quran text');
+        arabicData.data.ayahs.forEach(item => {
+          const arabic = document.createElement('p');
+          arabic.className = 'tafsir-ayah-arabic';
+          arabic.lang = 'ar';
+          arabic.dir = 'rtl';
+          arabic.textContent = item.text;
+          arabicBlock.appendChild(arabic);
+        });
+        textBox.appendChild(arabicBlock);
+      }
 
       commentary.forEach(item => {
         const section = document.createElement('section');
@@ -97,7 +109,7 @@
       });
 
       result.hidden = false;
-      status.textContent = 'Tafseer loaded. Arabic ayahs are shown with the Urdu Ibn Kathir commentary.';
+      status.textContent = 'Tafseer loaded with Arabic Quran text.';
     } catch (error) {
       status.textContent = 'Unable to load this Tafseer right now. Please check your connection and try again. (' + error.message + ')';
     } finally {

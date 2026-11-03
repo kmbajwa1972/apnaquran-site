@@ -49,14 +49,16 @@
 .tafsir-result h3{font-family:'Marcellus',serif;font-weight:400;color:var(--gold-hi);font-size:20px;margin-bottom:14px}
 .tafsir-text{white-space:pre-wrap;overflow-wrap:anywhere;line-height:2;color:#f0eadb;font-size:17px}
 .tafsir-text p{margin:0 0 1.2em}
-.tafsir-text.is-english{font-family:'Spectral',Georgia,serif;font-size:18px;line-height:2.05;letter-spacing:.01em;color:#f3eddf}
+.tafsir-text.is-english{font-family:'Spectral',Georgia,serif;font-size:19px;line-height:2.1;letter-spacing:.01em;color:#f3eddf}
 .tafsir-text.is-english .tafsir-subheading{font-family:'Marcellus',serif;font-size:17px;font-weight:700;line-height:1.5;color:#f2d58a;margin:1.55em 0 .75em}
-.tafsir-text.is-urdu{font-family:'Noto Nastaliq Urdu',serif;font-size:18px;line-height:2.35;text-align:right;color:#f3eddf}
-@media(max-width:700px){.tafsir-result{padding:15px}.tafsir-text.is-english{font-size:17px;line-height:1.95}.tafsir-text.is-urdu{font-size:16px}.tafsir-controls select{width:100%;min-width:0}}
+.tafsir-text.is-urdu{font-family:'Noto Nastaliq Urdu',serif;font-size:19px;line-height:2.4;text-align:right;color:#f3eddf}
+@media(max-width:700px){.tafsir-result{padding:15px}.tafsir-text.is-english{font-size:18px;line-height:2}.tafsir-text.is-urdu{font-size:17px}.tafsir-controls select{width:100%;min-width:0}}
 
 /* Arabic Quran text paired with Urdu Ibn Kathir commentary */
 .tafsir-verse{padding:0 0 18px;margin:0 0 18px;border-bottom:1px solid var(--line)}
 .tafsir-verse:last-child{border-bottom:0;margin-bottom:0;padding-bottom:0}
-.tafsir-ayah-arabic{font-family:'Amiri Quran','Amiri',serif;font-size:29px;font-weight:700;line-height:2.2;text-align:right;direction:rtl;color:#f2d58a;margin:0 0 15px;text-shadow:0 1px 0 rgba(0,0,0,.18)}
+.tafsir-ayah-arabic{font-family:'Amiri Quran','Amiri',serif;font-size:31px;font-weight:700;line-height:2.25;text-align:right;direction:rtl;color:#fff1d6;margin:0 0 15px;text-shadow:0 1px 0 rgba(0,0,0,.18)}
+.tafsir-surah-arabic{padding:0 0 18px;margin:0 0 22px;border-bottom:1px solid var(--line)}
+.tafsir-surah-arabic .tafsir-ayah-arabic{margin-bottom:12px}
 .tafsir-verse>p:not(.tafsir-ayah-arabic){margin:0;color:#f3eddf}
-@media(max-width:700px){.tafsir-ayah-arabic{font-size:25px;line-height:2.1}}
+@media(max-width:700px){.tafsir-ayah-arabic{font-size:27px;line-height:2.15}}
