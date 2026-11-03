@@ -47,7 +47,7 @@
         if (arabicData.code !== 200 || !Array.isArray(arabicData.data?.ayahs)) {
           throw new Error('Arabic Quran text could not be loaded.');
         }
-        arabicAyahs = new Map(arabicData.data.ayahs.map(item => [Number(item.numberInSurah), item.text]));
+        arabicAyahs = new Map(arabicData.data.ayahs.map(item => [Number(item.number), item.text]));
       }
 
       const commentary = entries.map((item, index) => {
@@ -71,7 +71,8 @@
         section.className = 'tafsir-verse';
         if (slug === urduIbnKathir) {
           const arabicText = arabicAyahs.get(item.ayah);
-          if (arabicText) {
+          if (!arabicText) throw new Error('Arabic ayah ' + item.ayah + ' could not be matched with the Urdu commentary.');
+          {
             const arabic = document.createElement('p');
             arabic.className = 'tafsir-ayah-arabic';
             arabic.lang = 'ar';
