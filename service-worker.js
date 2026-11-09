@@ -140,4 +140,5 @@ self.addEventListener('fetch', event => {
           new Response('', { status: 504 });
       }
     })());
-  }});
+  }
+});
