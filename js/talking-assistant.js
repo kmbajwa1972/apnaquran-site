@@ -168,6 +168,7 @@
   launch.addEventListener('click', function () {
     try { sessionStorage.removeItem('aqAssistantMinimized'); } catch (_) {}
     setOpen(true, true);
+    speakWelcome();
   });
   close.addEventListener('click', function () {
     try { sessionStorage.setItem('aqAssistantMinimized', '1'); } catch (_) {}
@@ -198,8 +199,7 @@
     recognition.onend = function () { mic.disabled = false; };
     try { recognition.start(); } catch (_) { mic.disabled = false; status.textContent = 'Microphone could not start. Please try again or type instead.'; }
   });
-  let startOpen = true;
-  try { startOpen = sessionStorage.getItem('aqAssistantMinimized') !== '1'; } catch (_) {}
-  setOpen(startOpen);
-  window.addEventListener('load', function () { window.setTimeout(speakWelcome, 450); }, { once: true });
+  // Keep the assistant minimized for every new visit. Open and greet only after
+  // the visitor deliberately presses the launcher (also satisfies browser audio policy).
+  setOpen(false);
 })();
