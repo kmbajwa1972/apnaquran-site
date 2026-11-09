@@ -125,7 +125,7 @@ self.addEventListener('fetch', event => {
 
   // Same-origin static assets: network first so published updates appear promptly,
   // with the previously saved response used when the device is offline.
-  if (/\\.(?:css|js|png|jpg|jpeg|svg|webp|ico|webmanifest|woff2?)$/i.test(url.pathname)) {
+  if (/\.(?:css|js|png|jpg|jpeg|svg|webp|ico|webmanifest|woff2?)$/i.test(url.pathname)) {
     event.respondWith((async () => {
       const cache = await caches.open(SHELL_CACHE);
       try {
