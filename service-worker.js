@@ -2,7 +2,7 @@
  * Quran text API responses are cached only after a successful online response.
  * Prayer times, AI, subscriptions and recitation streams are never cached.
  */
-const CACHE_VERSION = 'apnaquran-pwa-v1';
+const CACHE_VERSION = 'apnaquran-pwa-v2';
 const SHELL_CACHE = CACHE_VERSION + '-shell';
 const RUNTIME_CACHE = CACHE_VERSION + '-runtime';
 
@@ -22,7 +22,8 @@ const PRECACHE_URLS = [
   '/js/listen.js', '/js/location.js', '/js/prayer.js', '/js/qibla.js',
   '/js/names.js', '/js/duas.js', '/js/calendar.js', '/js/events.js',
   '/js/tafsir.js', '/js/sunnah.js', '/js/talking-assistant.js',
-  '/js/adhan-local.js', '/js/hijri-location.js'
+  '/js/adhan-local.js', '/js/hijri-location.js',
+  '/js/footer.js', '/js/footer-subscribe.js'
 ];
 
 self.addEventListener('install', event => {
@@ -71,6 +72,8 @@ async function networkFirstQuran(request) {
     if (response.ok && contentType.includes('application/json') &&
         response.type === 'cors') {
       await cache.put(request, response.clone());
+      const keys = await cache.keys();
+      if (keys.length > 120) await cache.delete(keys[0]);
     }
     return response;
   } catch (error) {
@@ -120,18 +123,21 @@ self.addEventListener('fetch', event => {
     return;
   }
 
-  // Same-origin static assets: cached response first, then refresh the cache.
-  if (/\.(?:css|js|png|jpg|jpeg|svg|webp|ico|webmanifest|woff2?)$/i.test(url.pathname)) {
+  // Same-origin static assets: network first so published updates appear promptly,
+  // with the previously saved response used when the device is offline.
+  if (/\\.(?:css|js|png|jpg|jpeg|svg|webp|ico|webmanifest|woff2?)$/i.test(url.pathname)) {
     event.respondWith((async () => {
       const cache = await caches.open(SHELL_CACHE);
-      const cached = await cache.match(request);
-      const network = fetch(request).then(response => {
+      try {
+        const response = await fetch(request);
         if (response.ok && response.type === 'basic') {
-          cache.put(request, response.clone()).catch(() => {});
+          await cache.put(request, response.clone());
         }
         return response;
-      }).catch(() => null);
-      return cached || await network || new Response('', { status: 504 });
+      } catch (_) {
+        return (await cache.match(request)) ||
+          (await cache.match(url.pathname)) ||
+          new Response('', { status: 504 });
+      }
     })());
-  }
-});
+  }});
