@@ -195,7 +195,8 @@ function stripBismillah(text) {
 
 
 // Register the root-scoped service worker for install and offline support.
-if ('serviceWorker' in navigator && location.protocol === 'https:') {
+if ('serviceWorker' in navigator && location.protocol === 'https:' &&
+    location.pathname !== '/weekly-verse.html') {
   window.addEventListener('load', () => {
     navigator.serviceWorker.register('/service-worker.js', { scope: '/' })
       .catch(error => console.warn('ApnaQuran offline support could not start:', error));
