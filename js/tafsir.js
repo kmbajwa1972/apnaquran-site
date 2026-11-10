@@ -64,13 +64,17 @@
         };
       }).filter(item => item.body);
 
-      // Remove only byte-for-byte duplicate source records; never rewrite commentary text.
-      const seenCommentary = new Set();
-      const uniqueCommentary = commentary.filter(item => {
-        if (seenCommentary.has(item.body)) return false;
-        seenCommentary.add(item.body);
-        return true;
-      });
+      // As-Saadi's source repeats the same complete Surah text once per Ayah.
+      // Collapse only exact duplicates in that edition; leave all other editions untouched.
+      let uniqueCommentary = commentary;
+      if (slug === 'ur-tafsir-as-saadi-urdu') {
+        const seenCommentary = new Set();
+        uniqueCommentary = commentary.filter(item => {
+          if (seenCommentary.has(item.body)) return false;
+          seenCommentary.add(item.body);
+          return true;
+        });
+      }
 
       if (!uniqueCommentary.length) throw new Error('No commentary text was found for this Surah.');
 
