@@ -66,7 +66,8 @@
       let uniqueCommentary = commentary;
       if (slug === 'ur-tafsir-as-saadi-urdu' ||
           slug === 'en-tafisr-ibn-kathir' ||
-          slug === urduIbnKathir) {
+          slug === urduIbnKathir ||
+          slug === 'en-tafsir-maarif-ul-quran') {
         const seenCommentary = new Set();
         uniqueCommentary = commentary.filter(item => {
           if (seenCommentary.has(item.body)) return false;
