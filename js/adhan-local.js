@@ -13,38 +13,52 @@
   function fajrIsDueNow() {
     const cell = document.querySelector('.time-cell[data-key="Fajr"] .t');
     if (!cell) return false;
+
     const text = cell.textContent.trim();
     const match = text.match(/^(\d{1,2}):(\d{2})\s*(AM|PM)?$/i);
     if (!match) return false;
-    let h = Number(match[1]);
-    const m = Number(match[2]);
-    const ap = match[3] && match[3].toUpperCase();
-    if (ap === 'PM' && h !== 12) h += 12;
-    if (ap === 'AM' && h === 12) h = 0;
+
+    let hour = Number(match[1]);
+    const minute = Number(match[2]);
+    const period = match[3] && match[3].toUpperCase();
+
+    if (period === 'PM' && hour !== 12) hour += 12;
+    if (period === 'AM' && hour === 12) hour = 0;
+
     const now = new Date();
-    return now.getHours() === h && now.getMinutes() === m && now.getSeconds() <= 8;
+    return now.getHours() === hour &&
+      now.getMinutes() === minute &&
+      now.getSeconds() <= 8;
   }
 
-  /* The existing prayer code creates an Audio object with an external URL.
-     Redirect that playback to our local repo files without changing the
-     working prayer/countdown code. */
+  function isAdhanAudio(element) {
+    const source = element.getAttribute('src') || element.src || '';
+    return /commons\.wikimedia\.org/i.test(source) ||
+      /(?:^|\/)audio\/Azan(?:_fajr)?\.mp3(?:[?#]|$)/i.test(source);
+  }
+
+  /*
+   * The prayer page reuses one Audio object for the enable/test action and
+   * every scheduled prayer. Re-evaluate the correct local recording on
+   * EVERY play call, including after the first redirect has changed its src.
+   */
   HTMLMediaElement.prototype.play = function () {
-    const source = this.getAttribute('src') || this.src || '';
-    if (!redirecting && /commons\.wikimedia\.org/i.test(source)) {
-      const local = fajrIsDueNow() ? FAJR : REGULAR;
-      redirecting = true;
-      this.src = local;
-      this.preload = 'auto';
-      this.load();
-      const promise = originalPlay.call(this);
-      redirecting = false;
-      return promise;
+    if (!redirecting && this instanceof HTMLAudioElement && isAdhanAudio(this)) {
+      const wanted = fajrIsDueNow() ? FAJR : REGULAR;
+      const current = this.getAttribute('src') || '';
+
+      if (current !== wanted) {
+        redirecting = true;
+        this.src = wanted;
+        this.preload = 'auto';
+        this.load();
+        redirecting = false;
+      }
     }
     return originalPlay.call(this);
   };
 
-  /* The site should not expose a Test Adhan control. Keep the normal
-     Enable Adhan control for the user's one-time browser audio permission. */
+  /* Keep the existing interface: no separate Test Adhan control is shown. */
   function removeTestButton() {
     const test = document.querySelector('#adhanTest');
     if (test) test.remove();
@@ -56,8 +70,7 @@
     removeTestButton();
   }
 
-  /* prayer.js inserts the Adhan panel during DOMContentLoaded, so make sure
-     the Test button is removed immediately after that panel is created. */
+  /* prayer.js inserts the Adhan panel during DOMContentLoaded. */
   const observer = new MutationObserver(removeTestButton);
   observer.observe(document.documentElement, { childList: true, subtree: true });
   setTimeout(() => observer.disconnect(), 5000);
