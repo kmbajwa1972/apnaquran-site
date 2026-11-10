@@ -14,6 +14,8 @@
     'en-tafsir-maarif-ul-quran': "Ma'ariful Quran — English"
   };
   const urduIbnKathir = 'ur-tafseer-ibn-e-kaseer';
+  // Pin the upstream dataset to an immutable commit so commentary cannot change silently.
+  const tafsirSourceCommit = 'eb82bb6294efe30ad5c135c03b1864afaa70e855';
 
   function isEnglishSubheading(text) {
     const value = text.trim();
@@ -33,7 +35,7 @@
     status.dir = 'ltr';
     textBox.replaceChildren();
 
-    const tafsirUrl = 'https://cdn.jsdelivr.net/gh/spa5k/tafsir_api@main/tafsir/' +
+    const tafsirUrl = 'https://cdn.jsdelivr.net/gh/spa5k/tafsir_api@' + tafsirSourceCommit + '/tafsir/' +
       encodeURIComponent(slug) + '/' + surahNumber + '.json';
 
     try {
@@ -62,7 +64,19 @@
         };
       }).filter(item => item.body);
 
-      if (!commentary.length) throw new Error('No commentary text was found for this Surah.');
+      // As-Saadi's source repeats the same complete Surah text once per Ayah.
+      // Collapse only exact duplicates in that edition; leave all other editions untouched.
+      let uniqueCommentary = commentary;
+      if (slug === 'ur-tafsir-as-saadi-urdu') {
+        const seenCommentary = new Set();
+        uniqueCommentary = commentary.filter(item => {
+          if (seenCommentary.has(item.body)) return false;
+          seenCommentary.add(item.body);
+          return true;
+        });
+      }
+
+      if (!uniqueCommentary.length) throw new Error('No commentary text was found for this Surah.');
 
       heading.textContent = editionNames[slug] + ' — Surah ' + surahNumber;
       heading.dir = language === 'ur' ? 'rtl' : 'ltr';
@@ -86,7 +100,7 @@
         textBox.appendChild(arabicBlock);
       }
 
-      commentary.forEach(item => {
+      uniqueCommentary.forEach(item => {
         const section = document.createElement('section');
         section.className = 'tafsir-verse';
         if (slug === urduIbnKathir) {
@@ -107,6 +121,17 @@
         section.appendChild(paragraph);
         textBox.appendChild(section);
       });
+
+      // The source itself has no separate [3] footnote: Ayah 3's explanation is already included in [1].
+      // Show a clearly separated editorial note rather than inventing or altering Tafseer wording.
+      if (slug === 'ur-tafsir-as-saadi-urdu' && surahNumber === 1) {
+        const sourceNote = document.createElement('p');
+        sourceNote.className = 'small-note tafsir-source-note';
+        sourceNote.lang = 'ur';
+        sourceNote.dir = 'rtl';
+        sourceNote.textContent = 'وضاحتی نوٹ: اصل ماخذ میں حوالہ [3] الگ سے درج نہیں ہے۔ آیت 3 (الرَّحْمَٰنِ الرَّحِيمِ) کی تشریح حوالہ [1] کے متن میں شامل ہے؛ اس لیے اصل تفسیر میں کوئی نیا متن شامل نہیں کیا گیا۔';
+        textBox.appendChild(sourceNote);
+      }
 
       result.hidden = false;
       status.textContent = 'Tafseer loaded with Arabic Quran text.';
