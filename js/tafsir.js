@@ -65,8 +65,8 @@
 
       let uniqueCommentary = commentary;
       if (slug === 'ur-tafsir-as-saadi-urdu' ||
-          (slug === urduIbnKathir && surahNumber === 112) ||
-          (slug === 'en-tafisr-ibn-kathir' && surahNumber === 114)) {
+          slug === 'en-tafisr-ibn-kathir' ||
+          (slug === urduIbnKathir && surahNumber === 112)) {
         const seenCommentary = new Set();
         uniqueCommentary = commentary.filter(item => {
           if (seenCommentary.has(item.body)) return false;
