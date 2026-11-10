@@ -122,6 +122,17 @@
         textBox.appendChild(section);
       });
 
+      // The source itself has no separate [3] footnote: Ayah 3's explanation is already included in [1].
+      // Show a clearly separated editorial note rather than inventing or altering Tafseer wording.
+      if (slug === 'ur-tafsir-as-saadi-urdu' && surahNumber === 1) {
+        const sourceNote = document.createElement('p');
+        sourceNote.className = 'small-note tafsir-source-note';
+        sourceNote.lang = 'ur';
+        sourceNote.dir = 'rtl';
+        sourceNote.textContent = 'وضاحتی نوٹ: اصل ماخذ میں حوالہ [3] الگ سے درج نہیں ہے۔ آیت 3 (الرَّحْمَٰنِ الرَّحِيمِ) کی تشریح حوالہ [1] کے متن میں شامل ہے؛ اس لیے اصل تفسیر میں کوئی نیا متن شامل نہیں کیا گیا۔';
+        textBox.appendChild(sourceNote);
+      }
+
       result.hidden = false;
       status.textContent = 'Tafseer loaded with Arabic Quran text.';
     } catch (error) {
