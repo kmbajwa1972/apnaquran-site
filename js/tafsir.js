@@ -66,7 +66,7 @@
       let uniqueCommentary = commentary;
       if (slug === 'ur-tafsir-as-saadi-urdu' ||
           slug === 'en-tafisr-ibn-kathir' ||
-          (slug === urduIbnKathir && surahNumber === 112)) {
+          slug === urduIbnKathir) {
         const seenCommentary = new Set();
         uniqueCommentary = commentary.filter(item => {
           if (seenCommentary.has(item.body)) return false;
@@ -107,7 +107,7 @@
       textBox.classList.toggle('is-urdu', language === 'ur');
       textBox.classList.toggle('is-english', language === 'en');
 
-      if (slug !== urduIbnKathir || surahNumber === 112) {
+      {
         const arabicBlock = document.createElement('section');
         arabicBlock.className = 'tafsir-surah-arabic';
         arabicBlock.setAttribute('aria-label', 'Arabic Quran text');
@@ -125,16 +125,6 @@
       displayCommentary.forEach(item => {
         const section = document.createElement('section');
         section.className = 'tafsir-verse';
-        if (slug === urduIbnKathir && surahNumber !== 112) {
-          const arabicText = arabicAyahs.get(item.ayah);
-          if (!arabicText) throw new Error('Arabic ayah ' + item.ayah + ' could not be matched with the Urdu commentary.');
-          const arabic = document.createElement('p');
-          arabic.className = 'tafsir-ayah-arabic';
-          arabic.lang = 'ar';
-          arabic.dir = 'rtl';
-          arabic.textContent = arabicText;
-          section.appendChild(arabic);
-        }
         const paragraph = document.createElement('p');
         paragraph.textContent = item.body;
         if (language === 'en' && isEnglishSubheading(item.body)) {
