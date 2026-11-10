@@ -14,7 +14,6 @@
     'en-tafsir-maarif-ul-quran': "Ma'ariful Quran — English"
   };
   const urduIbnKathir = 'ur-tafseer-ibn-e-kaseer';
-  // Pin the upstream dataset to an immutable commit so commentary cannot change silently.
   const tafsirSourceCommit = 'eb82bb6294efe30ad5c135c03b1864afaa70e855';
 
   function isEnglishSubheading(text) {
@@ -64,8 +63,6 @@
         };
       }).filter(item => item.body);
 
-      // As-Saadi's source repeats the same complete Surah text once per Ayah.
-      // Collapse only exact duplicates in that edition; leave all other editions untouched.
       let uniqueCommentary = commentary;
       if (slug === 'ur-tafsir-as-saadi-urdu') {
         const seenCommentary = new Set();
@@ -77,6 +74,29 @@
       }
 
       if (!uniqueCommentary.length) throw new Error('No commentary text was found for this Surah.');
+
+      // In the Urdu source, the Ayah 3 explanation is embedded inside [1].
+      // Move that exact original wording to [3], in verse order, without rewriting it.
+      let displayCommentary = uniqueCommentary;
+      if (slug === 'ur-tafsir-as-saadi-urdu' && surahNumber === 1) {
+        const sourceBody = uniqueCommentary[0].body;
+        const passageStartMarker = '﴿الرَّحۡمٰنِ الرَّحِيۡمِ﴾';
+        const passageEndMarker = 'حصہ ہے۔';
+        const passageStart = sourceBody.indexOf(passageStartMarker);
+        const passageEndStart = passageStart < 0 ? -1 : sourceBody.indexOf(passageEndMarker, passageStart);
+        if (passageStart < 0 || passageEndStart < 0 || sourceBody.indexOf('[4]', passageEndStart) < 0) {
+          throw new Error('The original As-Saadi Ayah 3 text could not be safely separated.');
+        }
+        const passageEnd = passageEndStart + passageEndMarker.length;
+        const ayahThreeText = sourceBody.slice(passageStart, passageEnd).trim();
+        const bodyWithoutAyahThree = sourceBody.slice(0, passageStart) + sourceBody.slice(passageEnd);
+        const insertAt = bodyWithoutAyahThree.indexOf('[4]');
+        const bodyWithReferenceThree =
+          bodyWithoutAyahThree.slice(0, insertAt) +
+          '\n\n[3] ' + ayahThreeText + '\n\n' +
+          bodyWithoutAyahThree.slice(insertAt);
+        displayCommentary = [{ ...uniqueCommentary[0], body: bodyWithReferenceThree }];
+      }
 
       heading.textContent = editionNames[slug] + ' — Surah ' + surahNumber;
       heading.dir = language === 'ur' ? 'rtl' : 'ltr';
@@ -100,7 +120,7 @@
         textBox.appendChild(arabicBlock);
       }
 
-      uniqueCommentary.forEach(item => {
+      displayCommentary.forEach(item => {
         const section = document.createElement('section');
         section.className = 'tafsir-verse';
         if (slug === urduIbnKathir) {
@@ -121,17 +141,6 @@
         section.appendChild(paragraph);
         textBox.appendChild(section);
       });
-
-      // The source itself has no separate [3] footnote: Ayah 3's explanation is already included in [1].
-      // Show a clearly separated editorial note rather than inventing or altering Tafseer wording.
-      if (slug === 'ur-tafsir-as-saadi-urdu' && surahNumber === 1) {
-        const sourceNote = document.createElement('p');
-        sourceNote.className = 'small-note tafsir-source-note';
-        sourceNote.lang = 'ur';
-        sourceNote.dir = 'rtl';
-        sourceNote.textContent = 'وضاحتی نوٹ: اصل ماخذ میں حوالہ [3] الگ سے درج نہیں ہے۔ آیت 3 (الرَّحْمَٰنِ الرَّحِيمِ) کی تشریح حوالہ [1] کے متن میں شامل ہے؛ اس لیے اصل تفسیر میں کوئی نیا متن شامل نہیں کیا گیا۔';
-        textBox.appendChild(sourceNote);
-      }
 
       result.hidden = false;
       status.textContent = 'Tafseer loaded with Arabic Quran text.';
