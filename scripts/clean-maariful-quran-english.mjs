@@ -77,7 +77,7 @@ for (let surah = 1; surah <= 114; surah++) {
     throw new Error('Exact text/Ayah associations changed in Surah ' + surah);
   }
 
-  const cleanBytes = Buffer.from(JSON.stringify({ schema_version: 1, surah, entries }, null, 2) + '\\n', 'utf8');
+  const cleanBytes = Buffer.from(JSON.stringify({ schema_version: 1, surah, entries }, null, 2) + '\n', 'utf8');
   await fs.writeFile(path.join(source, name), cleanBytes);
 
   const removed = raw.length - entries.length;
@@ -111,13 +111,13 @@ const cleanManifest = {
   unique_text_ayah_pairs_preserved: preservedPairs,
   files: manifestFiles
 };
-await fs.writeFile(path.join(source, 'SOURCE-MANIFEST.json'), JSON.stringify(cleanManifest, null, 2) + '\\n');
+await fs.writeFile(path.join(source, 'SOURCE-MANIFEST.json'), JSON.stringify(cleanManifest, null, 2) + '\n');
 
 const table = [
   '| Surah | Original rows | Unique passages | Repeated rows consolidated | Text/Ayah pairs preserved |',
   '|---:|---:|---:|---:|---:|',
   ...reportRows.map(r => '| ' + r.surah + ' | ' + r.original + ' | ' + r.unique + ' | ' + r.duplicates + ' | ' + r.pairs + ' |')
-].join('\\n');
+].join('\n');
 const report = [
   "# Ma'ariful Quran English — canonical source audit", '',
   '- Surahs verified: **' + reportRows.length + '**',
@@ -130,7 +130,7 @@ const report = [
   '',
   'Every distinct original (exact text, Ayah) association remains represented. A passage repeated across different Ayahs appears once with all Ayah references in ayahs[].',
   '', '## Per-Surah results', '', table, ''
-].join('\\n');
+].join('\n');
 await fs.writeFile(path.join(edition, 'AUDIT-REPORT.md'), report);
 
 await fs.writeFile(path.join(edition, 'README.md'), [
@@ -158,10 +158,10 @@ await fs.writeFile(path.join(edition, 'README.md'), [
   '- source/SOURCE-MANIFEST.json contains original and cleaned SHA-256 checksums.',
   '- original-source/SOURCE-MANIFEST.json remains the untouched upstream manifest.',
   '- All changes remain on feature/tafseer-library-complete; nothing is merged into main.'
-].join('\\n') + '\\n');
+].join('\n') + '\n');
 
 await fs.writeFile(path.join(source, 'README.md'),
-  "# Canonical cleaned source — Ma'ariful Quran English\\n\\nThis directory contains the active cleaned files 1.json through 114.json. Exact duplicate commentary passages are grouped once with all distinct original Ayah references retained in ayahs[]. No commentary wording is changed. See SOURCE-MANIFEST.json for checksums and ../AUDIT-REPORT.md for the complete per-Surah audit. Untouched upstream originals are in ../original-source/.\\n");
+  "# Canonical cleaned source — Ma'ariful Quran English\n\nThis directory contains the active cleaned files 1.json through 114.json. Exact duplicate commentary passages are grouped once with all distinct original Ayah references retained in ayahs[]. No commentary wording is changed. See SOURCE-MANIFEST.json for checksums and ../AUDIT-REPORT.md for the complete per-Surah audit. Untouched upstream originals are in ../original-source/.\n");
 
 console.log(JSON.stringify({
   surahs: reportRows.length, originalRecords, uniqueCommentaryPassages: uniquePassages,
