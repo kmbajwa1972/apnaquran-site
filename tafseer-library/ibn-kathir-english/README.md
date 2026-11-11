@@ -1,39 +1,34 @@
 # English Tafseer Ibn Kathir
 
-## Original source snapshot
+## Canonical source files — cleaned in place
 
-The original English Ibn Kathir Surah files are preserved unchanged in `source/`.
+The active edition is stored directly in `source/`. The 114 numbered files in that directory have been cleaned in place by consolidating only exact duplicate commentary text. These are the files used by ApnaQuran.
+
+- Surah files: `source/1.json` through `source/114.json`
+- Original records: **6,236**
+- Clean source records: **1,903**
+- Exact repeated records consolidated: **4,333**
+- Ayah references preserved: **6,236**
+
+Each retained commentary passage includes an `ayahs` array containing every original Ayah reference associated with that exact text. The original wording, including Arabic within commentary, is preserved unchanged.
+
+## Untouched original backup
+
+The exact upstream source snapshot is preserved separately in `original-source/`, including its original manifest and original Git blob checksums. This backup is for provenance and restoration; it is not the active source used by the app.
 
 - Source repository: https://github.com/spa5k/tafsir_api
 - Pinned source commit: `eb82bb6294efe30ad5c135c03b1864afaa70e855`
-- Source directory: `tafsir/en-tafisr-ibn-kathir/`
-- Original files: 114 (Surah files `1.json` through `114.json`)
-- Checksums and per-file provenance: `source/manifest.json`
+- Original upstream edition: `en-tafisr-ibn-kathir`
 
-## Audit completed
+## Audit and integrity
 
-The full audit verified all 114 original source files against their recorded Git blob SHA-1 checksums.
+- `AUDIT-REPORT.md` — full per-Surah comparison and results
+- `source/manifest.json` — checksums of the cleaned canonical source files and original file checksums
+- `original-source/manifest.json` — original upstream checksums
+- `scripts/audit-ibn-kathir-english.mjs` — verifies every cleaned record and Ayah mapping against the untouched original
 
-- Original commentary records: **6,236**
-- Unique exact commentary passages: **1,903**
-- Repeated records consolidated: **4,333**
-- Ayah references preserved and covered: **6,236**
+The audit fails if any original passage, Ayah reference, or checksum is missing or changed.
 
-Surah 1 has no exact repeated commentary. Surahs 2–114 contain repeated passages.
+## App and branch status
 
-## Cleaned edition
-
-The audited edition is in `cleaned/`. Exact duplicate text records are consolidated into one entry, while every distinct original Ayah reference is retained in that entry's `ayahs` array. Original commentary text is not rewritten, normalized, or translated. Arabic text inside the commentary is preserved exactly.
-
-See:
-- `cleaned/AUDIT-REPORT.md` — per-Surah audit results
-- `cleaned/manifest.json` — source and cleaned-file checksums
-- `cleaned/README.md` — cleaned data format and integrity rules
-
-## App integration status
-
-The working branch updates the English Ibn Kathir app edition to load the cleaned local files. The app continues to display the complete Arabic Surah before the commentary. These changes remain on `feature/tafseer-library-complete`; nothing has been merged into `main`.
-
-## Preservation rules
-
-Treat `source/` as an immutable reference snapshot. Never edit, deduplicate, normalize, or repair these original files. Regenerate the cleaned edition with `scripts/audit-ibn-kathir-english.mjs` after any approved source refresh.
+ApnaQuran loads English Ibn Kathir from `tafseer-library/ibn-kathir-english/source/`. All changes remain on `feature/tafseer-library-complete`; nothing has been merged into `main`.
