@@ -1,5 +1,5 @@
 {
-  "title": "Audited and deduplicated English Tafsir Ibn Kathir",
+  "title": "English Tafsir Ibn Kathir — cleaned canonical source files",
   "schema_version": 1,
   "source_repository": "https://github.com/spa5k/tafsir_api",
   "source_commit": "eb82bb6294efe30ad5c135c03b1864afaa70e855",
@@ -1265,5 +1265,11 @@
       "duplicate_record_count": 5,
       "ayah_coverage_count": 6
     }
-  ]
+  ],
+  "preservation_rule": "Active canonical source data used by ApnaQuran. Exact duplicate commentary passages are consolidated, and all distinct original Ayah references are retained in ayahs[]. Untouched upstream files and their original checksums are preserved in ../original-source/.",
+  "original_snapshot_directory": "../original-source/",
+  "original_record_count": 6236,
+  "cleaned_record_count": 1903,
+  "duplicate_records_consolidated": 4333,
+  "ayah_references_preserved": 6236
 }
