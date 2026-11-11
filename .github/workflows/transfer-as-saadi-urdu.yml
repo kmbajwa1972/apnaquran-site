@@ -1,6 +1,7 @@
 name: Transfer As-Saadi Urdu source snapshot
 
 on:
+  workflow_dispatch:
   push:
     branches:
       - feature/tafseer-library-complete
