@@ -1,7 +1,19 @@
 # English Tafseer Ibn Kathir
 
-Permanent, self-contained repository copy of the English Ibn Kathir edition.
+## Original source snapshot
 
-Status: Audit pending. No source text has been imported or modified yet.
+The original English Ibn Kathir Surah files have been transferred unchanged into `source/`.
 
-Rules: Preserve original commentary wording and Quranic Arabic; remove only verified exact duplicate commentary records. Record source provenance, audit counts, and file checksums before publication.
+- Source repository: https://github.com/spa5k/tafsir_api
+- Pinned source commit: `eb82bb6294efe30ad5c135c03b1864afaa70e855`
+- Source directory: `tafsir/en-tafisr-ibn-kathir/`
+- Files transferred: 114 (Surah files `1.json` through `114.json`)
+- Checksums and per-file provenance: `source/manifest.json`
+
+## Preservation rules
+
+Treat `source/` as an immutable reference snapshot. Never edit, deduplicate, normalize, or repair these original files. Perform audits and all corrections in a separate cleaned edition, preserving the source snapshot for future comparison.
+
+## Current status
+
+Original source transfer is complete. Detailed duplicate and content audit is the next step; no cleaned edition is implied by this source transfer.
