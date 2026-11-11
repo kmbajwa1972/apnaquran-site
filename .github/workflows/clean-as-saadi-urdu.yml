@@ -1,0 +1,43 @@
+name: Clean and audit As-Saadi Urdu
+
+on:
+  push:
+    branches:
+      - feature/tafseer-library-complete
+    paths:
+      - 'scripts/clean-as-saadi-urdu.mjs'
+      - '.github/workflows/clean-as-saadi-urdu.yml'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: as-saadi-urdu-cleanup
+  cancel-in-progress: false
+
+jobs:
+  clean-and-audit:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out library branch
+        uses: actions/checkout@v4
+        with:
+          ref: feature/tafseer-library-complete
+          fetch-depth: 0
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Clean source files and verify original Urdu text and Ayah mapping
+        run: node scripts/clean-as-saadi-urdu.mjs
+      - name: Commit canonical cleaned source and audit report
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add tafseer-library/as-saadi-urdu
+          if git diff --cached --quiet; then
+            echo "As-Saadi Urdu source is already clean."
+          else
+            git commit -m "Clean As-Saadi Urdu source in place"
+            git push origin feature/tafseer-library-complete
+          fi
