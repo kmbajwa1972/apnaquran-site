@@ -98,4 +98,15 @@ jobs:
             exit 0
           fi
           git commit -m "Transfer original As-Saadi Urdu source snapshot"
-          git push origin HEAD:refs/heads/feature/tafseer-library-complete
+          # The branch may advance while the large upstream archive is downloading.
+          # Rebase this transfer commit onto the latest feature branch before pushing.
+          for attempt in 1 2 3; do
+            git fetch origin feature/tafseer-library-complete
+            git rebase origin/feature/tafseer-library-complete
+            if git push origin HEAD:refs/heads/feature/tafseer-library-complete; then
+              exit 0
+            fi
+            echo "Push attempt ${attempt} failed; retrying after fetching latest branch."
+          done
+          echo "Unable to push after three synchronized attempts." >&2
+          exit 1
