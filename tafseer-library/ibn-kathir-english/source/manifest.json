@@ -20,7 +20,9 @@
       "source_record_count": 7,
       "unique_commentary_count": 7,
       "duplicate_record_count": 0,
-      "ayah_coverage_count": 7
+      "ayah_coverage_count": 7,
+      "git_blob_sha": "8807bf22041ca43d9fb1a5b856869bea748783a9",
+      "original_git_blob_sha": "b5f9569be735cc64d6e555e00e661bb772b8561d"
     },
     {
       "surah": 2,
@@ -31,7 +33,9 @@
       "source_record_count": 286,
       "unique_commentary_count": 173,
       "duplicate_record_count": 113,
-      "ayah_coverage_count": 286
+      "ayah_coverage_count": 286,
+      "git_blob_sha": "473ec28ee9c1bf4e72772b0c174684ff02656553",
+      "original_git_blob_sha": "1741f8b18740f3760c8d45665c48c0dd9c273f9b"
     },
     {
       "surah": 3,
@@ -42,7 +46,9 @@
       "source_record_count": 200,
       "unique_commentary_count": 64,
       "duplicate_record_count": 136,
-      "ayah_coverage_count": 200
+      "ayah_coverage_count": 200,
+      "git_blob_sha": "a3908b350564939b659efa26bb5c54646346a934",
+      "original_git_blob_sha": "99fb66b61401730b665616618daa546240fb1a40"
     },
     {
       "surah": 4,
@@ -53,7 +59,9 @@
       "source_record_count": 176,
       "unique_commentary_count": 72,
       "duplicate_record_count": 104,
-      "ayah_coverage_count": 176
+      "ayah_coverage_count": 176,
+      "git_blob_sha": "7ce94763ac1eef67e963956bcb0b4199dcb082e5",
+      "original_git_blob_sha": "fbe14ff891049d262a67568f1da8960524a77951"
     },
     {
       "surah": 5,
@@ -64,7 +72,9 @@
       "source_record_count": 120,
       "unique_commentary_count": 45,
       "duplicate_record_count": 75,
-      "ayah_coverage_count": 120
+      "ayah_coverage_count": 120,
+      "git_blob_sha": "88159a3738ef6b8962459e1848f46ce8a0457d11",
+      "original_git_blob_sha": "73feba44e7851820b30fc0df225ee94ba07fe45a"
     },
     {
       "surah": 6,
@@ -75,7 +85,9 @@
       "source_record_count": 165,
       "unique_commentary_count": 71,
       "duplicate_record_count": 94,
-      "ayah_coverage_count": 165
+      "ayah_coverage_count": 165,
+      "git_blob_sha": "54aa9cc1e2318172fd7c5c6e0cd8f15630c53cfe",
+      "original_git_blob_sha": "13a22e180c08933a58d3c4033bb08bf2fb2ce9c3"
     },
     {
       "surah": 7,
@@ -86,7 +98,9 @@
       "source_record_count": 206,
       "unique_commentary_count": 101,
       "duplicate_record_count": 105,
-      "ayah_coverage_count": 206
+      "ayah_coverage_count": 206,
+      "git_blob_sha": "3916d0daf042aed82038889101a3fa1ac7262128",
+      "original_git_blob_sha": "2ffaf7cf6b0cb82959c020154bc31dd222c76eca"
     },
     {
       "surah": 8,
@@ -97,7 +111,9 @@
       "source_record_count": 75,
       "unique_commentary_count": 37,
       "duplicate_record_count": 38,
-      "ayah_coverage_count": 75
+      "ayah_coverage_count": 75,
+      "git_blob_sha": "077f991285191932987901452169ec30d522e657",
+      "original_git_blob_sha": "26d29c40787f8ad5ed882d891d4c237309009c0e"
     },
     {
       "surah": 9,
@@ -108,7 +124,9 @@
       "source_record_count": 129,
       "unique_commentary_count": 79,
       "duplicate_record_count": 50,
-      "ayah_coverage_count": 129
+      "ayah_coverage_count": 129,
+      "git_blob_sha": "cc940496f16ee65b7b4ed2ec00f8a2892c23a372",
+      "original_git_blob_sha": "5e3a855da631d4eda8da46fe9ad64072ea9e28be"
     },
     {
       "surah": 10,
@@ -119,7 +137,9 @@
       "source_record_count": 109,
       "unique_commentary_count": 49,
       "duplicate_record_count": 60,
-      "ayah_coverage_count": 109
+      "ayah_coverage_count": 109,
+      "git_blob_sha": "2bcd42d20c941fce0a0313e1d284842d0d2a139e",
+      "original_git_blob_sha": "b44027ccb595d97161f32b5a125830d758ef328b"
     },
     {
       "surah": 11,
@@ -130,7 +150,9 @@
       "source_record_count": 123,
       "unique_commentary_count": 55,
       "duplicate_record_count": 68,
-      "ayah_coverage_count": 123
+      "ayah_coverage_count": 123,
+      "git_blob_sha": "509395a639efab83e651c22794c9ae5571325c33",
+      "original_git_blob_sha": "959316f33ed11f016cf7a67be708cd3fb7851304"
     },
     {
       "surah": 12,
@@ -141,7 +163,9 @@
       "source_record_count": 111,
       "unique_commentary_count": 48,
       "duplicate_record_count": 63,
-      "ayah_coverage_count": 111
+      "ayah_coverage_count": 111,
+      "git_blob_sha": "e97bf83bfb4bfa495d2fb55332a008a68366f4e5",
+      "original_git_blob_sha": "0f1b5ae81a0aea26e1f18a565d624c44020321c0"
     },
     {
       "surah": 13,
@@ -152,7 +176,9 @@
       "source_record_count": 43,
       "unique_commentary_count": 29,
       "duplicate_record_count": 14,
-      "ayah_coverage_count": 43
+      "ayah_coverage_count": 43,
+      "git_blob_sha": "e66ec59459b9948d08e5697a5d727b13f4b70f4c",
+      "original_git_blob_sha": "383080315aad0f6433459cf5288c343227774671"
     },
     {
       "surah": 14,
@@ -163,7 +189,9 @@
       "source_record_count": 52,
       "unique_commentary_count": 24,
       "duplicate_record_count": 28,
-      "ayah_coverage_count": 52
+      "ayah_coverage_count": 52,
+      "git_blob_sha": "0e09a294ce4d804ef10bda2a705db55362ea03a4",
+      "original_git_blob_sha": "5fddb745ccc135893d2e45614cc328637adac883"
     },
     {
       "surah": 15,
@@ -174,7 +202,9 @@
       "source_record_count": 99,
       "unique_commentary_count": 24,
       "duplicate_record_count": 75,
-      "ayah_coverage_count": 99
+      "ayah_coverage_count": 99,
+      "git_blob_sha": "9625121b90e118424cb1843a03218e250104a0aa",
+      "original_git_blob_sha": "10aac04d0e4a09b6daf969dcd649d7cab5a34f94"
     },
     {
       "surah": 16,
@@ -185,7 +215,9 @@
       "source_record_count": 128,
       "unique_commentary_count": 55,
       "duplicate_record_count": 73,
-      "ayah_coverage_count": 128
+      "ayah_coverage_count": 128,
+      "git_blob_sha": "4aa24d9c0e456d79eed9ee218a4b99085b14750b",
+      "original_git_blob_sha": "1ff6bac92900e9861f47552294b9fbb52ca8db40"
     },
     {
       "surah": 17,
@@ -196,7 +228,9 @@
       "source_record_count": 111,
       "unique_commentary_count": 63,
       "duplicate_record_count": 48,
-      "ayah_coverage_count": 111
+      "ayah_coverage_count": 111,
+      "git_blob_sha": "ae3f4d79309ea3c40f0fc06b40c991b3285257f0",
+      "original_git_blob_sha": "67772bf27ae43261688deae2c8aac673e19a398f"
     },
     {
       "surah": 18,
@@ -207,7 +241,9 @@
       "source_record_count": 110,
       "unique_commentary_count": 43,
       "duplicate_record_count": 67,
-      "ayah_coverage_count": 110
+      "ayah_coverage_count": 110,
+      "git_blob_sha": "cb4c0c6be6c4fbf61043d6f1221f2877dcb0d7a3",
+      "original_git_blob_sha": "b7889f5421d1a6f9d2c9d68a013b743df7603bd6"
     },
     {
       "surah": 19,
@@ -218,7 +254,9 @@
       "source_record_count": 98,
       "unique_commentary_count": 31,
       "duplicate_record_count": 67,
-      "ayah_coverage_count": 98
+      "ayah_coverage_count": 98,
+      "git_blob_sha": "8357189f22374216a63cbcf68174c757258bca13",
+      "original_git_blob_sha": "153c253d74024bae872e75c942a488313c1d5eb2"
     },
     {
       "surah": 20,
@@ -229,7 +267,9 @@
       "source_record_count": 135,
       "unique_commentary_count": 32,
       "duplicate_record_count": 103,
-      "ayah_coverage_count": 135
+      "ayah_coverage_count": 135,
+      "git_blob_sha": "f24b0b571ff2b473811934a96d2dd076192de4d0",
+      "original_git_blob_sha": "1c2172fe3bd4931a8aa8873fbf0349c015a9e11d"
     },
     {
       "surah": 21,
@@ -240,7 +280,9 @@
       "source_record_count": 112,
       "unique_commentary_count": 32,
       "duplicate_record_count": 80,
-      "ayah_coverage_count": 112
+      "ayah_coverage_count": 112,
+      "git_blob_sha": "f3ed86c7ed171342cc20e2e477a6940698f9b4f9",
+      "original_git_blob_sha": "590a8e1a3a509b6292e4a2f0f1f8269d1338b948"
     },
     {
       "surah": 22,
@@ -251,7 +293,9 @@
       "source_record_count": 78,
       "unique_commentary_count": 36,
       "duplicate_record_count": 42,
-      "ayah_coverage_count": 78
+      "ayah_coverage_count": 78,
+      "git_blob_sha": "64997dfeef1b4073a19a258e716565fdeb762e1a",
+      "original_git_blob_sha": "ac2c47024016e27801a47495277c29278aa6f3cf"
     },
     {
       "surah": 23,
@@ -262,7 +306,9 @@
       "source_record_count": 118,
       "unique_commentary_count": 24,
       "duplicate_record_count": 94,
-      "ayah_coverage_count": 118
+      "ayah_coverage_count": 118,
+      "git_blob_sha": "29b68dec6d7c5c95a21d4451bfa407159f670c47",
+      "original_git_blob_sha": "de452c09219a7b6847ee3ffc55e50f551ea390da"
     },
     {
       "surah": 24,
@@ -273,7 +319,9 @@
       "source_record_count": 64,
       "unique_commentary_count": 33,
       "duplicate_record_count": 31,
-      "ayah_coverage_count": 64
+      "ayah_coverage_count": 64,
+      "git_blob_sha": "96922471464df9d724aa86774a8c6d8b53a688da",
+      "original_git_blob_sha": "0ea125febc58b437300cf6ee99b81958a75897f6"
     },
     {
       "surah": 25,
@@ -284,7 +332,9 @@
       "source_record_count": 77,
       "unique_commentary_count": 22,
       "duplicate_record_count": 55,
-      "ayah_coverage_count": 77
+      "ayah_coverage_count": 77,
+      "git_blob_sha": "c149428986af2d20b379c294495acea97c9d1a73",
+      "original_git_blob_sha": "4631d4327e03347a2c160affde6bfdef9e0dff84"
     },
     {
       "surah": 26,
@@ -295,7 +345,9 @@
       "source_record_count": 227,
       "unique_commentary_count": 30,
       "duplicate_record_count": 197,
-      "ayah_coverage_count": 227
+      "ayah_coverage_count": 227,
+      "git_blob_sha": "ed67fb46595cfe16fa5e10c3dde378fa0a56c41c",
+      "original_git_blob_sha": "1a56d242b84c42d4ed2a531770cc56e1029afa74"
     },
     {
       "surah": 27,
@@ -306,7 +358,9 @@
       "source_record_count": 93,
       "unique_commentary_count": 26,
       "duplicate_record_count": 67,
-      "ayah_coverage_count": 93
+      "ayah_coverage_count": 93,
+      "git_blob_sha": "bfd10181e0dc9fe0b1487ddc68b8aea6a4c48ee1",
+      "original_git_blob_sha": "e6616173424a97a4b8afcb14a5c8e48dc8d80757"
     },
     {
       "surah": 28,
@@ -317,7 +371,9 @@
       "source_record_count": 88,
       "unique_commentary_count": 29,
       "duplicate_record_count": 59,
-      "ayah_coverage_count": 88
+      "ayah_coverage_count": 88,
+      "git_blob_sha": "621a16e51bb6a7add166c574a8f65efe20a4e91c",
+      "original_git_blob_sha": "11f5469c6186dbb12fd868bd5af7fb887a05539c"
     },
     {
       "surah": 29,
@@ -328,7 +384,9 @@
       "source_record_count": 69,
       "unique_commentary_count": 24,
       "duplicate_record_count": 45,
-      "ayah_coverage_count": 69
+      "ayah_coverage_count": 69,
+      "git_blob_sha": "749a0af27802cb14150e40f31b315178d96c1343",
+      "original_git_blob_sha": "084bc4bdeee75e6c14f0937b79491adf3c48aab3"
     },
     {
       "surah": 30,
@@ -339,7 +397,9 @@
       "source_record_count": 60,
       "unique_commentary_count": 22,
       "duplicate_record_count": 38,
-      "ayah_coverage_count": 60
+      "ayah_coverage_count": 60,
+      "git_blob_sha": "076bd00a123bdc55167bb63973604a8209574991",
+      "original_git_blob_sha": "a2fc9b3f103938eaaa2d88e6deecc0b4a11f0602"
     },
     {
       "surah": 31,
@@ -350,7 +410,9 @@
       "source_record_count": 34,
       "unique_commentary_count": 15,
       "duplicate_record_count": 19,
-      "ayah_coverage_count": 34
+      "ayah_coverage_count": 34,
+      "git_blob_sha": "53020560c1426d95f6d568613e2e13821da9dbce",
+      "original_git_blob_sha": "6ec946c44796d53635325279c62cbd86bc6070d7"
     },
     {
       "surah": 32,
@@ -361,7 +423,9 @@
       "source_record_count": 30,
       "unique_commentary_count": 10,
       "duplicate_record_count": 20,
-      "ayah_coverage_count": 30
+      "ayah_coverage_count": 30,
+      "git_blob_sha": "3c280d26c8019d9a2676df02b7304ceac84714f1",
+      "original_git_blob_sha": "de79942043a017c28886fbb550eb68ecccdae7cc"
     },
     {
       "surah": 33,
@@ -372,7 +436,9 @@
       "source_record_count": 73,
       "unique_commentary_count": 35,
       "duplicate_record_count": 38,
-      "ayah_coverage_count": 73
+      "ayah_coverage_count": 73,
+      "git_blob_sha": "84a5cf13fc70c189288596fa913b4541e07d3cca",
+      "original_git_blob_sha": "fe9c2a02a076d236d2bfe9d24039eff2d0ed64ff"
     },
     {
       "surah": 34,
@@ -383,7 +449,9 @@
       "source_record_count": 54,
       "unique_commentary_count": 19,
       "duplicate_record_count": 35,
-      "ayah_coverage_count": 54
+      "ayah_coverage_count": 54,
+      "git_blob_sha": "b9ef74005b0900308d03517b76509b4127df8567",
+      "original_git_blob_sha": "b8af2d10fa7ec97fc6563bdc6e1a53846690d509"
     },
     {
       "surah": 35,
@@ -394,7 +462,9 @@
       "source_record_count": 45,
       "unique_commentary_count": 20,
       "duplicate_record_count": 25,
-      "ayah_coverage_count": 45
+      "ayah_coverage_count": 45,
+      "git_blob_sha": "a1634ecdff0d22a646962eaee439818f5e6dc6d5",
+      "original_git_blob_sha": "970dd0a7caeebb2ae4fab7ff76dad76f48de4d00"
     },
     {
       "surah": 36,
@@ -405,7 +475,9 @@
       "source_record_count": 83,
       "unique_commentary_count": 21,
       "duplicate_record_count": 62,
-      "ayah_coverage_count": 83
+      "ayah_coverage_count": 83,
+      "git_blob_sha": "5b064b96e9c124e72ba6fc0b274aeb5ee79011b2",
+      "original_git_blob_sha": "264bea9ff27bc2287c40c2228ddf8b9ae57b554a"
     },
     {
       "surah": 37,
@@ -416,7 +488,9 @@
       "source_record_count": 182,
       "unique_commentary_count": 21,
       "duplicate_record_count": 161,
-      "ayah_coverage_count": 182
+      "ayah_coverage_count": 182,
+      "git_blob_sha": "c2903479f386c945630c198e6d1faacda9b861fa",
+      "original_git_blob_sha": "dc76cda6a66bd16c34911e1365117ec2ff2931ac"
     },
     {
       "surah": 38,
@@ -427,7 +501,9 @@
       "source_record_count": 88,
       "unique_commentary_count": 16,
       "duplicate_record_count": 72,
-      "ayah_coverage_count": 88
+      "ayah_coverage_count": 88,
+      "git_blob_sha": "12f5e148df25bc34fbf132e812998d9f3ff81022",
+      "original_git_blob_sha": "1875a6ede47e0490e0a325e8ed8e516c6251f76c"
     },
     {
       "surah": 39,
@@ -438,7 +514,9 @@
       "source_record_count": 75,
       "unique_commentary_count": 26,
       "duplicate_record_count": 49,
-      "ayah_coverage_count": 75
+      "ayah_coverage_count": 75,
+      "git_blob_sha": "55f4f0e8ae3dc60fe963ab84392017bf8898146d",
+      "original_git_blob_sha": "b43bd447c1d53e0069a491b75282f0d359b161c6"
     },
     {
       "surah": 40,
@@ -449,7 +527,9 @@
       "source_record_count": 85,
       "unique_commentary_count": 23,
       "duplicate_record_count": 62,
-      "ayah_coverage_count": 85
+      "ayah_coverage_count": 85,
+      "git_blob_sha": "11856f855ef396fcda2144671a3f30ef473739bb",
+      "original_git_blob_sha": "b8a110041cf998898b89cd7e039206b7be3e4929"
     },
     {
       "surah": 41,
@@ -460,7 +540,9 @@
       "source_record_count": 54,
       "unique_commentary_count": 14,
       "duplicate_record_count": 40,
-      "ayah_coverage_count": 54
+      "ayah_coverage_count": 54,
+      "git_blob_sha": "a77dd548280b397be6f678d9caf3f5ec01298ac7",
+      "original_git_blob_sha": "25eac3540605431b4f02fab6bca08fe3a18e9769"
     },
     {
       "surah": 42,
@@ -471,7 +553,9 @@
       "source_record_count": 53,
       "unique_commentary_count": 17,
       "duplicate_record_count": 36,
-      "ayah_coverage_count": 53
+      "ayah_coverage_count": 53,
+      "git_blob_sha": "54651887fc402e69d48c4f849778c413bcbb5828",
+      "original_git_blob_sha": "dd5ecec33ae1659c194b39adf00586abdc56f36a"
     },
     {
       "surah": 43,
@@ -482,7 +566,9 @@
       "source_record_count": 89,
       "unique_commentary_count": 12,
       "duplicate_record_count": 77,
-      "ayah_coverage_count": 89
+      "ayah_coverage_count": 89,
+      "git_blob_sha": "314d24ae9ad2146e25a6c1186441f51d59db8c78",
+      "original_git_blob_sha": "9ce329a90daff3d2e1980f2bbbbcbe4b096abc63"
     },
     {
       "surah": 44,
@@ -493,7 +579,9 @@
       "source_record_count": 59,
       "unique_commentary_count": 7,
       "duplicate_record_count": 52,
-      "ayah_coverage_count": 59
+      "ayah_coverage_count": 59,
+      "git_blob_sha": "c11a2481abdf8b6b43c0b5975dbf2a185d2c601e",
+      "original_git_blob_sha": "9109b0de433d123246bcba96ed2d30728cf1b2ae"
     },
     {
       "surah": 45,
@@ -504,7 +592,9 @@
       "source_record_count": 37,
       "unique_commentary_count": 8,
       "duplicate_record_count": 29,
-      "ayah_coverage_count": 37
+      "ayah_coverage_count": 37,
+      "git_blob_sha": "e8d01ff6bf8ee4cea2d7add02da32f42a5635f78",
+      "original_git_blob_sha": "898531a48c8f9863204b44cd50d97d4bd3c5ded9"
     },
     {
       "surah": 46,
@@ -515,7 +605,9 @@
       "source_record_count": 35,
       "unique_commentary_count": 9,
       "duplicate_record_count": 26,
-      "ayah_coverage_count": 35
+      "ayah_coverage_count": 35,
+      "git_blob_sha": "b9b0f524520d83c7011a995196cab51e0d7ead0f",
+      "original_git_blob_sha": "5c5424d7af6a3a707bfef030f9bac174db791a22"
     },
     {
       "surah": 47,
@@ -526,7 +618,9 @@
       "source_record_count": 38,
       "unique_commentary_count": 10,
       "duplicate_record_count": 28,
-      "ayah_coverage_count": 38
+      "ayah_coverage_count": 38,
+      "git_blob_sha": "ae46fb66ae9809fb4bd70d9045ba01f77f0e1502",
+      "original_git_blob_sha": "5f33ccfab1abf831d6a3dea8626660409a5accf6"
     },
     {
       "surah": 48,
@@ -537,7 +631,9 @@
       "source_record_count": 29,
       "unique_commentary_count": 11,
       "duplicate_record_count": 18,
-      "ayah_coverage_count": 29
+      "ayah_coverage_count": 29,
+      "git_blob_sha": "aa062080e0950b4532dab3d3157e432e9ff7e1df",
+      "original_git_blob_sha": "50f41ce019df244986b49727f1dd70a6e8d8740f"
     },
     {
       "surah": 49,
@@ -548,7 +644,9 @@
       "source_record_count": 18,
       "unique_commentary_count": 8,
       "duplicate_record_count": 10,
-      "ayah_coverage_count": 18
+      "ayah_coverage_count": 18,
+      "git_blob_sha": "a7dc5651fe017113a6c4d692073711d3ddbd93a6",
+      "original_git_blob_sha": "92315c34e6abbff49f7358a06df4925d5efe705c"
     },
     {
       "surah": 50,
@@ -559,7 +657,9 @@
       "source_record_count": 45,
       "unique_commentary_count": 8,
       "duplicate_record_count": 37,
-      "ayah_coverage_count": 45
+      "ayah_coverage_count": 45,
+      "git_blob_sha": "7e3625d683881892e8428f6fba74ba0b5add17da",
+      "original_git_blob_sha": "9b583e794ce93d93d446b577a09fc1242bc9e7a9"
     },
     {
       "surah": 51,
@@ -570,7 +670,9 @@
       "source_record_count": 60,
       "unique_commentary_count": 7,
       "duplicate_record_count": 53,
-      "ayah_coverage_count": 60
+      "ayah_coverage_count": 60,
+      "git_blob_sha": "d979d40677420d6e2f757a918adec6042af6fa38",
+      "original_git_blob_sha": "6082db0e2df10be5e4032529721a319fed6834a2"
     },
     {
       "surah": 52,
@@ -581,7 +683,9 @@
       "source_record_count": 49,
       "unique_commentary_count": 6,
       "duplicate_record_count": 43,
-      "ayah_coverage_count": 49
+      "ayah_coverage_count": 49,
+      "git_blob_sha": "a2ddec1e969e1da14e76cab48e021471197bfb21",
+      "original_git_blob_sha": "092ad1bc87935f75f15ea8e5d6c038754b7f6b02"
     },
     {
       "surah": 53,
@@ -592,7 +696,9 @@
       "source_record_count": 62,
       "unique_commentary_count": 8,
       "duplicate_record_count": 54,
-      "ayah_coverage_count": 62
+      "ayah_coverage_count": 62,
+      "git_blob_sha": "3f3f93f760a5d0a5c010053efbe319c30202ea7e",
+      "original_git_blob_sha": "32f0cd7570ccc3e4b589ac30e46ce15d000e91c6"
     },
     {
       "surah": 54,
@@ -603,7 +709,9 @@
       "source_record_count": 55,
       "unique_commentary_count": 8,
       "duplicate_record_count": 47,
-      "ayah_coverage_count": 55
+      "ayah_coverage_count": 55,
+      "git_blob_sha": "ad3205448ae3582490aef2f881cf3faf8aaf1b97",
+      "original_git_blob_sha": "d73c3c67aafbf811cb314535966f223eb73190a3"
     },
     {
       "surah": 55,
@@ -614,7 +722,9 @@
       "source_record_count": 78,
       "unique_commentary_count": 8,
       "duplicate_record_count": 70,
-      "ayah_coverage_count": 78
+      "ayah_coverage_count": 78,
+      "git_blob_sha": "f5de64329fc339e03222dd05faf3fb3126995011",
+      "original_git_blob_sha": "b87d5270ae7396f5641c0499563e89071eadcf59"
     },
     {
       "surah": 56,
@@ -625,7 +735,9 @@
       "source_record_count": 96,
       "unique_commentary_count": 9,
       "duplicate_record_count": 87,
-      "ayah_coverage_count": 96
+      "ayah_coverage_count": 96,
+      "git_blob_sha": "2b3fa3273c82acbabba87e68a532cfac12eed674",
+      "original_git_blob_sha": "8f81c0febf04a831821e81a80997a95fcbc78810"
     },
     {
       "surah": 57,
@@ -636,7 +748,9 @@
       "source_record_count": 29,
       "unique_commentary_count": 11,
       "duplicate_record_count": 18,
-      "ayah_coverage_count": 29
+      "ayah_coverage_count": 29,
+      "git_blob_sha": "b35c5c3a35f3cea4d9df6dc524311954f7ac8707",
+      "original_git_blob_sha": "ae70e296abeb7bf52d64eb262c167976ab8fd46e"
     },
     {
       "surah": 58,
@@ -647,7 +761,9 @@
       "source_record_count": 22,
       "unique_commentary_count": 8,
       "duplicate_record_count": 14,
-      "ayah_coverage_count": 22
+      "ayah_coverage_count": 22,
+      "git_blob_sha": "d24e8f60840c1987ed464d3f73f682b372d766d0",
+      "original_git_blob_sha": "1a3771eb7ff1a2a093c5a0db855ce057b07a5441"
     },
     {
       "surah": 59,
@@ -658,7 +774,9 @@
       "source_record_count": 24,
       "unique_commentary_count": 6,
       "duplicate_record_count": 18,
-      "ayah_coverage_count": 24
+      "ayah_coverage_count": 24,
+      "git_blob_sha": "3a6a28bcf2cb3e75bcd46b0ca391f513ef42279a",
+      "original_git_blob_sha": "082481a7b838cd041914e1c459c6451196fda044"
     },
     {
       "surah": 60,
@@ -669,7 +787,9 @@
       "source_record_count": 13,
       "unique_commentary_count": 6,
       "duplicate_record_count": 7,
-      "ayah_coverage_count": 13
+      "ayah_coverage_count": 13,
+      "git_blob_sha": "077aa384de0208a9aed29394273c1ecc12e583f9",
+      "original_git_blob_sha": "f25b521038c0ddc52e22a3b059eeb3260b9d25e3"
     },
     {
       "surah": 61,
@@ -680,7 +800,9 @@
       "source_record_count": 14,
       "unique_commentary_count": 5,
       "duplicate_record_count": 9,
-      "ayah_coverage_count": 14
+      "ayah_coverage_count": 14,
+      "git_blob_sha": "8a102329fb3548c8637725d7f21407c9c0afb1f4",
+      "original_git_blob_sha": "e26ce51c2eba9646f56a002c92ee7bce61667f5d"
     },
     {
       "surah": 62,
@@ -691,7 +813,9 @@
       "source_record_count": 11,
       "unique_commentary_count": 4,
       "duplicate_record_count": 7,
-      "ayah_coverage_count": 11
+      "ayah_coverage_count": 11,
+      "git_blob_sha": "f2d359b5d1463ed1c78bb15479161cb8c0306990",
+      "original_git_blob_sha": "dd7d71c3bbefcd9445308ce3c77639a1db528a77"
     },
     {
       "surah": 63,
@@ -702,7 +826,9 @@
       "source_record_count": 11,
       "unique_commentary_count": 3,
       "duplicate_record_count": 8,
-      "ayah_coverage_count": 11
+      "ayah_coverage_count": 11,
+      "git_blob_sha": "33daed7b189c3007f9ebc8dd417785714cec5977",
+      "original_git_blob_sha": "6b75a457481c7514557e6569bb657f24737f956b"
     },
     {
       "surah": 64,
@@ -713,7 +839,9 @@
       "source_record_count": 18,
       "unique_commentary_count": 5,
       "duplicate_record_count": 13,
-      "ayah_coverage_count": 18
+      "ayah_coverage_count": 18,
+      "git_blob_sha": "813a380fb9dbc49115ac5f552760ec64027f86d4",
+      "original_git_blob_sha": "aa235d3b103f6f8037dac28dcceb22b6659f731a"
     },
     {
       "surah": 65,
@@ -724,7 +852,9 @@
       "source_record_count": 12,
       "unique_commentary_count": 6,
       "duplicate_record_count": 6,
-      "ayah_coverage_count": 12
+      "ayah_coverage_count": 12,
+      "git_blob_sha": "e4aff740e634b994d84823a1684f7e6d0b26dbad",
+      "original_git_blob_sha": "f5f9175854b71a8f5e571bb01319897e1ef82a86"
     },
     {
       "surah": 66,
@@ -735,7 +865,9 @@
       "source_record_count": 12,
       "unique_commentary_count": 4,
       "duplicate_record_count": 8,
-      "ayah_coverage_count": 12
+      "ayah_coverage_count": 12,
+      "git_blob_sha": "e202d208ac4d542e2de9512b883b5c8ad0a1a827",
+      "original_git_blob_sha": "4af315a7d81f1c148d451e600272b6279212e058"
     },
     {
       "surah": 67,
@@ -746,7 +878,9 @@
       "source_record_count": 30,
       "unique_commentary_count": 6,
       "duplicate_record_count": 24,
-      "ayah_coverage_count": 30
+      "ayah_coverage_count": 30,
+      "git_blob_sha": "1a2d9bee24c3a487e3b910825c414641e080f820",
+      "original_git_blob_sha": "3cf37c68ee9e1d53d58897c8201381967cf4dbef"
     },
     {
       "surah": 68,
@@ -757,7 +891,9 @@
       "source_record_count": 52,
       "unique_commentary_count": 6,
       "duplicate_record_count": 46,
-      "ayah_coverage_count": 52
+      "ayah_coverage_count": 52,
+      "git_blob_sha": "f35b50e099de1c1047aac33578ba046c9ccf6d77",
+      "original_git_blob_sha": "b29efb306721b28a0ef440508ff9452e18fab719"
     },
     {
       "surah": 69,
@@ -768,7 +904,9 @@
       "source_record_count": 52,
       "unique_commentary_count": 6,
       "duplicate_record_count": 46,
-      "ayah_coverage_count": 52
+      "ayah_coverage_count": 52,
+      "git_blob_sha": "943b875b44fe8fcdf208b4d40df478cccebb4326",
+      "original_git_blob_sha": "9578c32c7af4393b51f6dc17bf20e63e0fc6607d"
     },
     {
       "surah": 70,
@@ -779,7 +917,9 @@
       "source_record_count": 44,
       "unique_commentary_count": 4,
       "duplicate_record_count": 40,
-      "ayah_coverage_count": 44
+      "ayah_coverage_count": 44,
+      "git_blob_sha": "5d1527f5dd381a5ca29ecccddb3686557483dd1c",
+      "original_git_blob_sha": "e82eb6228d12b0d439853f8ce8838d4ea72aebf5"
     },
     {
       "surah": 71,
@@ -790,7 +930,9 @@
       "source_record_count": 28,
       "unique_commentary_count": 4,
       "duplicate_record_count": 24,
-      "ayah_coverage_count": 28
+      "ayah_coverage_count": 28,
+      "git_blob_sha": "3f6b6a50962781fc93f4468f792c462c6cf5e3ef",
+      "original_git_blob_sha": "ee21644fe8cf0a0b73d7d2f0ffaf45ec6d03d034"
     },
     {
       "surah": 72,
@@ -801,7 +943,9 @@
       "source_record_count": 28,
       "unique_commentary_count": 5,
       "duplicate_record_count": 23,
-      "ayah_coverage_count": 28
+      "ayah_coverage_count": 28,
+      "git_blob_sha": "5111a547672beaef6b72484c310c61ede2f2ccfb",
+      "original_git_blob_sha": "50b59e84fd6b62463ce7c52cc61d2a5645d4a9b3"
     },
     {
       "surah": 73,
@@ -812,7 +956,9 @@
       "source_record_count": 20,
       "unique_commentary_count": 3,
       "duplicate_record_count": 17,
-      "ayah_coverage_count": 20
+      "ayah_coverage_count": 20,
+      "git_blob_sha": "4579ea35448992fd55fb95a96b90ec9758c8abee",
+      "original_git_blob_sha": "b9549b4d949e4dcf1d4b656cb0f87c0b7368e21d"
     },
     {
       "surah": 74,
@@ -823,7 +969,9 @@
       "source_record_count": 56,
       "unique_commentary_count": 4,
       "duplicate_record_count": 52,
-      "ayah_coverage_count": 56
+      "ayah_coverage_count": 56,
+      "git_blob_sha": "05c88587bcecd4d3606aa88766eca6c06d22f5a5",
+      "original_git_blob_sha": "d6d88f10d71d7762308dc23b3043c1dfec061e6a"
     },
     {
       "surah": 75,
@@ -834,7 +982,9 @@
       "source_record_count": 40,
       "unique_commentary_count": 3,
       "duplicate_record_count": 37,
-      "ayah_coverage_count": 40
+      "ayah_coverage_count": 40,
+      "git_blob_sha": "1a48d52d12899aec2ab03f0b622bb5bcc3e0ef02",
+      "original_git_blob_sha": "9e0a45641456b011d4a209a7e88ca902d8a83470"
     },
     {
       "surah": 76,
@@ -845,7 +995,9 @@
       "source_record_count": 31,
       "unique_commentary_count": 4,
       "duplicate_record_count": 27,
-      "ayah_coverage_count": 31
+      "ayah_coverage_count": 31,
+      "git_blob_sha": "dde4d5b5d5400b0f4f83307a62aa80227abd6d75",
+      "original_git_blob_sha": "d8bef107c37ac177aa39a01067aea7b0eda217ae"
     },
     {
       "surah": 77,
@@ -856,7 +1008,9 @@
       "source_record_count": 50,
       "unique_commentary_count": 4,
       "duplicate_record_count": 46,
-      "ayah_coverage_count": 50
+      "ayah_coverage_count": 50,
+      "git_blob_sha": "5579b3452d028b72d512dc4a282ce6aefd7442ff",
+      "original_git_blob_sha": "5cc27c5bb827a62682381912c885e35a967a10a6"
     },
     {
       "surah": 78,
@@ -867,7 +1021,9 @@
       "source_record_count": 40,
       "unique_commentary_count": 3,
       "duplicate_record_count": 37,
-      "ayah_coverage_count": 40
+      "ayah_coverage_count": 40,
+      "git_blob_sha": "022508278c2e0946001d14f666ff5ad65e3fca0d",
+      "original_git_blob_sha": "9c17dafa52424938ee77fd4cebc9d394a2d60793"
     },
     {
       "surah": 79,
@@ -878,7 +1034,9 @@
       "source_record_count": 46,
       "unique_commentary_count": 3,
       "duplicate_record_count": 43,
-      "ayah_coverage_count": 46
+      "ayah_coverage_count": 46,
+      "git_blob_sha": "07894c25ce03b89cddf9d73ba5cb5d49c71909a9",
+      "original_git_blob_sha": "bc007716dcdc137f704d9c210958737067463173"
     },
     {
       "surah": 80,
@@ -889,7 +1047,9 @@
       "source_record_count": 42,
       "unique_commentary_count": 3,
       "duplicate_record_count": 39,
-      "ayah_coverage_count": 42
+      "ayah_coverage_count": 42,
+      "git_blob_sha": "1c5f20954cd8e869ca60ec325406369e2212e079",
+      "original_git_blob_sha": "07f360737e3b3d0f12dc142fa5eb48871747b972"
     },
     {
       "surah": 81,
@@ -900,7 +1060,9 @@
       "source_record_count": 29,
       "unique_commentary_count": 2,
       "duplicate_record_count": 27,
-      "ayah_coverage_count": 29
+      "ayah_coverage_count": 29,
+      "git_blob_sha": "dec3b168d2e5405944906947bed33a56b5d5cdc4",
+      "original_git_blob_sha": "82ee4668fb63f97eeca45bd98ac1cf899f989727"
     },
     {
       "surah": 82,
@@ -911,7 +1073,9 @@
       "source_record_count": 19,
       "unique_commentary_count": 2,
       "duplicate_record_count": 17,
-      "ayah_coverage_count": 19
+      "ayah_coverage_count": 19,
+      "git_blob_sha": "7140db61c7375954163da909dd7cf8dbc946547e",
+      "original_git_blob_sha": "afe6a35bbd43f8bcf0b20dd6d08f130ff2d0ae5f"
     },
     {
       "surah": 83,
@@ -922,7 +1086,9 @@
       "source_record_count": 36,
       "unique_commentary_count": 4,
       "duplicate_record_count": 32,
-      "ayah_coverage_count": 36
+      "ayah_coverage_count": 36,
+      "git_blob_sha": "3d3e75179eeeaf260f9f70443a9ad27461d914d4",
+      "original_git_blob_sha": "4e7a2a2902495f96bc693d570ff69fe0fad8af0a"
     },
     {
       "surah": 84,
@@ -933,7 +1099,9 @@
       "source_record_count": 25,
       "unique_commentary_count": 2,
       "duplicate_record_count": 23,
-      "ayah_coverage_count": 25
+      "ayah_coverage_count": 25,
+      "git_blob_sha": "a760d21d53e490327f271edfdd11b28a40e2964d",
+      "original_git_blob_sha": "d1f2e3400dcd6449912bb2d614250f10ae03316d"
     },
     {
       "surah": 85,
@@ -944,7 +1112,9 @@
       "source_record_count": 22,
       "unique_commentary_count": 2,
       "duplicate_record_count": 20,
-      "ayah_coverage_count": 22
+      "ayah_coverage_count": 22,
+      "git_blob_sha": "806e158eeefe60cf3696734dd6456d9f416d55a0",
+      "original_git_blob_sha": "1c87fe1ffe96d6e475d90803dba8a6b18ccc757c"
     },
     {
       "surah": 86,
@@ -955,7 +1125,9 @@
       "source_record_count": 17,
       "unique_commentary_count": 2,
       "duplicate_record_count": 15,
-      "ayah_coverage_count": 17
+      "ayah_coverage_count": 17,
+      "git_blob_sha": "efc950ae7830c3a48ed51d07c313af623b987549",
+      "original_git_blob_sha": "81b543f4e6bb95e9ad802fbb61fec1f4217fa59d"
     },
     {
       "surah": 87,
@@ -966,7 +1138,9 @@
       "source_record_count": 19,
       "unique_commentary_count": 2,
       "duplicate_record_count": 17,
-      "ayah_coverage_count": 19
+      "ayah_coverage_count": 19,
+      "git_blob_sha": "72293cbf23347b8227463599086211d572b54222",
+      "original_git_blob_sha": "7cd45dbf7f30bfdcf17e62e9508f3fb9ad9cae1b"
     },
     {
       "surah": 88,
@@ -977,7 +1151,9 @@
       "source_record_count": 26,
       "unique_commentary_count": 3,
       "duplicate_record_count": 23,
-      "ayah_coverage_count": 26
+      "ayah_coverage_count": 26,
+      "git_blob_sha": "d1e06efab52e941327c73fe1a1d5430bf2e85a36",
+      "original_git_blob_sha": "536e5eba0e613f453fb1919074b4cf93067bc42c"
     },
     {
       "surah": 89,
@@ -988,7 +1164,9 @@
       "source_record_count": 30,
       "unique_commentary_count": 3,
       "duplicate_record_count": 27,
-      "ayah_coverage_count": 30
+      "ayah_coverage_count": 30,
+      "git_blob_sha": "3b0a9762debed2eb121fe78fda456459cc985871",
+      "original_git_blob_sha": "a379bdcecea4bb8d5b0b3cd66cc9ef4a1e4f6829"
     },
     {
       "surah": 90,
@@ -999,7 +1177,9 @@
       "source_record_count": 20,
       "unique_commentary_count": 1,
       "duplicate_record_count": 19,
-      "ayah_coverage_count": 20
+      "ayah_coverage_count": 20,
+      "git_blob_sha": "818b66cd1e0e93dc50404328600e60a64ccd4bea",
+      "original_git_blob_sha": "d81f1bf60b472c6fee3c3febbddab35f98b286ed"
     },
     {
       "surah": 91,
@@ -1010,7 +1190,9 @@
       "source_record_count": 15,
       "unique_commentary_count": 2,
       "duplicate_record_count": 13,
-      "ayah_coverage_count": 15
+      "ayah_coverage_count": 15,
+      "git_blob_sha": "74a46299c31c5ae60c7c99cf1f594f64b5e3d14f",
+      "original_git_blob_sha": "d4c2b2189990c98a80d5d1ccb4b6d54cda4ab27d"
     },
     {
       "surah": 92,
@@ -1021,7 +1203,9 @@
       "source_record_count": 21,
       "unique_commentary_count": 2,
       "duplicate_record_count": 19,
-      "ayah_coverage_count": 21
+      "ayah_coverage_count": 21,
+      "git_blob_sha": "1d6d610c17814ba924e547e37601988aa50bcd48",
+      "original_git_blob_sha": "b22f94e11b487deb861cb0c2664195f28213028b"
     },
     {
       "surah": 93,
@@ -1032,7 +1216,9 @@
       "source_record_count": 11,
       "unique_commentary_count": 1,
       "duplicate_record_count": 10,
-      "ayah_coverage_count": 11
+      "ayah_coverage_count": 11,
+      "git_blob_sha": "9157b40a38f2800d8e70be1fb956a6dbbf666a20",
+      "original_git_blob_sha": "b1f7c550de6d7bc64445f2aac3f4ac7ed39a67cb"
     },
     {
       "surah": 94,
@@ -1043,7 +1229,9 @@
       "source_record_count": 8,
       "unique_commentary_count": 1,
       "duplicate_record_count": 7,
-      "ayah_coverage_count": 8
+      "ayah_coverage_count": 8,
+      "git_blob_sha": "b638cb3817f86a2dc8190e5d9fde258e8a757c2c",
+      "original_git_blob_sha": "7c4587ab571d8fe1bf60f8bc880ce54fad60cbb1"
     },
     {
       "surah": 95,
@@ -1054,7 +1242,9 @@
       "source_record_count": 8,
       "unique_commentary_count": 1,
       "duplicate_record_count": 7,
-      "ayah_coverage_count": 8
+      "ayah_coverage_count": 8,
+      "git_blob_sha": "ed728273cf00999dc5d5e365e78191911ce36b53",
+      "original_git_blob_sha": "c21f463ceaacce9b553740bba199eec50e1ad8b6"
     },
     {
       "surah": 96,
@@ -1065,7 +1255,9 @@
       "source_record_count": 19,
       "unique_commentary_count": 2,
       "duplicate_record_count": 17,
-      "ayah_coverage_count": 19
+      "ayah_coverage_count": 19,
+      "git_blob_sha": "10fd22708690c37a30cce119dcbcbb96777f6936",
+      "original_git_blob_sha": "47fa6e54e83ef710640e842f7581e47d5a47d9ed"
     },
     {
       "surah": 97,
@@ -1076,7 +1268,9 @@
       "source_record_count": 5,
       "unique_commentary_count": 1,
       "duplicate_record_count": 4,
-      "ayah_coverage_count": 5
+      "ayah_coverage_count": 5,
+      "git_blob_sha": "2dd7c576f0ba0102354a92726a46117bc9f2200a",
+      "original_git_blob_sha": "fe014de065dff1c8a99e5021587034c70e9d7cb2"
     },
     {
       "surah": 98,
@@ -1087,7 +1281,9 @@
       "source_record_count": 8,
       "unique_commentary_count": 2,
       "duplicate_record_count": 6,
-      "ayah_coverage_count": 8
+      "ayah_coverage_count": 8,
+      "git_blob_sha": "d7a09744435bdd38858527d361aa45433687d062",
+      "original_git_blob_sha": "0fa07ba2d2862d4d16fc67f245ff07fd8246f671"
     },
     {
       "surah": 99,
@@ -1098,7 +1294,9 @@
       "source_record_count": 8,
       "unique_commentary_count": 1,
       "duplicate_record_count": 7,
-      "ayah_coverage_count": 8
+      "ayah_coverage_count": 8,
+      "git_blob_sha": "865dd229116d15e7ba43375935df8927262921c1",
+      "original_git_blob_sha": "95533f118034b4c98d4ecbcca9211c34b18ade69"
     },
     {
       "surah": 100,
@@ -1109,7 +1307,9 @@
       "source_record_count": 11,
       "unique_commentary_count": 1,
       "duplicate_record_count": 10,
-      "ayah_coverage_count": 11
+      "ayah_coverage_count": 11,
+      "git_blob_sha": "9dab356bc8d06b96afe729e58c488dc59839ed48",
+      "original_git_blob_sha": "699baa0faa3ecb11b523e16ab4b70145154e949d"
     },
     {
       "surah": 101,
@@ -1120,7 +1320,9 @@
       "source_record_count": 11,
       "unique_commentary_count": 1,
       "duplicate_record_count": 10,
-      "ayah_coverage_count": 11
+      "ayah_coverage_count": 11,
+      "git_blob_sha": "9762c8acea994b4ba4dcf6805b2c9ce4d2b44286",
+      "original_git_blob_sha": "e175c55496c039f980da93eb8d8e7d9edc62afb7"
     },
     {
       "surah": 102,
@@ -1131,7 +1333,9 @@
       "source_record_count": 8,
       "unique_commentary_count": 1,
       "duplicate_record_count": 7,
-      "ayah_coverage_count": 8
+      "ayah_coverage_count": 8,
+      "git_blob_sha": "669e1e45c5a1dce419daca6a17bb73b58a3c5a47",
+      "original_git_blob_sha": "0b785c9be1f8ac07df88408bb89e4d7071591a03"
     },
     {
       "surah": 103,
@@ -1142,7 +1346,9 @@
       "source_record_count": 3,
       "unique_commentary_count": 1,
       "duplicate_record_count": 2,
-      "ayah_coverage_count": 3
+      "ayah_coverage_count": 3,
+      "git_blob_sha": "0c42ecd09ec491e448cec0406534554d3ca233cc",
+      "original_git_blob_sha": "18571e7f23b768810b8ff851ee93148f6b2d251d"
     },
     {
       "surah": 104,
@@ -1153,7 +1359,9 @@
       "source_record_count": 9,
       "unique_commentary_count": 1,
       "duplicate_record_count": 8,
-      "ayah_coverage_count": 9
+      "ayah_coverage_count": 9,
+      "git_blob_sha": "a847040d9e95bccc76024d24c22d07b965fa79c5",
+      "original_git_blob_sha": "501d8b1b1a8e2b673f787beed827064e16069a75"
     },
     {
       "surah": 105,
@@ -1164,7 +1372,9 @@
       "source_record_count": 5,
       "unique_commentary_count": 1,
       "duplicate_record_count": 4,
-      "ayah_coverage_count": 5
+      "ayah_coverage_count": 5,
+      "git_blob_sha": "6146951fb699e6ad4b2717e9879edc94bc3b2cee",
+      "original_git_blob_sha": "8e5ee1ba5859408b3b041b21ed283f7d15474d87"
     },
     {
       "surah": 106,
@@ -1175,7 +1385,9 @@
       "source_record_count": 4,
       "unique_commentary_count": 1,
       "duplicate_record_count": 3,
-      "ayah_coverage_count": 4
+      "ayah_coverage_count": 4,
+      "git_blob_sha": "c3dfdfd4cd78502288f04482e7569dcca1bdf573",
+      "original_git_blob_sha": "e10396d2e438766b02502979b8d16d2960dbce8f"
     },
     {
       "surah": 107,
@@ -1186,7 +1398,9 @@
       "source_record_count": 7,
       "unique_commentary_count": 1,
       "duplicate_record_count": 6,
-      "ayah_coverage_count": 7
+      "ayah_coverage_count": 7,
+      "git_blob_sha": "758f789b3acb67d5a7c76da72731c6b78f6c753f",
+      "original_git_blob_sha": "35cba906d49d3e14b828f81f5ae5cb92095ff8fa"
     },
     {
       "surah": 108,
@@ -1197,7 +1411,9 @@
       "source_record_count": 3,
       "unique_commentary_count": 1,
       "duplicate_record_count": 2,
-      "ayah_coverage_count": 3
+      "ayah_coverage_count": 3,
+      "git_blob_sha": "94a7e11d4187316f1a85376a4892eb941d8f7c81",
+      "original_git_blob_sha": "b66c854472bfb1b6f75f81117f89fd47eb690c72"
     },
     {
       "surah": 109,
@@ -1208,7 +1424,9 @@
       "source_record_count": 6,
       "unique_commentary_count": 1,
       "duplicate_record_count": 5,
-      "ayah_coverage_count": 6
+      "ayah_coverage_count": 6,
+      "git_blob_sha": "a95719a76774faf7ee10c2dde467bae97647b548",
+      "original_git_blob_sha": "a131a83fb8f9e3774f53dcda18cf14799ff21b28"
     },
     {
       "surah": 110,
@@ -1219,7 +1437,9 @@
       "source_record_count": 3,
       "unique_commentary_count": 1,
       "duplicate_record_count": 2,
-      "ayah_coverage_count": 3
+      "ayah_coverage_count": 3,
+      "git_blob_sha": "f65bb44865b83c4fa3f183c19bcc470c98e7095c",
+      "original_git_blob_sha": "ef84daae4a293e3e8232f2beb1a2daf9dab6c7ce"
     },
     {
       "surah": 111,
@@ -1230,7 +1450,9 @@
       "source_record_count": 5,
       "unique_commentary_count": 1,
       "duplicate_record_count": 4,
-      "ayah_coverage_count": 5
+      "ayah_coverage_count": 5,
+      "git_blob_sha": "1c33fd8a6f246ba7eee21484cb3a4d8d214c828e",
+      "original_git_blob_sha": "f396abef888cf201f6ad1c2956a24def4b3548e4"
     },
     {
       "surah": 112,
@@ -1241,7 +1463,9 @@
       "source_record_count": 4,
       "unique_commentary_count": 1,
       "duplicate_record_count": 3,
-      "ayah_coverage_count": 4
+      "ayah_coverage_count": 4,
+      "git_blob_sha": "abe4c48938207b1e79f5b6e38f25696e20f956c5",
+      "original_git_blob_sha": "fa7440e30fe4545cd181b24a04559e26642bda3f"
     },
     {
       "surah": 113,
@@ -1252,7 +1476,9 @@
       "source_record_count": 5,
       "unique_commentary_count": 1,
       "duplicate_record_count": 4,
-      "ayah_coverage_count": 5
+      "ayah_coverage_count": 5,
+      "git_blob_sha": "931cc3a2a5e993773de11cbfdf183c89e841d512",
+      "original_git_blob_sha": "705af0b405e79b1cf46be85d0cf9dab2be910273"
     },
     {
       "surah": 114,
@@ -1263,7 +1489,9 @@
       "source_record_count": 6,
       "unique_commentary_count": 1,
       "duplicate_record_count": 5,
-      "ayah_coverage_count": 6
+      "ayah_coverage_count": 6,
+      "git_blob_sha": "ad69f42d73109680b3a16ed706335fac4e7cb781",
+      "original_git_blob_sha": "fe9ca86b83500853de1e6d50c9eaf3c92b5235db"
     }
   ],
   "preservation_rule": "Active canonical source data used by ApnaQuran. Exact duplicate commentary passages are consolidated, and all distinct original Ayah references are retained in ayahs[]. Untouched upstream files and their original checksums are preserved in ../original-source/.",
@@ -1271,5 +1499,7 @@
   "original_record_count": 6236,
   "cleaned_record_count": 1903,
   "duplicate_records_consolidated": 4333,
-  "ayah_references_preserved": 6236
+  "ayah_references_preserved": 6236,
+  "file_count": 114,
+  "checksum_method": "Git blob SHA-1 for exact cleaned source file bytes; original_git_blob_sha points to the untouched upstream backup."
 }
