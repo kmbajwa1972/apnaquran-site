@@ -1,0 +1,100 @@
+name: Transfer As-Saadi Urdu source snapshot
+
+on:
+  push:
+    branches:
+      - feature/tafseer-library-complete
+    paths:
+      - .github/workflows/transfer-as-saadi-urdu.yml
+
+permissions:
+  contents: write
+
+jobs:
+  transfer:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout target feature branch
+        uses: actions/checkout@v4
+        with:
+          ref: feature/tafseer-library-complete
+          fetch-depth: 0
+          persist-credentials: true
+
+      - name: Download pinned upstream snapshot
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/as-saadi-upstream
+          curl --fail --location --retry 3 \
+            https://codeload.github.com/spa5k/tafsir_api/tar.gz/eb82bb6294efe30ad5c135c03b1864afaa70e855 \
+            -o /tmp/as-saadi.tar.gz
+          tar -xzf /tmp/as-saadi.tar.gz --strip-components=1 -C /tmp/as-saadi-upstream
+          test -d /tmp/as-saadi-upstream/tafsir/ur-tafsir-as-saadi-urdu
+
+      - name: Validate and copy original Surah files
+        shell: bash
+        run: |
+          set -euo pipefail
+          src=/tmp/as-saadi-upstream/tafsir/ur-tafsir-as-saadi-urdu
+          dst=tafseer-library/as-saadi-urdu/source
+          mkdir -p "$dst"
+          mapfile -t files < <(find "$src" -maxdepth 1 -type f -name '*.json' -printf '%f\n' | sort -V)
+          test "${#files[@]}" -eq 114
+          for n in $(seq 1 114); do
+            expected="${n}.json"
+            test "${files[$((n-1))]}" = "$expected"
+            if [ -e "$dst/$expected" ]; then
+              cmp -s "$src/$expected" "$dst/$expected" || {
+                echo "Existing destination differs: $expected" >&2
+                exit 1
+              }
+            else
+              cp "$src/$expected" "$dst/$expected"
+            fi
+          done
+          python - <<'PY'
+          import hashlib, json, pathlib
+          src = pathlib.Path('/tmp/as-saadi-upstream/tafsir/ur-tafsir-as-saadi-urdu')
+          dst = pathlib.Path('tafseer-library/as-saadi-urdu/source')
+          rows = []
+          total = 0
+          for n in range(1, 115):
+              name = f'{n}.json'
+              upstream = (src / name).read_bytes()
+              copied = (dst / name).read_bytes()
+              if upstream != copied:
+                  raise SystemExit(f'Byte mismatch: {name}')
+              digest = hashlib.sha256(copied).hexdigest()
+              rows.append({'file': name, 'bytes': len(copied), 'sha256': digest})
+              total += len(copied)
+          manifest = {
+              'edition': 'As-Saadi Urdu',
+              'upstream_repository': 'https://github.com/spa5k/tafsir_api',
+              'upstream_path': 'tafsir/ur-tafsir-as-saadi-urdu/',
+              'pinned_commit': 'eb82bb6294efe30ad5c135c03b1864afaa70e855',
+              'upstream_tree_sha': 'f8a8d35e7ba9633fe38875a674dcd1a24bd1eb88',
+              'file_count': len(rows),
+              'total_bytes': total,
+              'files': rows
+          }
+          (dst / 'SOURCE-MANIFEST.json').write_text(
+              json.dumps(manifest, ensure_ascii=False, indent=2) + '\n',
+              encoding='utf-8'
+          )
+          print(f"Verified {len(rows)} files; {total} bytes")
+          PY
+
+      - name: Commit source snapshot to feature branch
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add tafseer-library/as-saadi-urdu/source
+          if git diff --cached --quiet; then
+            echo "No source changes to commit."
+            exit 0
+          fi
+          git commit -m "Transfer original As-Saadi Urdu source snapshot"
+          git push origin HEAD:refs/heads/feature/tafseer-library-complete
