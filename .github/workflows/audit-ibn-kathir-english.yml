@@ -34,14 +34,17 @@ jobs:
       - name: Check JavaScript syntax
         run: node --check js/tafsir.js
 
-      - name: Verify source and generate cleaned edition
+      - name: Check app JavaScript syntax
+        run: node --check js/tafsir.js
+
+      - name: Verify canonical source against original backup
         run: node scripts/audit-ibn-kathir-english.mjs
 
       - name: Commit cleaned edition
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add tafseer-library/ibn-kathir-english/cleaned
+          git add tafseer-library/ibn-kathir-english/AUDIT-REPORT.md
           if git diff --cached --quiet; then
             echo "Cleaned edition is already up to date."
           else
