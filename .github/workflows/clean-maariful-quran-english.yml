@@ -41,3 +41,5 @@ jobs:
             git commit -m "Back up and clean Ma'ariful Quran English source"
             git push origin feature/tafseer-library-complete
           fi
+
+# Trigger source audit after workflow registration.
