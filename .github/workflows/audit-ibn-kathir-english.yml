@@ -1,0 +1,47 @@
+name: Audit and clean English Ibn Kathir
+
+on:
+  push:
+    branches:
+      - feature/tafseer-library-complete
+    paths:
+      - 'tafseer-library/ibn-kathir-english/source/**'
+      - 'scripts/audit-ibn-kathir-english.mjs'
+      - '.github/workflows/audit-ibn-kathir-english.yml'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: ibn-kathir-english-cleanup
+  cancel-in-progress: false
+
+jobs:
+  audit-and-clean:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out library branch
+        uses: actions/checkout@v4
+        with:
+          ref: feature/tafseer-library-complete
+          fetch-depth: 0
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Verify source and generate cleaned edition
+        run: node scripts/audit-ibn-kathir-english.mjs
+
+      - name: Commit cleaned edition
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add tafseer-library/ibn-kathir-english/cleaned
+          if git diff --cached --quiet; then
+            echo "Cleaned edition is already up to date."
+          else
+            git commit -m "Audit and deduplicate English Ibn Kathir commentary"
+            git push origin feature/tafseer-library-complete
+          fi

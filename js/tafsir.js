@@ -34,8 +34,11 @@
     status.dir = 'ltr';
     textBox.replaceChildren();
 
-    const tafsirUrl = 'https://cdn.jsdelivr.net/gh/spa5k/tafsir_api@' + tafsirSourceCommit + '/tafsir/' +
-      encodeURIComponent(slug) + '/' + surahNumber + '.json';
+    const isLocalEnglishIbnKathir = slug === 'en-tafisr-ibn-kathir';
+    const tafsirUrl = isLocalEnglishIbnKathir
+      ? 'tafseer-library/ibn-kathir-english/cleaned/' + surahNumber + '.json'
+      : 'https://cdn.jsdelivr.net/gh/spa5k/tafsir_api@' + tafsirSourceCommit + '/tafsir/' +
+        encodeURIComponent(slug) + '/' + surahNumber + '.json';
 
     try {
       const requests = [
@@ -48,7 +51,8 @@
       }
 
       const data = await responses[0].json();
-      const entries = Array.isArray(data) ? data : (Array.isArray(data.ayahs) ? data.ayahs : [data]);
+      const entries = Array.isArray(data.entries) ? data.entries :
+        (Array.isArray(data) ? data : (Array.isArray(data.ayahs) ? data.ayahs : [data]));
       const arabicData = await responses[1].json();
       if (arabicData.code !== 200 || !Array.isArray(arabicData.data?.ayahs)) {
         throw new Error('Arabic Quran text could not be loaded.');
@@ -57,9 +61,13 @@
 
       const commentary = entries.map((item, index) => {
         if (typeof item === 'string') return { body: item, ayah: index + 1 };
+        const ayahs = Array.isArray(item.ayahs)
+          ? item.ayahs.map(Number).filter(Number.isInteger)
+          : [Number(item.ayah) || index + 1];
         return {
           body: item.text || item.tafsir || '',
-          ayah: Number(item.ayah) || index + 1
+          ayah: ayahs[0] || Number(item.ayah) || index + 1,
+          ayahs
         };
       }).filter(item => item.body);
 
@@ -126,6 +134,9 @@
       displayCommentary.forEach(item => {
         const section = document.createElement('section');
         section.className = 'tafsir-verse';
+        if (Array.isArray(item.ayahs) && item.ayahs.length) {
+          section.dataset.ayahs = item.ayahs.join(',');
+        }
         const paragraph = document.createElement('p');
         paragraph.textContent = item.body;
         if (language === 'en' && isEnglishSubheading(item.body)) {
