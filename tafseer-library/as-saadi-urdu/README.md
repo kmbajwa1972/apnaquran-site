@@ -6,7 +6,7 @@ The active source is stored in source/ as 114 numbered JSON files. Exact duplica
 
 - Original rows: **6,236**
 - Unique commentary passages: **1,741**
-- Repeated rows consolidated: **0**
+- Repeated rows consolidated: **4,495**
 - Text/Ayah associations preserved: **6,236**
 
 No Urdu or Arabic text is rewritten, normalized, trimmed, translated, or removed. Only exact repeated text is consolidated.
