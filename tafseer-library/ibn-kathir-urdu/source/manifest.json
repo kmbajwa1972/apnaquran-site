@@ -1,581 +1,1272 @@
 {
   "edition": "Ibn Kathir Urdu",
+  "schema_version": 1,
   "upstream_repository": "https://github.com/spa5k/tafsir_api",
   "upstream_ref": "main",
   "upstream_commit": "eb82bb6294efe30ad5c135c03b1864afaa70e855",
   "upstream_directory": "tafsir/ur-tafseer-ibn-e-kaseer/",
-  "local_directory": "tafseer-library/ibn-kathir-urdu/source/",
-  "transfer_method": "Original per-Surah JSON files copied without content edits",
+  "canonical_directory": "tafseer-library/ibn-kathir-urdu/source/",
+  "original_backup_directory": "tafseer-library/ibn-kathir-urdu/original-source/",
+  "method": "Group only exact, complete Urdu commentary text matches. Preserve every text string unchanged and retain every original Ayah reference in the ayahs array. No trimming, rewriting, translation, or Quran text modification.",
+  "file_count": 114,
+  "original_records": 6236,
+  "unique_commentary_passages": 1947,
+  "repeated_records_consolidated": 4289,
+  "ayah_references_preserved": 6236,
   "files": [
     {
-      "file": "1.json",
-      "git_blob_sha": "573b1c749c922856a5f82933e9f95768870e7ed0",
-      "bytes": 136648
-    },
-    {
-      "file": "2.json",
-      "git_blob_sha": "6c61b71cd5c5465e7f4f91b8ec5f0784b971b4fb",
-      "bytes": 2467948
-    },
-    {
-      "file": "3.json",
-      "git_blob_sha": "a406843c648cdeb1f5e806413773a1e832464002",
-      "bytes": 2259645
-    },
-    {
-      "file": "4.json",
-      "git_blob_sha": "6017ff73de72398a8912ab5d117a9e8e4e38a118",
-      "bytes": 2086360
-    },
-    {
-      "file": "5.json",
-      "git_blob_sha": "383b69ec8b09226b6bb401052c933b050f12fa27",
-      "bytes": 1740305
-    },
-    {
-      "file": "6.json",
-      "git_blob_sha": "613327bf88eaa13a61e2091bcb6328b029258bf7",
-      "bytes": 1326623
-    },
-    {
-      "file": "7.json",
-      "git_blob_sha": "5fd65c593f93a3ebf288581bf6ccf33b05ef5124",
-      "bytes": 1167847
-    },
-    {
-      "file": "8.json",
-      "git_blob_sha": "f99a4d54115eedb75addd4e08f67a263872a3a94",
-      "bytes": 644723
-    },
-    {
-      "file": "9.json",
-      "git_blob_sha": "0106531351668f2c0988c78c79b05f8298d41bf0",
-      "bytes": 797311
-    },
-    {
-      "file": "10.json",
-      "git_blob_sha": "c9d706411d5d8dc08f384ecf52a5ee1a75d09da1",
-      "bytes": 375467
-    },
-    {
-      "file": "11.json",
-      "git_blob_sha": "20beca29c3fb46636f22016b36781db44bbf9104",
-      "bytes": 402310
-    },
-    {
-      "file": "12.json",
-      "git_blob_sha": "65779f1f303bcfcd2ab4ce212ad4e34703b68f03",
-      "bytes": 524511
-    },
-    {
-      "file": "13.json",
-      "git_blob_sha": "6758a1a9fd1d95d135b6377dc4d8ce35b5202889",
-      "bytes": 271431
-    },
-    {
-      "file": "14.json",
-      "git_blob_sha": "1fff6104fa3da49ecbfedd53d3d4985ce54ae5eb",
-      "bytes": 297281
-    },
-    {
-      "file": "15.json",
-      "git_blob_sha": "1ac32daa7c182f87c037c6e94c50fcbb3842077e",
-      "bytes": 377182
-    },
-    {
-      "file": "16.json",
-      "git_blob_sha": "0c6462a75e38fd122ec25b9549d17233bef74287",
-      "bytes": 551721
-    },
-    {
-      "file": "17.json",
-      "git_blob_sha": "ff6aab94651005d6dd6c326d39f0bb018e05961a",
-      "bytes": 629160
-    },
-    {
-      "file": "18.json",
-      "git_blob_sha": "343709960308080102ea8557c2f4f65187adf66e",
-      "bytes": 667821
-    },
-    {
-      "file": "19.json",
-      "git_blob_sha": "4f0850107ade33e7c73c9ee53c32d868ca9f4e07",
-      "bytes": 625442
-    },
-    {
-      "file": "20.json",
-      "git_blob_sha": "1520f30b0eabc7bf43495c626b75709dfe37bd45",
-      "bytes": 855286
-    },
-    {
-      "file": "21.json",
-      "git_blob_sha": "5ef151dbdb5c736321735f94d65bd68f5c8af32b",
-      "bytes": 736581
-    },
-    {
-      "file": "22.json",
-      "git_blob_sha": "7d09cf903cb03b36c75129ee4dfe48b5e3a4f9e3",
-      "bytes": 454777
-    },
-    {
-      "file": "23.json",
-      "git_blob_sha": "7a6f7cd3ff2d75e0fe96dc5c85872eb4a9e99b7e",
-      "bytes": 783017
-    },
-    {
-      "file": "24.json",
-      "git_blob_sha": "48af6b356f3a72f4c8d78d9fa0beecc2dfe43386",
-      "bytes": 510355
-    },
-    {
-      "file": "25.json",
-      "git_blob_sha": "0265877bb9f667e274d3dfa14db00b85972cf371",
-      "bytes": 562141
-    },
-    {
-      "file": "26.json",
-      "git_blob_sha": "c8740a6332e4bb4b3d2e36c6442da77f5a8314d9",
-      "bytes": 1167975
-    },
-    {
-      "file": "27.json",
-      "git_blob_sha": "6cdf8daa659906de42f330ab8702558af27b71db",
-      "bytes": 499137
-    },
-    {
-      "file": "28.json",
-      "git_blob_sha": "f234c278834ec3d6d6934a51c3982939072c832e",
-      "bytes": 521332
-    },
-    {
-      "file": "29.json",
-      "git_blob_sha": "bdadee126c4b700bffdae30ea1e6c774e67bfe93",
-      "bytes": 308134
-    },
-    {
-      "file": "30.json",
-      "git_blob_sha": "6a6276a32d197c4b13ba4b3e28f6766e46c3f0d3",
-      "bytes": 404877
-    },
-    {
-      "file": "31.json",
-      "git_blob_sha": "4fee4253e9db7c2588ef0625115c87be146bfdb2",
-      "bytes": 226549
-    },
-    {
-      "file": "32.json",
-      "git_blob_sha": "75caeccbbc1f30a1815d8c0ca04deab7ee723192",
-      "bytes": 163105
-    },
-    {
-      "file": "33.json",
-      "git_blob_sha": "c9c4024db967e7822623d7cdafb6bdb3f8b7951a",
-      "bytes": 622937
-    },
-    {
-      "file": "34.json",
-      "git_blob_sha": "f4091b00fb330d12d1d8f72de809fc602a3cbb0e",
-      "bytes": 369598
-    },
-    {
-      "file": "35.json",
-      "git_blob_sha": "1c789f76816a3cec98041d656bc822122598051a",
-      "bytes": 205319
-    },
-    {
-      "file": "36.json",
-      "git_blob_sha": "e427eb03bff14a30f0b054ea362a82a10d681094",
-      "bytes": 478961
-    },
-    {
-      "file": "37.json",
-      "git_blob_sha": "4c11580a42c90167aa725c8132e7337fe83cb9a2",
-      "bytes": 1378490
-    },
-    {
-      "file": "38.json",
-      "git_blob_sha": "5e750673f56ff80f30013eb8dd4fce5af11a6268",
-      "bytes": 698490
-    },
-    {
-      "file": "39.json",
-      "git_blob_sha": "b67d0a9af9a4f43144916fa984afd8b17329cd8e",
-      "bytes": 499312
-    },
-    {
-      "file": "40.json",
-      "git_blob_sha": "c39de892b5385f92e024c1bd71ada583644d9336",
-      "bytes": 538502
-    },
-    {
-      "file": "41.json",
-      "git_blob_sha": "1f40b17f02ac4089118592cce5d843df85db6904",
-      "bytes": 393713
-    },
-    {
-      "file": "42.json",
-      "git_blob_sha": "283042d4e86753d3a4f0b5a782480645e31ba9f9",
-      "bytes": 338547
-    },
-    {
-      "file": "43.json",
-      "git_blob_sha": "4db96b6876d9da6c0e25cc70465c3ed63ee10be4",
-      "bytes": 741456
-    },
-    {
-      "file": "44.json",
-      "git_blob_sha": "b2f2ba2a7bb1044bb8a89850dd1c188d3a687dd2",
-      "bytes": 613116
-    },
-    {
-      "file": "45.json",
-      "git_blob_sha": "4414b74366fd7d925689b146210c229836d590fd",
-      "bytes": 151182
-    },
-    {
-      "file": "46.json",
-      "git_blob_sha": "9b81a4c41117719b30e04224b681e75ce392503c",
-      "bytes": 365499
-    },
-    {
-      "file": "47.json",
-      "git_blob_sha": "d2a2983ad4c20aafd73434adc674c0cc3deb69a2",
-      "bytes": 257613
-    },
-    {
-      "file": "48.json",
-      "git_blob_sha": "81d968ffeef1b5eb7bfa3ce081c7320cdcefe1a9",
-      "bytes": 319517
-    },
-    {
-      "file": "49.json",
-      "git_blob_sha": "c692cf4d85306b90eff73db96694397d33d093f2",
-      "bytes": 209336
-    },
-    {
-      "file": "50.json",
-      "git_blob_sha": "3dd1d28eaa05efc8a850d2deca4090bf5507f1c7",
-      "bytes": 390194
-    },
-    {
-      "file": "51.json",
-      "git_blob_sha": "d49dde3114a3a9a7edf7d9f905b6a4d20d0d17eb",
-      "bytes": 441530
-    },
-    {
-      "file": "52.json",
-      "git_blob_sha": "7db4a461f1c89a2729803c7e903d22aac4b2cea1",
-      "bytes": 397470
-    },
-    {
-      "file": "53.json",
-      "git_blob_sha": "c39d707861b1bb53b36b5bdb28e8dc6d0959b230",
-      "bytes": 898181
-    },
-    {
-      "file": "54.json",
-      "git_blob_sha": "eaf0eb8e9148244b520ebf6789ba5991c6b77059",
-      "bytes": 355874
-    },
-    {
-      "file": "55.json",
-      "git_blob_sha": "05caea30ddbcb0d597ee261eee363ccb4768355a",
-      "bytes": 741512
-    },
-    {
-      "file": "56.json",
-      "git_blob_sha": "2bc830e5f36cf64caefa686e0357e5d1d323851a",
-      "bytes": 1352347
-    },
-    {
-      "file": "57.json",
-      "git_blob_sha": "6f90f1ac5bf9405512239832a7293006cd298aca",
-      "bytes": 323549
-    },
-    {
-      "file": "58.json",
-      "git_blob_sha": "55a7e13a87ddb222c27323658438a1fd7dce2d11",
-      "bytes": 196765
-    },
-    {
-      "file": "59.json",
-      "git_blob_sha": "eda1521ec0c7c263aa39df2cffa486e3257e9172",
-      "bytes": 383019
-    },
-    {
-      "file": "60.json",
-      "git_blob_sha": "878a5d3cb86136ea60aebabbed9a095b782cc80b",
-      "bytes": 160204
-    },
-    {
-      "file": "61.json",
-      "git_blob_sha": "aa3e91a5e3eb4b97390df947edd1d464afbcc462",
-      "bytes": 103531
-    },
-    {
-      "file": "62.json",
-      "git_blob_sha": "c254653e4e5b45c1c9c1a6e5d41bdb9177ac0379",
-      "bytes": 81869
-    },
-    {
-      "file": "63.json",
-      "git_blob_sha": "0598a2c21d77bd044195004d8dccdee90342814a",
-      "bytes": 133433
-    },
-    {
-      "file": "64.json",
-      "git_blob_sha": "ac864ad8a4f9a1224d2d671822ff913740afcf0c",
-      "bytes": 77604
-    },
-    {
-      "file": "65.json",
-      "git_blob_sha": "b2dfac5b4efc09d7bca13d9a01c88d23b073b4a3",
-      "bytes": 95013
-    },
-    {
-      "file": "66.json",
-      "git_blob_sha": "f96f0d24788c7d3d89833aeb3c7164fe784abf93",
-      "bytes": 214803
-    },
-    {
-      "file": "67.json",
-      "git_blob_sha": "c7eb23a5c1385e737edc43cfd296c3ac5e0d0f17",
-      "bytes": 142111
-    },
-    {
-      "file": "68.json",
-      "git_blob_sha": "2b0824519cb0a26cdac0d4c8e256d98485fefd6d",
-      "bytes": 473288
-    },
-    {
-      "file": "69.json",
-      "git_blob_sha": "15df949b7ff857962f3efc56c99ab0cc86afae76",
-      "bytes": 352403
-    },
-    {
-      "file": "70.json",
-      "git_blob_sha": "cfcdb84927e92e8d999cecf577ebeebf30d457df",
-      "bytes": 381124
-    },
-    {
-      "file": "71.json",
-      "git_blob_sha": "506728691a777c08ed6d4da2b22b36b3aaab4220",
-      "bytes": 250547
-    },
-    {
-      "file": "72.json",
-      "git_blob_sha": "a9886c907f97b1cbd6e1cf87a41e805a07f1fa92",
-      "bytes": 194654
-    },
-    {
-      "file": "73.json",
-      "git_blob_sha": "3e8c49d923dbb9b89d538d7afca152ed44c5e3cd",
-      "bytes": 277033
-    },
-    {
-      "file": "74.json",
-      "git_blob_sha": "dc1e4c9a75e360ba6e6a09d9d044f48e6eb09618",
-      "bytes": 588425
-    },
-    {
-      "file": "75.json",
-      "git_blob_sha": "4c9703a19219125941c549c79f77482f5a31d053",
-      "bytes": 477831
-    },
-    {
-      "file": "76.json",
-      "git_blob_sha": "27d3d8e7dba69c99338c39ab866f28dda4386d02",
-      "bytes": 299734
-    },
-    {
-      "file": "77.json",
-      "git_blob_sha": "d33da84105c3169dd9659b8b406fecf7f26fd1d7",
-      "bytes": 268715
-    },
-    {
-      "file": "78.json",
-      "git_blob_sha": "867f495a812407c3be20f4f6e653970e18188747",
-      "bytes": 355123
-    },
-    {
-      "file": "79.json",
-      "git_blob_sha": "1d4386ce7e92d55a9578da3ef09c6aa201e4dbc6",
-      "bytes": 265271
-    },
-    {
-      "file": "80.json",
-      "git_blob_sha": "487169f3ead665432cbdf3e4f7ab01fe0a781486",
-      "bytes": 353389
-    },
-    {
-      "file": "81.json",
-      "git_blob_sha": "918c425bff2c6aae821c6a69f080467755cc755c",
-      "bytes": 402494
-    },
-    {
-      "file": "82.json",
-      "git_blob_sha": "dab78bfe4e6087056bbba8e55ff5d5afd3411366",
-      "bytes": 126445
-    },
-    {
-      "file": "83.json",
-      "git_blob_sha": "d5542a4cc7dc5dd4557333d7871afa4522f86f20",
-      "bytes": 219051
-    },
-    {
-      "file": "84.json",
-      "git_blob_sha": "0cc6e5098dc62cefd76ae2c8badfd8689222113b",
-      "bytes": 215411
-    },
-    {
-      "file": "85.json",
-      "git_blob_sha": "f20dbe9a1e231a078d3e8fb0cdcd419bcf7ec109",
-      "bytes": 451487
-    },
-    {
-      "file": "86.json",
-      "git_blob_sha": "6d88ddb00953dd6c6134e6e2ff751a7936470c1f",
-      "bytes": 52813
-    },
-    {
-      "file": "87.json",
-      "git_blob_sha": "d75cefe55ae06afc32ef137fbaf612a28cd86fbe",
-      "bytes": 117968
-    },
-    {
-      "file": "88.json",
-      "git_blob_sha": "00d3f2e356e941a029ce1644bcee29af6ca2e877",
-      "bytes": 144382
-    },
-    {
-      "file": "89.json",
-      "git_blob_sha": "11979121219673d28fb0603420cf5983722247c7",
-      "bytes": 399453
-    },
-    {
-      "file": "90.json",
-      "git_blob_sha": "0b089f868c0a84f75d57ab2e4686882be77898b4",
-      "bytes": 179371
-    },
-    {
-      "file": "91.json",
-      "git_blob_sha": "092651a3afbb1f6b2e390be3aa8994740a6791cb",
-      "bytes": 130671
-    },
-    {
-      "file": "92.json",
-      "git_blob_sha": "c5635ae3d4c1430345da311a58e43ffee7c62734",
-      "bytes": 207802
-    },
-    {
-      "file": "93.json",
-      "git_blob_sha": "2aa53a59a982e2a4b23a81189e9538fd55f06df2",
-      "bytes": 160270
-    },
-    {
-      "file": "94.json",
-      "git_blob_sha": "e86bf8717d59c944c40bd1dcd10649b6d90da1f7",
-      "bytes": 124772
-    },
-    {
-      "file": "95.json",
-      "git_blob_sha": "80e588d3f3393a087ed5671cf06f674612c2d70f",
-      "bytes": 39852
-    },
-    {
-      "file": "96.json",
-      "git_blob_sha": "b4e9b1e65791304aa0a8a3687cb5492e8e97dba3",
-      "bytes": 152999
-    },
-    {
-      "file": "97.json",
-      "git_blob_sha": "d6fbf75322ad759939fd4c000c81feb05aa3db5b",
-      "bytes": 247830
-    },
-    {
-      "file": "98.json",
-      "git_blob_sha": "07b753e08ed9b13e7876ba4dc8b009a1484fd921",
-      "bytes": 32323
-    },
-    {
-      "file": "99.json",
-      "git_blob_sha": "3ffe359f525cc158430204ee7213b15d1a05775a",
-      "bytes": 98308
-    },
-    {
-      "file": "100.json",
-      "git_blob_sha": "038961759cae9c6b3ee37e23f4d6490ee7e7b16e",
-      "bytes": 97768
-    },
-    {
-      "file": "101.json",
-      "git_blob_sha": "14c0fe825126c05b10c249d16d82173f944af7dc",
-      "bytes": 59048
-    },
-    {
-      "file": "102.json",
-      "git_blob_sha": "56596b407616f6b7c98fa91ce30d4548188ed0ca",
-      "bytes": 134860
-    },
-    {
-      "file": "103.json",
-      "git_blob_sha": "3017b566426efcdc9bc12d651c6429c29b322892",
-      "bytes": 4463
-    },
-    {
-      "file": "104.json",
-      "git_blob_sha": "defcaf086c835b1f2e16f0a1ae1d0c65517cc657",
-      "bytes": 31007
-    },
-    {
-      "file": "105.json",
-      "git_blob_sha": "2a3d2edc58029fa7f2d07d48d843ab699f46191b",
-      "bytes": 138605
-    },
-    {
-      "file": "106.json",
-      "git_blob_sha": "3320a9cbc09d495770177b89c1729357ef974f0c",
-      "bytes": 21048
-    },
-    {
-      "file": "107.json",
-      "git_blob_sha": "cf53b50dc7d6eb336e0918dd87c6e328fb604345",
-      "bytes": 76572
-    },
-    {
-      "file": "108.json",
-      "git_blob_sha": "f6a5a825e6520a296dc0f64f36ab738d93c254be",
-      "bytes": 48563
-    },
-    {
-      "file": "109.json",
-      "git_blob_sha": "b7d515168cd88ebf27a55a657c97b8956c5067fa",
-      "bytes": 44042
-    },
-    {
-      "file": "110.json",
-      "git_blob_sha": "469d5f0704856dd75893a346bafea310bd1eb3b3",
-      "bytes": 37403
-    },
-    {
-      "file": "111.json",
-      "git_blob_sha": "01b96012b29933007750793ac95b1c4a8d076236",
-      "bytes": 57465
-    },
-    {
-      "file": "112.json",
-      "git_blob_sha": "cc28f68230356945ee907d7a8a61434293ee05fc",
-      "bytes": 31212
-    },
-    {
-      "file": "113.json",
-      "git_blob_sha": "399864762a2ca9f8a902e5be66c81e7c2ba981c2",
-      "bytes": 45845
-    },
-    {
-      "file": "114.json",
-      "git_blob_sha": "2f32fee6c80e5717a45748583f866371d7618b00",
-      "bytes": 69674
+      "surah": 1,
+      "filename": "1.json",
+      "original_git_blob_sha": "573b1c749c922856a5f82933e9f95768870e7ed0",
+      "git_blob_sha": "9ea1a050d830f5b8578ac92154fa02fb20cf0629",
+      "source_record_count": 7,
+      "unique_commentary_count": 7,
+      "duplicate_record_count": 0,
+      "ayah_coverage_count": 7,
+      "bytes": 136939
+    },
+    {
+      "surah": 2,
+      "filename": "2.json",
+      "original_git_blob_sha": "6c61b71cd5c5465e7f4f91b8ec5f0784b971b4fb",
+      "git_blob_sha": "e55f31ade3e7937d46ecc7570927a321ceafb261",
+      "source_record_count": 286,
+      "unique_commentary_count": 194,
+      "duplicate_record_count": 92,
+      "ayah_coverage_count": 286,
+      "bytes": 1656343
+    },
+    {
+      "surah": 3,
+      "filename": "3.json",
+      "original_git_blob_sha": "a406843c648cdeb1f5e806413773a1e832464002",
+      "git_blob_sha": "ea362152cecf881f56d628899f4bf6446d9111d4",
+      "source_record_count": 200,
+      "unique_commentary_count": 65,
+      "duplicate_record_count": 135,
+      "ayah_coverage_count": 200,
+      "bytes": 619458
+    },
+    {
+      "surah": 4,
+      "filename": "4.json",
+      "original_git_blob_sha": "6017ff73de72398a8912ab5d117a9e8e4e38a118",
+      "git_blob_sha": "665540c465397a81dd451e814129c4aa83e523e4",
+      "source_record_count": 176,
+      "unique_commentary_count": 76,
+      "duplicate_record_count": 100,
+      "ayah_coverage_count": 176,
+      "bytes": 931816
+    },
+    {
+      "surah": 5,
+      "filename": "5.json",
+      "original_git_blob_sha": "383b69ec8b09226b6bb401052c933b050f12fa27",
+      "git_blob_sha": "fb45c0f5c1d6507328746648bfc02411f8a08fe5",
+      "source_record_count": 120,
+      "unique_commentary_count": 46,
+      "duplicate_record_count": 74,
+      "ayah_coverage_count": 120,
+      "bytes": 635236
+    },
+    {
+      "surah": 6,
+      "filename": "6.json",
+      "original_git_blob_sha": "613327bf88eaa13a61e2091bcb6328b029258bf7",
+      "git_blob_sha": "74716e5577b4a81fa97638143d529ea44ee07cff",
+      "source_record_count": 165,
+      "unique_commentary_count": 71,
+      "duplicate_record_count": 94,
+      "ayah_coverage_count": 165,
+      "bytes": 477499
+    },
+    {
+      "surah": 7,
+      "filename": "7.json",
+      "original_git_blob_sha": "5fd65c593f93a3ebf288581bf6ccf33b05ef5124",
+      "git_blob_sha": "2efd89031d9be5235bc752642d889ee8f78bb2c6",
+      "source_record_count": 206,
+      "unique_commentary_count": 102,
+      "duplicate_record_count": 104,
+      "ayah_coverage_count": 206,
+      "bytes": 512089
+    },
+    {
+      "surah": 8,
+      "filename": "8.json",
+      "original_git_blob_sha": "f99a4d54115eedb75addd4e08f67a263872a3a94",
+      "git_blob_sha": "c5db93b82f38195f5eaf00cc2136c8c1bf57f9dc",
+      "source_record_count": 75,
+      "unique_commentary_count": 37,
+      "duplicate_record_count": 38,
+      "ayah_coverage_count": 75,
+      "bytes": 298828
+    },
+    {
+      "surah": 9,
+      "filename": "9.json",
+      "original_git_blob_sha": "0106531351668f2c0988c78c79b05f8298d41bf0",
+      "git_blob_sha": "862ed8f08f4c1224f72daf6f67e03758948af9cb",
+      "source_record_count": 129,
+      "unique_commentary_count": 78,
+      "duplicate_record_count": 51,
+      "ayah_coverage_count": 129,
+      "bytes": 463324
+    },
+    {
+      "surah": 10,
+      "filename": "10.json",
+      "original_git_blob_sha": "c9d706411d5d8dc08f384ecf52a5ee1a75d09da1",
+      "git_blob_sha": "c14567769d95e1b61785e0eb32c68079d8434c9e",
+      "source_record_count": 109,
+      "unique_commentary_count": 49,
+      "duplicate_record_count": 60,
+      "ayah_coverage_count": 109,
+      "bytes": 167524
+    },
+    {
+      "surah": 11,
+      "filename": "11.json",
+      "original_git_blob_sha": "20beca29c3fb46636f22016b36781db44bbf9104",
+      "git_blob_sha": "9cf65bdf127c5fcb96a6225e3086437d1695f1a8",
+      "source_record_count": 123,
+      "unique_commentary_count": 55,
+      "duplicate_record_count": 68,
+      "ayah_coverage_count": 123,
+      "bytes": 172277
+    },
+    {
+      "surah": 12,
+      "filename": "12.json",
+      "original_git_blob_sha": "65779f1f303bcfcd2ab4ce212ad4e34703b68f03",
+      "git_blob_sha": "510349c8dd54e717e9b43d7efc8b354b4c467111",
+      "source_record_count": 111,
+      "unique_commentary_count": 49,
+      "duplicate_record_count": 62,
+      "ayah_coverage_count": 111,
+      "bytes": 208498
+    },
+    {
+      "surah": 13,
+      "filename": "13.json",
+      "original_git_blob_sha": "6758a1a9fd1d95d135b6377dc4d8ce35b5202889",
+      "git_blob_sha": "4cf3d9401ffd304e5ac4838e3b6a06ceb68eb650",
+      "source_record_count": 43,
+      "unique_commentary_count": 29,
+      "duplicate_record_count": 14,
+      "ayah_coverage_count": 43,
+      "bytes": 144474
+    },
+    {
+      "surah": 14,
+      "filename": "14.json",
+      "original_git_blob_sha": "1fff6104fa3da49ecbfedd53d3d4985ce54ae5eb",
+      "git_blob_sha": "8c631b09f717b96566720bb8e01de2d899b01837",
+      "source_record_count": 52,
+      "unique_commentary_count": 24,
+      "duplicate_record_count": 28,
+      "ayah_coverage_count": 52,
+      "bytes": 146276
+    },
+    {
+      "surah": 15,
+      "filename": "15.json",
+      "original_git_blob_sha": "1ac32daa7c182f87c037c6e94c50fcbb3842077e",
+      "git_blob_sha": "84e1d877f33cb513d686a07735bcd9e8c5449630",
+      "source_record_count": 99,
+      "unique_commentary_count": 24,
+      "duplicate_record_count": 75,
+      "ayah_coverage_count": 99,
+      "bytes": 82715
+    },
+    {
+      "surah": 16,
+      "filename": "16.json",
+      "original_git_blob_sha": "0c6462a75e38fd122ec25b9549d17233bef74287",
+      "git_blob_sha": "c6847533f510c0d15273b94724affdc6b5292217",
+      "source_record_count": 128,
+      "unique_commentary_count": 55,
+      "duplicate_record_count": 73,
+      "ayah_coverage_count": 128,
+      "bytes": 214047
+    },
+    {
+      "surah": 17,
+      "filename": "17.json",
+      "original_git_blob_sha": "ff6aab94651005d6dd6c326d39f0bb018e05961a",
+      "git_blob_sha": "80b81f9c57a5fa65bf9c3942196b1bc91b20c2cb",
+      "source_record_count": 111,
+      "unique_commentary_count": 62,
+      "duplicate_record_count": 49,
+      "ayah_coverage_count": 111,
+      "bytes": 329660
+    },
+    {
+      "surah": 18,
+      "filename": "18.json",
+      "original_git_blob_sha": "343709960308080102ea8557c2f4f65187adf66e",
+      "git_blob_sha": "e19a5e8d4182feb549f75bbd77d9ba59a722cd4b",
+      "source_record_count": 110,
+      "unique_commentary_count": 43,
+      "duplicate_record_count": 67,
+      "ayah_coverage_count": 110,
+      "bytes": 230049
+    },
+    {
+      "surah": 19,
+      "filename": "19.json",
+      "original_git_blob_sha": "4f0850107ade33e7c73c9ee53c32d868ca9f4e07",
+      "git_blob_sha": "7bbb6d5f65318f369b50b50e397902588d811471",
+      "source_record_count": 98,
+      "unique_commentary_count": 31,
+      "duplicate_record_count": 67,
+      "ayah_coverage_count": 98,
+      "bytes": 179544
+    },
+    {
+      "surah": 20,
+      "filename": "20.json",
+      "original_git_blob_sha": "1520f30b0eabc7bf43495c626b75709dfe37bd45",
+      "git_blob_sha": "3307ca03d15c600f345946f6aed56e4b2033181c",
+      "source_record_count": 135,
+      "unique_commentary_count": 35,
+      "duplicate_record_count": 100,
+      "ayah_coverage_count": 135,
+      "bytes": 205972
+    },
+    {
+      "surah": 21,
+      "filename": "21.json",
+      "original_git_blob_sha": "5ef151dbdb5c736321735f94d65bd68f5c8af32b",
+      "git_blob_sha": "fe5c78ca2bb34a5b9eebfa7d7ed6a7d4e6766e19",
+      "source_record_count": 112,
+      "unique_commentary_count": 33,
+      "duplicate_record_count": 79,
+      "ayah_coverage_count": 112,
+      "bytes": 203423
+    },
+    {
+      "surah": 22,
+      "filename": "22.json",
+      "original_git_blob_sha": "7d09cf903cb03b36c75129ee4dfe48b5e3a4f9e3",
+      "git_blob_sha": "912543c66ef5f1fbf91987c0f5d13a4640c5a128",
+      "source_record_count": 78,
+      "unique_commentary_count": 36,
+      "duplicate_record_count": 42,
+      "ayah_coverage_count": 78,
+      "bytes": 208880
+    },
+    {
+      "surah": 23,
+      "filename": "23.json",
+      "original_git_blob_sha": "7a6f7cd3ff2d75e0fe96dc5c85872eb4a9e99b7e",
+      "git_blob_sha": "8eeabbd254e2702360ba6c685054b52ce532a07c",
+      "source_record_count": 118,
+      "unique_commentary_count": 24,
+      "duplicate_record_count": 94,
+      "ayah_coverage_count": 118,
+      "bytes": 133941
+    },
+    {
+      "surah": 24,
+      "filename": "24.json",
+      "original_git_blob_sha": "48af6b356f3a72f4c8d78d9fa0beecc2dfe43386",
+      "git_blob_sha": "93bf5235a22b90a24508fe9291a2bfce1ed2046a",
+      "source_record_count": 64,
+      "unique_commentary_count": 32,
+      "duplicate_record_count": 32,
+      "ayah_coverage_count": 64,
+      "bytes": 253613
+    },
+    {
+      "surah": 25,
+      "filename": "25.json",
+      "original_git_blob_sha": "0265877bb9f667e274d3dfa14db00b85972cf371",
+      "git_blob_sha": "9f95e0d96a083d47150033abd4d8b4542f6a630f",
+      "source_record_count": 77,
+      "unique_commentary_count": 21,
+      "duplicate_record_count": 56,
+      "ayah_coverage_count": 77,
+      "bytes": 134310
+    },
+    {
+      "surah": 26,
+      "filename": "26.json",
+      "original_git_blob_sha": "c8740a6332e4bb4b3d2e36c6442da77f5a8314d9",
+      "git_blob_sha": "69d3d270483d22a2edf90c7a97544fc14589a38d",
+      "source_record_count": 227,
+      "unique_commentary_count": 31,
+      "duplicate_record_count": 196,
+      "ayah_coverage_count": 227,
+      "bytes": 153786
+    },
+    {
+      "surah": 27,
+      "filename": "27.json",
+      "original_git_blob_sha": "6cdf8daa659906de42f330ab8702558af27b71db",
+      "git_blob_sha": "533e2695728560188f6cf858822da84a29526ca8",
+      "source_record_count": 93,
+      "unique_commentary_count": 27,
+      "duplicate_record_count": 66,
+      "ayah_coverage_count": 93,
+      "bytes": 147866
+    },
+    {
+      "surah": 28,
+      "filename": "28.json",
+      "original_git_blob_sha": "f234c278834ec3d6d6934a51c3982939072c832e",
+      "git_blob_sha": "e664c32e68e2a16b7ada717c6b8ac76ce00fdfde",
+      "source_record_count": 88,
+      "unique_commentary_count": 29,
+      "duplicate_record_count": 59,
+      "ayah_coverage_count": 88,
+      "bytes": 155055
+    },
+    {
+      "surah": 29,
+      "filename": "29.json",
+      "original_git_blob_sha": "bdadee126c4b700bffdae30ea1e6c774e67bfe93",
+      "git_blob_sha": "41f0a2a72152eab988971dbf1c2ed2867f247cfa",
+      "source_record_count": 69,
+      "unique_commentary_count": 25,
+      "duplicate_record_count": 44,
+      "ayah_coverage_count": 69,
+      "bytes": 112866
+    },
+    {
+      "surah": 30,
+      "filename": "30.json",
+      "original_git_blob_sha": "6a6276a32d197c4b13ba4b3e28f6766e46c3f0d3",
+      "git_blob_sha": "57f3a3730d66272e3a5f33b1df00415260996154",
+      "source_record_count": 60,
+      "unique_commentary_count": 21,
+      "duplicate_record_count": 39,
+      "ayah_coverage_count": 60,
+      "bytes": 109610
+    },
+    {
+      "surah": 31,
+      "filename": "31.json",
+      "original_git_blob_sha": "4fee4253e9db7c2588ef0625115c87be146bfdb2",
+      "git_blob_sha": "5d222a600d57f216d015002b2ec5f69067539a58",
+      "source_record_count": 34,
+      "unique_commentary_count": 16,
+      "duplicate_record_count": 18,
+      "ayah_coverage_count": 34,
+      "bytes": 89690
+    },
+    {
+      "surah": 32,
+      "filename": "32.json",
+      "original_git_blob_sha": "75caeccbbc1f30a1815d8c0ca04deab7ee723192",
+      "git_blob_sha": "7aeb2a2a614784bfd6ef5ccb70069f103d4b9838",
+      "source_record_count": 30,
+      "unique_commentary_count": 11,
+      "duplicate_record_count": 19,
+      "ayah_coverage_count": 30,
+      "bytes": 61273
+    },
+    {
+      "surah": 33,
+      "filename": "33.json",
+      "original_git_blob_sha": "c9c4024db967e7822623d7cdafb6bdb3f8b7951a",
+      "git_blob_sha": "c0014bf04bbc4eff76dfded9242c6ec7082bfb42",
+      "source_record_count": 73,
+      "unique_commentary_count": 37,
+      "duplicate_record_count": 36,
+      "ayah_coverage_count": 73,
+      "bytes": 329318
+    },
+    {
+      "surah": 34,
+      "filename": "34.json",
+      "original_git_blob_sha": "f4091b00fb330d12d1d8f72de809fc602a3cbb0e",
+      "git_blob_sha": "4ffd2781348db9c7d6b5112fb13ba6410ad0e95d",
+      "source_record_count": 54,
+      "unique_commentary_count": 19,
+      "duplicate_record_count": 35,
+      "ayah_coverage_count": 54,
+      "bytes": 124634
+    },
+    {
+      "surah": 35,
+      "filename": "35.json",
+      "original_git_blob_sha": "1c789f76816a3cec98041d656bc822122598051a",
+      "git_blob_sha": "69ce88f522b1e5a939d636f556c42dcad55baa1e",
+      "source_record_count": 45,
+      "unique_commentary_count": 20,
+      "duplicate_record_count": 25,
+      "ayah_coverage_count": 45,
+      "bytes": 85556
+    },
+    {
+      "surah": 36,
+      "filename": "36.json",
+      "original_git_blob_sha": "e427eb03bff14a30f0b054ea362a82a10d681094",
+      "git_blob_sha": "0a3d67b5848d70b391b7f39760ef6970c85e0bd0",
+      "source_record_count": 83,
+      "unique_commentary_count": 23,
+      "duplicate_record_count": 60,
+      "ayah_coverage_count": 83,
+      "bytes": 124547
+    },
+    {
+      "surah": 37,
+      "filename": "37.json",
+      "original_git_blob_sha": "4c11580a42c90167aa725c8132e7337fe83cb9a2",
+      "git_blob_sha": "e9ba604c7af46815d8476f86580509c34407e266",
+      "source_record_count": 182,
+      "unique_commentary_count": 21,
+      "duplicate_record_count": 161,
+      "ayah_coverage_count": 182,
+      "bytes": 130202
+    },
+    {
+      "surah": 38,
+      "filename": "38.json",
+      "original_git_blob_sha": "5e750673f56ff80f30013eb8dd4fce5af11a6268",
+      "git_blob_sha": "e298936e2d3b97ecdfcad4a60ad594a490448972",
+      "source_record_count": 88,
+      "unique_commentary_count": 15,
+      "duplicate_record_count": 73,
+      "ayah_coverage_count": 88,
+      "bytes": 107481
+    },
+    {
+      "surah": 39,
+      "filename": "39.json",
+      "original_git_blob_sha": "b67d0a9af9a4f43144916fa984afd8b17329cd8e",
+      "git_blob_sha": "5ddfd84c335142ffbba4d3165e5c05a61b185ec5",
+      "source_record_count": 75,
+      "unique_commentary_count": 26,
+      "duplicate_record_count": 49,
+      "ayah_coverage_count": 75,
+      "bytes": 147976
+    },
+    {
+      "surah": 40,
+      "filename": "40.json",
+      "original_git_blob_sha": "c39de892b5385f92e024c1bd71ada583644d9336",
+      "git_blob_sha": "4e5328956e7a3c8ee65c46a96dab6e71deff6fe1",
+      "source_record_count": 85,
+      "unique_commentary_count": 23,
+      "duplicate_record_count": 62,
+      "ayah_coverage_count": 85,
+      "bytes": 129610
+    },
+    {
+      "surah": 41,
+      "filename": "41.json",
+      "original_git_blob_sha": "1f40b17f02ac4089118592cce5d843df85db6904",
+      "git_blob_sha": "244d8f58c7f40a65a758264148348fd471ab1a39",
+      "source_record_count": 54,
+      "unique_commentary_count": 15,
+      "duplicate_record_count": 39,
+      "ayah_coverage_count": 54,
+      "bytes": 99096
+    },
+    {
+      "surah": 42,
+      "filename": "42.json",
+      "original_git_blob_sha": "283042d4e86753d3a4f0b5a782480645e31ba9f9",
+      "git_blob_sha": "735bad34d52da5de413f6c65358e5829d1f460b2",
+      "source_record_count": 53,
+      "unique_commentary_count": 17,
+      "duplicate_record_count": 36,
+      "ayah_coverage_count": 53,
+      "bytes": 107122
+    },
+    {
+      "surah": 43,
+      "filename": "43.json",
+      "original_git_blob_sha": "4db96b6876d9da6c0e25cc70465c3ed63ee10be4",
+      "git_blob_sha": "2acba037993af9502e042cb40635bf34b69caa9f",
+      "source_record_count": 89,
+      "unique_commentary_count": 13,
+      "duplicate_record_count": 76,
+      "ayah_coverage_count": 89,
+      "bytes": 99023
+    },
+    {
+      "surah": 44,
+      "filename": "44.json",
+      "original_git_blob_sha": "b2f2ba2a7bb1044bb8a89850dd1c188d3a687dd2",
+      "git_blob_sha": "222d4960da591dd92bb3f0b3da3db736dbcdd0b0",
+      "source_record_count": 59,
+      "unique_commentary_count": 8,
+      "duplicate_record_count": 51,
+      "ayah_coverage_count": 59,
+      "bytes": 73885
+    },
+    {
+      "surah": 45,
+      "filename": "45.json",
+      "original_git_blob_sha": "4414b74366fd7d925689b146210c229836d590fd",
+      "git_blob_sha": "6ff39f812a38d1bb4b12e6feea211866b2ef10f1",
+      "source_record_count": 37,
+      "unique_commentary_count": 8,
+      "duplicate_record_count": 29,
+      "ayah_coverage_count": 37,
+      "bytes": 33996
+    },
+    {
+      "surah": 46,
+      "filename": "46.json",
+      "original_git_blob_sha": "9b81a4c41117719b30e04224b681e75ce392503c",
+      "git_blob_sha": "51e7c3d520a65a2c8decb0e995a62c1f7103d730",
+      "source_record_count": 35,
+      "unique_commentary_count": 10,
+      "duplicate_record_count": 25,
+      "ayah_coverage_count": 35,
+      "bytes": 130927
+    },
+    {
+      "surah": 47,
+      "filename": "47.json",
+      "original_git_blob_sha": "d2a2983ad4c20aafd73434adc674c0cc3deb69a2",
+      "git_blob_sha": "63d7c33e569f379fc7c2080ca20f022b54000406",
+      "source_record_count": 38,
+      "unique_commentary_count": 10,
+      "duplicate_record_count": 28,
+      "ayah_coverage_count": 38,
+      "bytes": 62785
+    },
+    {
+      "surah": 48,
+      "filename": "48.json",
+      "original_git_blob_sha": "81d968ffeef1b5eb7bfa3ce081c7320cdcefe1a9",
+      "git_blob_sha": "4b9b9bd9f9e5c31b6079ca2a7f5b3bd17aed8086",
+      "source_record_count": 29,
+      "unique_commentary_count": 11,
+      "duplicate_record_count": 18,
+      "ayah_coverage_count": 29,
+      "bytes": 144076
+    },
+    {
+      "surah": 49,
+      "filename": "49.json",
+      "original_git_blob_sha": "c692cf4d85306b90eff73db96694397d33d093f2",
+      "git_blob_sha": "673776cfe73c6b70a80bcca9311d3d51d4b230a7",
+      "source_record_count": 18,
+      "unique_commentary_count": 8,
+      "duplicate_record_count": 10,
+      "ayah_coverage_count": 18,
+      "bytes": 89351
+    },
+    {
+      "surah": 50,
+      "filename": "50.json",
+      "original_git_blob_sha": "3dd1d28eaa05efc8a850d2deca4090bf5507f1c7",
+      "git_blob_sha": "8523e47e44d1784624f3fa26a6fd8fcd31952889",
+      "source_record_count": 45,
+      "unique_commentary_count": 8,
+      "duplicate_record_count": 37,
+      "ayah_coverage_count": 45,
+      "bytes": 67998
+    },
+    {
+      "surah": 51,
+      "filename": "51.json",
+      "original_git_blob_sha": "d49dde3114a3a9a7edf7d9f905b6a4d20d0d17eb",
+      "git_blob_sha": "ad6e743750f3fe82e3011ecfcc7b976217515a50",
+      "source_record_count": 60,
+      "unique_commentary_count": 7,
+      "duplicate_record_count": 53,
+      "ayah_coverage_count": 60,
+      "bytes": 48475
+    },
+    {
+      "surah": 52,
+      "filename": "52.json",
+      "original_git_blob_sha": "7db4a461f1c89a2729803c7e903d22aac4b2cea1",
+      "git_blob_sha": "9fb3b41cf04ebcf3adc19ba703c9e3aa1aab002f",
+      "source_record_count": 49,
+      "unique_commentary_count": 7,
+      "duplicate_record_count": 42,
+      "ayah_coverage_count": 49,
+      "bytes": 50373
+    },
+    {
+      "surah": 53,
+      "filename": "53.json",
+      "original_git_blob_sha": "c39d707861b1bb53b36b5bdb28e8dc6d0959b230",
+      "git_blob_sha": "e4a90d50bbb7bf547e8b5c0b2e84cf5b385110e0",
+      "source_record_count": 62,
+      "unique_commentary_count": 8,
+      "duplicate_record_count": 54,
+      "ayah_coverage_count": 62,
+      "bytes": 88234
+    },
+    {
+      "surah": 54,
+      "filename": "54.json",
+      "original_git_blob_sha": "eaf0eb8e9148244b520ebf6789ba5991c6b77059",
+      "git_blob_sha": "cea44eaa58778b1c64febf09638104934070077a",
+      "source_record_count": 55,
+      "unique_commentary_count": 8,
+      "duplicate_record_count": 47,
+      "ayah_coverage_count": 55,
+      "bytes": 48106
+    },
+    {
+      "surah": 55,
+      "filename": "55.json",
+      "original_git_blob_sha": "05caea30ddbcb0d597ee261eee363ccb4768355a",
+      "git_blob_sha": "6f480e37e7f8271830868478ea3d95da0e617f9e",
+      "source_record_count": 78,
+      "unique_commentary_count": 8,
+      "duplicate_record_count": 70,
+      "ayah_coverage_count": 78,
+      "bytes": 70520
+    },
+    {
+      "surah": 56,
+      "filename": "56.json",
+      "original_git_blob_sha": "2bc830e5f36cf64caefa686e0357e5d1d323851a",
+      "git_blob_sha": "a90541f185f1914707b6fc0cee342d284e5e4fe6",
+      "source_record_count": 96,
+      "unique_commentary_count": 9,
+      "duplicate_record_count": 87,
+      "ayah_coverage_count": 96,
+      "bytes": 110987
+    },
+    {
+      "surah": 57,
+      "filename": "57.json",
+      "original_git_blob_sha": "6f90f1ac5bf9405512239832a7293006cd298aca",
+      "git_blob_sha": "887f4bc44129bb1de473de6557f528d9057d54ee",
+      "source_record_count": 29,
+      "unique_commentary_count": 11,
+      "duplicate_record_count": 18,
+      "ayah_coverage_count": 29,
+      "bytes": 106499
+    },
+    {
+      "surah": 58,
+      "filename": "58.json",
+      "original_git_blob_sha": "55a7e13a87ddb222c27323658438a1fd7dce2d11",
+      "git_blob_sha": "fd36dba108d8226bf7f103f15a33b93fd2d53f68",
+      "source_record_count": 22,
+      "unique_commentary_count": 8,
+      "duplicate_record_count": 14,
+      "ayah_coverage_count": 22,
+      "bytes": 75552
+    },
+    {
+      "surah": 59,
+      "filename": "59.json",
+      "original_git_blob_sha": "eda1521ec0c7c263aa39df2cffa486e3257e9172",
+      "git_blob_sha": "61c0ee8c83d95f2fae2326eadd66c8f83bab2ec6",
+      "source_record_count": 24,
+      "unique_commentary_count": 6,
+      "duplicate_record_count": 18,
+      "ayah_coverage_count": 24,
+      "bytes": 98315
+    },
+    {
+      "surah": 60,
+      "filename": "60.json",
+      "original_git_blob_sha": "878a5d3cb86136ea60aebabbed9a095b782cc80b",
+      "git_blob_sha": "64778b2f3269662cb8ea744ae533a1e500161bda",
+      "source_record_count": 13,
+      "unique_commentary_count": 6,
+      "duplicate_record_count": 7,
+      "ayah_coverage_count": 13,
+      "bytes": 75133
+    },
+    {
+      "surah": 61,
+      "filename": "61.json",
+      "original_git_blob_sha": "aa3e91a5e3eb4b97390df947edd1d464afbcc462",
+      "git_blob_sha": "f4c6a06b78dc0d660c53ee6fb5bb921c97244638",
+      "source_record_count": 14,
+      "unique_commentary_count": 5,
+      "duplicate_record_count": 9,
+      "ayah_coverage_count": 14,
+      "bytes": 39183
+    },
+    {
+      "surah": 62,
+      "filename": "62.json",
+      "original_git_blob_sha": "c254653e4e5b45c1c9c1a6e5d41bdb9177ac0379",
+      "git_blob_sha": "d7f6c0c9fc563fa934bf4946d5c8485717f2a159",
+      "source_record_count": 11,
+      "unique_commentary_count": 4,
+      "duplicate_record_count": 7,
+      "ayah_coverage_count": 11,
+      "bytes": 29440
+    },
+    {
+      "surah": 63,
+      "filename": "63.json",
+      "original_git_blob_sha": "0598a2c21d77bd044195004d8dccdee90342814a",
+      "git_blob_sha": "d4698ba16f0d4173e1db86de58c501e4d2e227ba",
+      "source_record_count": 11,
+      "unique_commentary_count": 3,
+      "duplicate_record_count": 8,
+      "ayah_coverage_count": 11,
+      "bytes": 34680
+    },
+    {
+      "surah": 64,
+      "filename": "64.json",
+      "original_git_blob_sha": "ac864ad8a4f9a1224d2d671822ff913740afcf0c",
+      "git_blob_sha": "5faddd6f99472c6a7aacc270b7d53bf7ef259278",
+      "source_record_count": 18,
+      "unique_commentary_count": 5,
+      "duplicate_record_count": 13,
+      "ayah_coverage_count": 18,
+      "bytes": 19361
+    },
+    {
+      "surah": 65,
+      "filename": "65.json",
+      "original_git_blob_sha": "b2dfac5b4efc09d7bca13d9a01c88d23b073b4a3",
+      "git_blob_sha": "81758c9ee938cd176d74f5dec016e974f1486c33",
+      "source_record_count": 12,
+      "unique_commentary_count": 6,
+      "duplicate_record_count": 6,
+      "ayah_coverage_count": 12,
+      "bytes": 51486
+    },
+    {
+      "surah": 66,
+      "filename": "66.json",
+      "original_git_blob_sha": "f96f0d24788c7d3d89833aeb3c7164fe784abf93",
+      "git_blob_sha": "700797a79d4ef931394b8696b3d0ce3888ff4f29",
+      "source_record_count": 12,
+      "unique_commentary_count": 4,
+      "duplicate_record_count": 8,
+      "ayah_coverage_count": 12,
+      "bytes": 57812
+    },
+    {
+      "surah": 67,
+      "filename": "67.json",
+      "original_git_blob_sha": "c7eb23a5c1385e737edc43cfd296c3ac5e0d0f17",
+      "git_blob_sha": "3736f56d5bcd6d055f4f068ce0bb2636b62b60ba",
+      "source_record_count": 30,
+      "unique_commentary_count": 6,
+      "duplicate_record_count": 24,
+      "ayah_coverage_count": 30,
+      "bytes": 27242
+    },
+    {
+      "surah": 68,
+      "filename": "68.json",
+      "original_git_blob_sha": "2b0824519cb0a26cdac0d4c8e256d98485fefd6d",
+      "git_blob_sha": "27b6309495447477fac27d6a86eaf58cb53e5136",
+      "source_record_count": 52,
+      "unique_commentary_count": 6,
+      "duplicate_record_count": 46,
+      "ayah_coverage_count": 52,
+      "bytes": 58519
+    },
+    {
+      "surah": 69,
+      "filename": "69.json",
+      "original_git_blob_sha": "15df949b7ff857962f3efc56c99ab0cc86afae76",
+      "git_blob_sha": "aa1b9bc4d8c86003598f8e2e3d6402a3c8e24da8",
+      "source_record_count": 52,
+      "unique_commentary_count": 6,
+      "duplicate_record_count": 46,
+      "ayah_coverage_count": 52,
+      "bytes": 39619
+    },
+    {
+      "surah": 70,
+      "filename": "70.json",
+      "original_git_blob_sha": "cfcdb84927e92e8d999cecf577ebeebf30d457df",
+      "git_blob_sha": "19f7a3e113cd00c7c6a293e7ee2eb2b9c51d340e",
+      "source_record_count": 44,
+      "unique_commentary_count": 4,
+      "duplicate_record_count": 40,
+      "ayah_coverage_count": 44,
+      "bytes": 38907
+    },
+    {
+      "surah": 71,
+      "filename": "71.json",
+      "original_git_blob_sha": "506728691a777c08ed6d4da2b22b36b3aaab4220",
+      "git_blob_sha": "5d58db06513639e7217755fa859b7e2afb8d9116",
+      "source_record_count": 28,
+      "unique_commentary_count": 4,
+      "duplicate_record_count": 24,
+      "ayah_coverage_count": 28,
+      "bytes": 28962
+    },
+    {
+      "surah": 72,
+      "filename": "72.json",
+      "original_git_blob_sha": "a9886c907f97b1cbd6e1cf87a41e805a07f1fa92",
+      "git_blob_sha": "7a07e546c24d6f58c1031bab53e0c642d8b87aa2",
+      "source_record_count": 28,
+      "unique_commentary_count": 5,
+      "duplicate_record_count": 23,
+      "ayah_coverage_count": 28,
+      "bytes": 34926
+    },
+    {
+      "surah": 73,
+      "filename": "73.json",
+      "original_git_blob_sha": "3e8c49d923dbb9b89d538d7afca152ed44c5e3cd",
+      "git_blob_sha": "86d97daa532776e103ea513fba0b6dec3b1ad5ea",
+      "source_record_count": 20,
+      "unique_commentary_count": 3,
+      "duplicate_record_count": 17,
+      "ayah_coverage_count": 20,
+      "bytes": 39259
+    },
+    {
+      "surah": 74,
+      "filename": "74.json",
+      "original_git_blob_sha": "dc1e4c9a75e360ba6e6a09d9d044f48e6eb09618",
+      "git_blob_sha": "607662f8b42d6caa8f22ae700323d11fd53aa0ac",
+      "source_record_count": 56,
+      "unique_commentary_count": 4,
+      "duplicate_record_count": 52,
+      "ayah_coverage_count": 56,
+      "bytes": 45331
+    },
+    {
+      "surah": 75,
+      "filename": "75.json",
+      "original_git_blob_sha": "4c9703a19219125941c549c79f77482f5a31d053",
+      "git_blob_sha": "74d0592601a8ff9840ff8875d4b6cf854d7d0c88",
+      "source_record_count": 40,
+      "unique_commentary_count": 3,
+      "duplicate_record_count": 37,
+      "ayah_coverage_count": 40,
+      "bytes": 36708
+    },
+    {
+      "surah": 76,
+      "filename": "76.json",
+      "original_git_blob_sha": "27d3d8e7dba69c99338c39ab866f28dda4386d02",
+      "git_blob_sha": "e0f1754549d472f7072d76106cf29438ef35e47b",
+      "source_record_count": 31,
+      "unique_commentary_count": 4,
+      "duplicate_record_count": 27,
+      "ayah_coverage_count": 31,
+      "bytes": 36080
+    },
+    {
+      "surah": 77,
+      "filename": "77.json",
+      "original_git_blob_sha": "d33da84105c3169dd9659b8b406fecf7f26fd1d7",
+      "git_blob_sha": "3c02107e6ecb05104a1c7b79aa069186d2993822",
+      "source_record_count": 50,
+      "unique_commentary_count": 4,
+      "duplicate_record_count": 46,
+      "ayah_coverage_count": 50,
+      "bytes": 22199
+    },
+    {
+      "surah": 78,
+      "filename": "78.json",
+      "original_git_blob_sha": "867f495a812407c3be20f4f6e653970e18188747",
+      "git_blob_sha": "5dbeeef4cb37484df3a25ab3a3f25fc6b796eedc",
+      "source_record_count": 40,
+      "unique_commentary_count": 4,
+      "duplicate_record_count": 36,
+      "ayah_coverage_count": 40,
+      "bytes": 30747
+    },
+    {
+      "surah": 79,
+      "filename": "79.json",
+      "original_git_blob_sha": "1d4386ce7e92d55a9578da3ef09c6aa201e4dbc6",
+      "git_blob_sha": "c82db4ad074658a4601ba0c279a541e3323a44b9",
+      "source_record_count": 46,
+      "unique_commentary_count": 4,
+      "duplicate_record_count": 42,
+      "ayah_coverage_count": 46,
+      "bytes": 23207
+    },
+    {
+      "surah": 80,
+      "filename": "80.json",
+      "original_git_blob_sha": "487169f3ead665432cbdf3e4f7ab01fe0a781486",
+      "git_blob_sha": "8d09f37b03024d56023f7860ce00940b5f3c197d",
+      "source_record_count": 42,
+      "unique_commentary_count": 3,
+      "duplicate_record_count": 39,
+      "ayah_coverage_count": 42,
+      "bytes": 24697
+    },
+    {
+      "surah": 81,
+      "filename": "81.json",
+      "original_git_blob_sha": "918c425bff2c6aae821c6a69f080467755cc755c",
+      "git_blob_sha": "47cba7636e897940683c9e31ef7b16e3ee2fc7f4",
+      "source_record_count": 29,
+      "unique_commentary_count": 2,
+      "duplicate_record_count": 27,
+      "ayah_coverage_count": 29,
+      "bytes": 28487
+    },
+    {
+      "surah": 82,
+      "filename": "82.json",
+      "original_git_blob_sha": "dab78bfe4e6087056bbba8e55ff5d5afd3411366",
+      "git_blob_sha": "2ca1ec16d8e4c0dbae9c0781342c9de83e854bfb",
+      "source_record_count": 19,
+      "unique_commentary_count": 2,
+      "duplicate_record_count": 17,
+      "ayah_coverage_count": 19,
+      "bytes": 12065
+    },
+    {
+      "surah": 83,
+      "filename": "83.json",
+      "original_git_blob_sha": "d5542a4cc7dc5dd4557333d7871afa4522f86f20",
+      "git_blob_sha": "5f8786415b91123c1a0fe5a279a8a1f69fe71ba2",
+      "source_record_count": 36,
+      "unique_commentary_count": 4,
+      "duplicate_record_count": 32,
+      "ayah_coverage_count": 36,
+      "bytes": 24658
+    },
+    {
+      "surah": 84,
+      "filename": "84.json",
+      "original_git_blob_sha": "0cc6e5098dc62cefd76ae2c8badfd8689222113b",
+      "git_blob_sha": "f7ee765116c466c278c5cc729c2299bccb24f2dc",
+      "source_record_count": 25,
+      "unique_commentary_count": 2,
+      "duplicate_record_count": 23,
+      "ayah_coverage_count": 25,
+      "bytes": 18159
+    },
+    {
+      "surah": 85,
+      "filename": "85.json",
+      "original_git_blob_sha": "f20dbe9a1e231a078d3e8fb0cdcd419bcf7ec109",
+      "git_blob_sha": "dbe895ac6e5791998b23549938827df3cccd7ab8",
+      "source_record_count": 22,
+      "unique_commentary_count": 2,
+      "duplicate_record_count": 20,
+      "ayah_coverage_count": 22,
+      "bytes": 44254
+    },
+    {
+      "surah": 86,
+      "filename": "86.json",
+      "original_git_blob_sha": "6d88ddb00953dd6c6134e6e2ff751a7936470c1f",
+      "git_blob_sha": "813ded4166f2b2a16b8cf0fce7a2710bfec202aa",
+      "source_record_count": 17,
+      "unique_commentary_count": 2,
+      "duplicate_record_count": 15,
+      "ayah_coverage_count": 17,
+      "bytes": 5994
+    },
+    {
+      "surah": 87,
+      "filename": "87.json",
+      "original_git_blob_sha": "d75cefe55ae06afc32ef137fbaf612a28cd86fbe",
+      "git_blob_sha": "fdb9731df10c504e8757ac2f30aecc1f34e23a62",
+      "source_record_count": 19,
+      "unique_commentary_count": 2,
+      "duplicate_record_count": 17,
+      "ayah_coverage_count": 19,
+      "bytes": 12333
+    },
+    {
+      "surah": 88,
+      "filename": "88.json",
+      "original_git_blob_sha": "00d3f2e356e941a029ce1644bcee29af6ca2e877",
+      "git_blob_sha": "3e6fa92eab1a838f8cb3c84fb23ac52ae58a561b",
+      "source_record_count": 26,
+      "unique_commentary_count": 3,
+      "duplicate_record_count": 23,
+      "ayah_coverage_count": 26,
+      "bytes": 15888
+    },
+    {
+      "surah": 89,
+      "filename": "89.json",
+      "original_git_blob_sha": "11979121219673d28fb0603420cf5983722247c7",
+      "git_blob_sha": "b25039a1c0e7081d7ab4e6b0551a22716c72bfb8",
+      "source_record_count": 30,
+      "unique_commentary_count": 3,
+      "duplicate_record_count": 27,
+      "ayah_coverage_count": 30,
+      "bytes": 32952
+    },
+    {
+      "surah": 90,
+      "filename": "90.json",
+      "original_git_blob_sha": "0b089f868c0a84f75d57ab2e4686882be77898b4",
+      "git_blob_sha": "4a73cd83a4145856d5acd8c4df89a9c084deec36",
+      "source_record_count": 20,
+      "unique_commentary_count": 2,
+      "duplicate_record_count": 18,
+      "ayah_coverage_count": 20,
+      "bytes": 18276
+    },
+    {
+      "surah": 91,
+      "filename": "91.json",
+      "original_git_blob_sha": "092651a3afbb1f6b2e390be3aa8994740a6791cb",
+      "git_blob_sha": "fb4e8c1f82e322c8192fc2e25a89353438c00d9f",
+      "source_record_count": 15,
+      "unique_commentary_count": 2,
+      "duplicate_record_count": 13,
+      "ayah_coverage_count": 15,
+      "bytes": 15360
+    },
+    {
+      "surah": 92,
+      "filename": "92.json",
+      "original_git_blob_sha": "c5635ae3d4c1430345da311a58e43ffee7c62734",
+      "git_blob_sha": "42a56b082dd9b16cd13605dbe52117361c5e6c7d",
+      "source_record_count": 21,
+      "unique_commentary_count": 2,
+      "duplicate_record_count": 19,
+      "ayah_coverage_count": 21,
+      "bytes": 19832
+    },
+    {
+      "surah": 93,
+      "filename": "93.json",
+      "original_git_blob_sha": "2aa53a59a982e2a4b23a81189e9538fd55f06df2",
+      "git_blob_sha": "dcbff6e25a05fec099cbf19bfc959918fd85c8a7",
+      "source_record_count": 11,
+      "unique_commentary_count": 1,
+      "duplicate_record_count": 10,
+      "ayah_coverage_count": 11,
+      "bytes": 14776
+    },
+    {
+      "surah": 94,
+      "filename": "94.json",
+      "original_git_blob_sha": "e86bf8717d59c944c40bd1dcd10649b6d90da1f7",
+      "git_blob_sha": "b3a4d143775de5df4be0fa9a53687688ac91e953",
+      "source_record_count": 8,
+      "unique_commentary_count": 1,
+      "duplicate_record_count": 7,
+      "ayah_coverage_count": 8,
+      "bytes": 15767
+    },
+    {
+      "surah": 95,
+      "filename": "95.json",
+      "original_git_blob_sha": "80e588d3f3393a087ed5671cf06f674612c2d70f",
+      "git_blob_sha": "3132061b14e2caec75cd0cfd035592ee2caa522e",
+      "source_record_count": 8,
+      "unique_commentary_count": 1,
+      "duplicate_record_count": 7,
+      "ayah_coverage_count": 8,
+      "bytes": 5152
+    },
+    {
+      "surah": 96,
+      "filename": "96.json",
+      "original_git_blob_sha": "b4e9b1e65791304aa0a8a3687cb5492e8e97dba3",
+      "git_blob_sha": "c91b633eb6de08449de3b19f3b0dd8785bd4375a",
+      "source_record_count": 19,
+      "unique_commentary_count": 2,
+      "duplicate_record_count": 17,
+      "ayah_coverage_count": 19,
+      "bytes": 15298
+    },
+    {
+      "surah": 97,
+      "filename": "97.json",
+      "original_git_blob_sha": "d6fbf75322ad759939fd4c000c81feb05aa3db5b",
+      "git_blob_sha": "153dec47d7d3d77044adf4d9197ba51bbdd25fc1",
+      "source_record_count": 5,
+      "unique_commentary_count": 1,
+      "duplicate_record_count": 4,
+      "ayah_coverage_count": 5,
+      "bytes": 49702
+    },
+    {
+      "surah": 98,
+      "filename": "98.json",
+      "original_git_blob_sha": "07b753e08ed9b13e7876ba4dc8b009a1484fd921",
+      "git_blob_sha": "a05cf3634edc716b7e8ac9cce3876eef65e4e884",
+      "source_record_count": 8,
+      "unique_commentary_count": 2,
+      "duplicate_record_count": 6,
+      "ayah_coverage_count": 8,
+      "bytes": 8063
+    },
+    {
+      "surah": 99,
+      "filename": "99.json",
+      "original_git_blob_sha": "3ffe359f525cc158430204ee7213b15d1a05775a",
+      "git_blob_sha": "0388728ea77f75ef0780cf966b9c1e2f7d430725",
+      "source_record_count": 8,
+      "unique_commentary_count": 1,
+      "duplicate_record_count": 7,
+      "ayah_coverage_count": 8,
+      "bytes": 12459
+    },
+    {
+      "surah": 100,
+      "filename": "100.json",
+      "original_git_blob_sha": "038961759cae9c6b3ee37e23f4d6490ee7e7b16e",
+      "git_blob_sha": "5c22243e4e18991872244a1996e8c7e44f949e60",
+      "source_record_count": 11,
+      "unique_commentary_count": 1,
+      "duplicate_record_count": 10,
+      "ayah_coverage_count": 11,
+      "bytes": 9095
+    },
+    {
+      "surah": 101,
+      "filename": "101.json",
+      "original_git_blob_sha": "14c0fe825126c05b10c249d16d82173f944af7dc",
+      "git_blob_sha": "644d0673d7fe4438fb06bbe702a6e1126e1d2c30",
+      "source_record_count": 11,
+      "unique_commentary_count": 1,
+      "duplicate_record_count": 10,
+      "ayah_coverage_count": 11,
+      "bytes": 5575
+    },
+    {
+      "surah": 102,
+      "filename": "102.json",
+      "original_git_blob_sha": "56596b407616f6b7c98fa91ce30d4548188ed0ca",
+      "git_blob_sha": "1728df3fc45135c439e565252b6d51815332dc16",
+      "source_record_count": 8,
+      "unique_commentary_count": 1,
+      "duplicate_record_count": 7,
+      "ayah_coverage_count": 8,
+      "bytes": 17029
+    },
+    {
+      "surah": 103,
+      "filename": "103.json",
+      "original_git_blob_sha": "3017b566426efcdc9bc12d651c6429c29b322892",
+      "git_blob_sha": "fb379c1585140c3291018d90ad3c1f07b8e07d67",
+      "source_record_count": 3,
+      "unique_commentary_count": 1,
+      "duplicate_record_count": 2,
+      "ayah_coverage_count": 3,
+      "bytes": 1600
+    },
+    {
+      "surah": 104,
+      "filename": "104.json",
+      "original_git_blob_sha": "defcaf086c835b1f2e16f0a1ae1d0c65517cc657",
+      "git_blob_sha": "7fc6b6e1aa3166e4de511fabbd0aad1d8da77d27",
+      "source_record_count": 9,
+      "unique_commentary_count": 1,
+      "duplicate_record_count": 8,
+      "ayah_coverage_count": 9,
+      "bytes": 3628
+    },
+    {
+      "surah": 105,
+      "filename": "105.json",
+      "original_git_blob_sha": "2a3d2edc58029fa7f2d07d48d843ab699f46191b",
+      "git_blob_sha": "3f2fbc0ce2bb489e11f7675fb5be03db8de2f1fa",
+      "source_record_count": 5,
+      "unique_commentary_count": 1,
+      "duplicate_record_count": 4,
+      "ayah_coverage_count": 5,
+      "bytes": 27858
+    },
+    {
+      "surah": 106,
+      "filename": "106.json",
+      "original_git_blob_sha": "3320a9cbc09d495770177b89c1729357ef974f0c",
+      "git_blob_sha": "5777a2ee71b4cff5dfaacf53e16de98e7e945479",
+      "source_record_count": 4,
+      "unique_commentary_count": 1,
+      "duplicate_record_count": 3,
+      "ayah_coverage_count": 4,
+      "bytes": 5387
+    },
+    {
+      "surah": 107,
+      "filename": "107.json",
+      "original_git_blob_sha": "cf53b50dc7d6eb336e0918dd87c6e328fb604345",
+      "git_blob_sha": "ee2d566f706551f0ead2b7509652ce3cd2b2587b",
+      "source_record_count": 7,
+      "unique_commentary_count": 1,
+      "duplicate_record_count": 6,
+      "ayah_coverage_count": 7,
+      "bytes": 11099
+    },
+    {
+      "surah": 108,
+      "filename": "108.json",
+      "original_git_blob_sha": "f6a5a825e6520a296dc0f64f36ab738d93c254be",
+      "git_blob_sha": "9aefb71f582dfa0cb9d64f496124e3c4cb494d01",
+      "source_record_count": 3,
+      "unique_commentary_count": 1,
+      "duplicate_record_count": 2,
+      "ayah_coverage_count": 3,
+      "bytes": 16300
+    },
+    {
+      "surah": 109,
+      "filename": "109.json",
+      "original_git_blob_sha": "b7d515168cd88ebf27a55a657c97b8956c5067fa",
+      "git_blob_sha": "08323aaecb63bf8c69f6c7ff32e9d3bf7db8a97e",
+      "source_record_count": 6,
+      "unique_commentary_count": 1,
+      "duplicate_record_count": 5,
+      "ayah_coverage_count": 6,
+      "bytes": 7489
+    },
+    {
+      "surah": 110,
+      "filename": "110.json",
+      "original_git_blob_sha": "469d5f0704856dd75893a346bafea310bd1eb3b3",
+      "git_blob_sha": "fe7d3527f32182e98ea254ff8aa634ba09461920",
+      "source_record_count": 3,
+      "unique_commentary_count": 1,
+      "duplicate_record_count": 2,
+      "ayah_coverage_count": 3,
+      "bytes": 12580
+    },
+    {
+      "surah": 111,
+      "filename": "111.json",
+      "original_git_blob_sha": "01b96012b29933007750793ac95b1c4a8d076236",
+      "git_blob_sha": "0efed3433ef15ecc202ead537bb0c5e916a0950e",
+      "source_record_count": 5,
+      "unique_commentary_count": 1,
+      "duplicate_record_count": 4,
+      "ayah_coverage_count": 5,
+      "bytes": 11630
+    },
+    {
+      "surah": 112,
+      "filename": "112.json",
+      "original_git_blob_sha": "cc28f68230356945ee907d7a8a61434293ee05fc",
+      "git_blob_sha": "06d605921c5df8064b01b337bca1f7d48024474e",
+      "source_record_count": 4,
+      "unique_commentary_count": 1,
+      "duplicate_record_count": 3,
+      "ayah_coverage_count": 4,
+      "bytes": 7928
+    },
+    {
+      "surah": 113,
+      "filename": "113.json",
+      "original_git_blob_sha": "399864762a2ca9f8a902e5be66c81e7c2ba981c2",
+      "git_blob_sha": "6a666b6b35a7cae0656afd56ed57157791e0fd8c",
+      "source_record_count": 5,
+      "unique_commentary_count": 1,
+      "duplicate_record_count": 4,
+      "ayah_coverage_count": 5,
+      "bytes": 9306
+    },
+    {
+      "surah": 114,
+      "filename": "114.json",
+      "original_git_blob_sha": "2f32fee6c80e5717a45748583f866371d7618b00",
+      "git_blob_sha": "71aaf326adb717b8790a855c1a2f17d8264fb027",
+      "source_record_count": 6,
+      "unique_commentary_count": 1,
+      "duplicate_record_count": 5,
+      "ayah_coverage_count": 6,
+      "bytes": 11761
     }
   ]
 }
