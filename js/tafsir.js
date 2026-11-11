@@ -36,7 +36,7 @@
 
     const isLocalEnglishIbnKathir = slug === 'en-tafisr-ibn-kathir';
     const tafsirUrl = isLocalEnglishIbnKathir
-      ? 'tafseer-library/ibn-kathir-english/cleaned/' + surahNumber + '.json'
+      ? 'tafseer-library/ibn-kathir-english/source/' + surahNumber + '.json'
       : 'https://cdn.jsdelivr.net/gh/spa5k/tafsir_api@' + tafsirSourceCommit + '/tafsir/' +
         encodeURIComponent(slug) + '/' + surahNumber + '.json';
 
