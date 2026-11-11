@@ -35,8 +35,11 @@
     textBox.replaceChildren();
 
     const isLocalEnglishIbnKathir = slug === 'en-tafisr-ibn-kathir';
-    const tafsirUrl = isLocalEnglishIbnKathir
-      ? 'tafseer-library/ibn-kathir-english/source/' + surahNumber + '.json'
+    const isLocalUrduIbnKathir = slug === urduIbnKathir;
+    const isLocalIbnKathir = isLocalEnglishIbnKathir || isLocalUrduIbnKathir;
+    const localEditionFolder = isLocalEnglishIbnKathir ? 'ibn-kathir-english' : 'ibn-kathir-urdu';
+    const tafsirUrl = isLocalIbnKathir
+      ? 'tafseer-library/' + localEditionFolder + '/source/' + surahNumber + '.json'
       : 'https://cdn.jsdelivr.net/gh/spa5k/tafsir_api@' + tafsirSourceCommit + '/tafsir/' +
         encodeURIComponent(slug) + '/' + surahNumber + '.json';
 
@@ -57,7 +60,6 @@
       if (arabicData.code !== 200 || !Array.isArray(arabicData.data?.ayahs)) {
         throw new Error('Arabic Quran text could not be loaded.');
       }
-      const arabicAyahs = new Map(arabicData.data.ayahs.map(item => [Number(item.numberInSurah), item.text]));
 
       const commentary = entries.map((item, index) => {
         if (typeof item === 'string') return { body: item, ayah: index + 1 };
@@ -86,8 +88,6 @@
 
       if (!uniqueCommentary.length) throw new Error('No commentary text was found for this Surah.');
 
-      // In the Urdu source, the Ayah 3 explanation is embedded inside [1].
-      // Move that exact original wording to [3], in verse order, without rewriting it.
       let displayCommentary = uniqueCommentary;
       if (slug === 'ur-tafsir-as-saadi-urdu' && surahNumber === 1) {
         const sourceBody = uniqueCommentary[0].body;
