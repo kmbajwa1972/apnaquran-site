@@ -1,0 +1,131 @@
+name: Transfer Ma'ariful Quran English source snapshot
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - feature/tafseer-library-complete
+    paths:
+      - .github/workflows/transfer-maariful-quran-english.yml
+
+permissions:
+  contents: write
+
+jobs:
+  transfer:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout target feature branch
+        uses: actions/checkout@v4
+        with:
+          ref: feature/tafseer-library-complete
+          fetch-depth: 0
+          persist-credentials: true
+
+      - name: Download pinned upstream snapshot
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/maariful-upstream
+          curl --fail --location --retry 3 \
+            https://codeload.github.com/spa5k/tafsir_api/tar.gz/eb82bb6294efe30ad5c135c03b1864afaa70e855 \
+            -o /tmp/maariful.tar.gz
+          tar -xzf /tmp/maariful.tar.gz --strip-components=1 -C /tmp/maariful-upstream
+          test -d /tmp/maariful-upstream/tafsir/en-tafsir-maarif-ul-quran
+
+      - name: Validate and copy original Surah files
+        shell: bash
+        run: |
+          set -euo pipefail
+          src=/tmp/maariful-upstream/tafsir/en-tafsir-maarif-ul-quran
+          dst=tafseer-library/maariful-quran-english/source
+          mkdir -p "$dst"
+          mapfile -t files < <(find "$src" -maxdepth 1 -type f -name '*.json' -printf '%f\n' | sort -V)
+          test "${#files[@]}" -eq 114
+          for n in $(seq 1 114); do
+            expected="${n}.json"
+            test "${files[$((n-1))]}" = "$expected"
+            if [ -e "$dst/$expected" ]; then
+              cmp -s "$src/$expected" "$dst/$expected" || {
+                echo "Existing destination differs: $expected" >&2
+                exit 1
+              }
+            else
+              cp "$src/$expected" "$dst/$expected"
+            fi
+          done
+          python - <<'PY'
+          import hashlib, json, pathlib
+          src = pathlib.Path('/tmp/maariful-upstream/tafsir/en-tafsir-maarif-ul-quran')
+          dst = pathlib.Path('tafseer-library/maariful-quran-english/source')
+          rows = []
+          total = 0
+          for n in range(1, 115):
+              name = f'{n}.json'
+              upstream = (src / name).read_bytes()
+              copied = (dst / name).read_bytes()
+              if upstream != copied:
+                  raise SystemExit(f'Byte mismatch: {name}')
+              digest = hashlib.sha256(copied).hexdigest()
+              rows.append({'file': name, 'bytes': len(copied), 'sha256': digest})
+              total += len(copied)
+          manifest = {
+              'edition': "Ma'ariful Quran English",
+              'upstream_repository': 'https://github.com/spa5k/tafsir_api',
+              'upstream_path': 'tafsir/en-tafsir-maarif-ul-quran/',
+              'pinned_commit': 'eb82bb6294efe30ad5c135c03b1864afaa70e855',
+              'upstream_directory_tree_sha': '75b086c76132200c07fde43ae6e247db7d4fadd0',
+              'file_count': len(rows),
+              'total_bytes': total,
+              'files': rows
+          }
+          (dst / 'SOURCE-MANIFEST.json').write_text(
+              json.dumps(manifest, ensure_ascii=False, indent=2) + '\n',
+              encoding='utf-8'
+          )
+          print(f"Verified {len(rows)} files; {total} bytes")
+          PY
+
+      - name: Write edition README
+        shell: bash
+        run: |
+          cat > tafseer-library/maariful-quran-english/README.md <<'EOF'
+          # Ma'ariful Quran — English
+
+          - Source snapshot: `source/` (original upstream Surah files; do not edit)
+          - Audit copy: `cleaned/` (kept separate from the source)
+          - Source manifest: `source/SOURCE-MANIFEST.json`
+
+          The application currently selects this edition as `en-tafsir-maarif-ul-quran`.
+          The transfer includes the 114 top-level Surah JSON files consumed by the site.
+          Per-ayah nested upstream files are not included in this snapshot.
+          EOF
+          mkdir -p tafseer-library/maariful-quran-english/cleaned
+          cat > tafseer-library/maariful-quran-english/cleaned/README.md <<'EOF'
+          # Cleaned edition
+
+          Reserved for a separately audited copy. Never modify the immutable source snapshot.
+          EOF
+
+      - name: Commit source snapshot to feature branch
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add tafseer-library/maariful-quran-english
+          if git diff --cached --quiet; then
+            echo "No source changes to commit."
+            exit 0
+          fi
+          git commit -m "Transfer original Ma'ariful Quran English source snapshot"
+          for attempt in 1 2 3; do
+            git fetch origin feature/tafseer-library-complete
+            git rebase origin/feature/tafseer-library-complete
+            if git push origin HEAD:refs/heads/feature/tafseer-library-complete; then
+              exit 0
+            fi
+            echo "Push attempt ${attempt} failed; retrying after fetching latest branch."
+          done
+          echo "Unable to push after three synchronized attempts." >&2
+          exit 1
