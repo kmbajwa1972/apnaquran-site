@@ -47,7 +47,7 @@ for (let surah = 1; surah <= 114; surah++) {
   const cleanBytes = Buffer.from(JSON.stringify({ schema_version: 1, surah, entries }, null, 2) + '\n', 'utf8');
   await fs.writeFile(path.join(source, name), cleanBytes);
 
-  const removed = raw.length - entries.reduce((n, e) => n + e.ayahs.length, 0);
+  const removed = raw.length - entries.length;
   originalRecords += raw.length;
   uniquePassages += entries.length;
   duplicateRecords += removed;
