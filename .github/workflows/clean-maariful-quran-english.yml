@@ -1,0 +1,43 @@
+name: Clean and audit Ma'ariful Quran English
+
+on:
+  push:
+    branches:
+      - feature/tafseer-library-complete
+    paths:
+      - 'scripts/clean-maariful-quran-english.mjs'
+      - '.github/workflows/clean-maariful-quran-english.yml'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: maariful-quran-english-cleanup
+  cancel-in-progress: false
+
+jobs:
+  clean-and-audit:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out library branch
+        uses: actions/checkout@v4
+        with:
+          ref: feature/tafseer-library-complete
+          fetch-depth: 0
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Back up original source, clean in place, and verify all Ayah mappings
+        run: node scripts/clean-maariful-quran-english.mjs
+      - name: Commit backup, canonical cleaned source, and audit report
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add tafseer-library/maariful-quran-english
+          if git diff --cached --quiet; then
+            echo "Ma'ariful Quran English source is already clean."
+          else
+            git commit -m "Back up and clean Ma'ariful Quran English source"
+            git push origin feature/tafseer-library-complete
+          fi
