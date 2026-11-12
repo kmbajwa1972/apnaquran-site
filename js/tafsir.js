@@ -16,6 +16,24 @@
   const urduIbnKathir = 'ur-tafseer-ibn-e-kaseer';
   const tafsirSourceCommit = 'eb82bb6294efe30ad5c135c03b1864afaa70e855';
 
+  function appendTextWithArabicRuns(element, value) {
+    const arabicPattern = /([\u0600-\u06FF\u0750-\u077F\u08A0-\u08FF\uFB50-\uFDFF\uFE70-\uFEFF]+)/g;
+    const arabicTest = /[\u0600-\u06FF\u0750-\u077F\u08A0-\u08FF\uFB50-\uFDFF\uFE70-\uFEFF]/;
+    String(value).split(arabicPattern).forEach(part => {
+      if (!part) return;
+      if (arabicTest.test(part)) {
+        const arabicRun = document.createElement('span');
+        arabicRun.className = 'tafsir-inline-arabic';
+        arabicRun.lang = 'ar';
+        arabicRun.dir = 'rtl';
+        arabicRun.textContent = part;
+        element.appendChild(arabicRun);
+      } else {
+        element.appendChild(document.createTextNode(part));
+      }
+    });
+  }
+
   function isEnglishSubheading(text) {
     const value = text.trim();
     if (!value || value.length > 100) return false;
@@ -128,7 +146,7 @@
         const section = document.createElement('section');
         section.className = 'tafsir-verse';
         const paragraph = document.createElement('p');
-        paragraph.textContent = item.body;
+        appendTextWithArabicRuns(paragraph, item.body);
         if (language === 'en' && isEnglishSubheading(item.body)) {
           paragraph.className = 'tafsir-subheading';
         }
