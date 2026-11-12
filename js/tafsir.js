@@ -119,7 +119,7 @@
         displayCommentary = [{ ...uniqueCommentary[0], body: bodyWithReferenceThree }];
       }
 
-      result.classList.toggle('tafsir-paper-test', slug === 'en-tafisr-ibn-kathir');
+      result.classList.add('tafsir-paper');
       heading.textContent = editionNames[slug] + ' — Surah ' + surahNumber;
       heading.dir = language === 'ur' ? 'rtl' : 'ltr';
       textBox.dir = language === 'ur' ? 'rtl' : 'ltr';
