@@ -1114,3 +1114,18 @@ Total replacements: 4.
 | بیحد | بے حد | 2 |
 
 Total replacements: 3.
+
+
+## Surah 79
+- Edition: `tafseer-library/ibn-kathir-urdu/source/79.json`
+- Method: conservative spelling corrections only; no paraphrasing or changes to Quranic Arabic, Hadith wording, names, or scholarly content.
+- Original source backup: `original-source/79.json` (left untouched; SHA verified)
+- Active file updated on branch: `feature/tafseer-library-complete`
+- Commit: 475f64c4f307be3fb2d026158dd42c447f7d269a
+
+| Original | Corrected | Occurrences |
+|---|---|---:|
+| چناچہ | چنانچہ | 0 |
+| بیحد | بے حد | 1 |
+
+Total replacements: 1.
