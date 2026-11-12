@@ -38,3 +38,18 @@ This is the first conservative pass. Ambiguous transliterations, older Urdu form
 Total replacements: 111.
 
 Ambiguous spellings, stylistic variants, repeated-word constructions, and older orthography were left unchanged for separate review.
+
+
+## Surah 3
+- Edition: `tafseer-library/ibn-kathir-urdu/source/3.json`
+- Method: conservative spelling corrections only; no paraphrasing or changes to Quranic Arabic, Hadith wording, names, or scholarly content.
+- Original source backup: `original-source/3.json` (left untouched; SHA verified)
+- Active file updated on branch: `feature/tafseer-library-complete`
+- Commit: 4bac450edda0a576af051d1fd09b19060ed43fd5
+
+| Original | Corrected | Occurrences |
+|---|---|---:|
+| چناچہ | چنانچہ | 47 |
+| بیحد | بے حد | 4 |
+
+Total replacements: 51.
