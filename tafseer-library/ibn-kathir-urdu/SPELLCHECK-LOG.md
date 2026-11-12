@@ -428,3 +428,18 @@ Total replacements: 6.
 | بیحد | بے حد | 0 |
 
 Total replacements: 8.
+
+
+## Surah 29
+- Edition: `tafseer-library/ibn-kathir-urdu/source/29.json`
+- Method: conservative spelling corrections only; no paraphrasing or changes to Quranic Arabic, Hadith wording, names, or scholarly content.
+- Original source backup: `original-source/29.json` (left untouched; SHA verified)
+- Active file updated on branch: `feature/tafseer-library-complete`
+- Commit: be0a6ae324ce91d31181b446b84b2beca1e143dd
+
+| Original | Corrected | Occurrences |
+|---|---|---:|
+| چناچہ | چنانچہ | 6 |
+| بیحد | بے حد | 0 |
+
+Total replacements: 6.
