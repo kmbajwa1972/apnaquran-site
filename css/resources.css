@@ -90,3 +90,25 @@
 .tafsir-result.tafsir-paper-test .tafsir-verse{
   border-color:#e5e0d6;
 }
+
+
+/* Larger Arabic typography in the English Ibn Kathir paper preview */
+.tafsir-result.tafsir-paper-test .tafsir-ayah-arabic{
+  font-size:42px;
+  line-height:2.15;
+  font-weight:700;
+}
+.tafsir-result.tafsir-paper-test .tafsir-inline-arabic{
+  display:inline-block;
+  font-family:'Amiri Quran','Amiri',serif;
+  font-size:1.45em;
+  line-height:1.9;
+  direction:rtl;
+  unicode-bidi:isolate;
+  color:#171717;
+  vertical-align:baseline;
+}
+@media(max-width:700px){
+  .tafsir-result.tafsir-paper-test .tafsir-ayah-arabic{font-size:36px}
+  .tafsir-result.tafsir-paper-test .tafsir-inline-arabic{font-size:1.3em}
+}
