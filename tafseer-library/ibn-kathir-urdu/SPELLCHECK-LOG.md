@@ -653,3 +653,18 @@ Total replacements: 4.
 | بیحد | بے حد | 0 |
 
 Total replacements: 2.
+
+
+## Surah 44
+- Edition: `tafseer-library/ibn-kathir-urdu/source/44.json`
+- Method: conservative spelling corrections only; no paraphrasing or changes to Quranic Arabic, Hadith wording, names, or scholarly content.
+- Original source backup: `original-source/44.json` (left untouched; SHA verified)
+- Active file updated on branch: `feature/tafseer-library-complete`
+- Commit: 1fdf657b8607774795a4c7063d78a6dd40a937fa
+
+| Original | Corrected | Occurrences |
+|---|---|---:|
+| چناچہ | چنانچہ | 4 |
+| بیحد | بے حد | 0 |
+
+Total replacements: 4.
