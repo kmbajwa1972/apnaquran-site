@@ -518,3 +518,18 @@ Total replacements: 25.
 | بیحد | بے حد | 0 |
 
 Total replacements: 5.
+
+
+## Surah 35
+- Edition: `tafseer-library/ibn-kathir-urdu/source/35.json`
+- Method: conservative spelling corrections only; no paraphrasing or changes to Quranic Arabic, Hadith wording, names, or scholarly content.
+- Original source backup: `original-source/35.json` (left untouched; SHA verified)
+- Active file updated on branch: `feature/tafseer-library-complete`
+- Commit: b6d0b74e247b1cab4158dc87187ddd1e8e849e09
+
+| Original | Corrected | Occurrences |
+|---|---|---:|
+| چناچہ | چنانچہ | 9 |
+| بیحد | بے حد | 0 |
+
+Total replacements: 9.
