@@ -21,3 +21,20 @@
 Total replacements: 12.
 
 This is the first conservative pass. Ambiguous transliterations, older Urdu forms, grammar, and wording have not been changed. They should be reviewed separately rather than guessed.
+
+
+## Surah 2 — Al-Baqarah
+- Edition: `tafseer-library/ibn-kathir-urdu/source/2.json`
+- Method: conservative spelling corrections only; no paraphrasing or changes to Quranic Arabic, Hadith wording, names, or scholarly content.
+- Original source backup: `original-source/2.json` (left untouched)
+- Active file updated on branch: `feature/tafseer-library-complete`
+- Commit: 717e1ef230c7f6c09d190eac3c4c177688a5732e
+
+| Original | Corrected | Occurrences |
+|---|---|---:|
+| چناچہ | چنانچہ | 105 |
+| بیحد | بے حد | 6 |
+
+Total replacements: 111.
+
+Ambiguous spellings, stylistic variants, repeated-word constructions, and older orthography were left unchanged for separate review.
