@@ -1219,3 +1219,18 @@ Total replacements: 1.
 | بیحد | بے حد | 0 |
 
 Total replacements: 1.
+
+
+## Surah 93
+- Edition: `tafseer-library/ibn-kathir-urdu/source/93.json`
+- Method: conservative spelling corrections only; no paraphrasing or changes to Quranic Arabic, Hadith wording, names, or scholarly content.
+- Original source backup: `original-source/93.json` (left untouched; SHA verified)
+- Active file updated on branch: `feature/tafseer-library-complete`
+- Commit: eb47caf2e22ed10f1424713c295b58fa6ea905ab
+
+| Original | Corrected | Occurrences |
+|---|---|---:|
+| چناچہ | چنانچہ | 1 |
+| بیحد | بے حد | 0 |
+
+Total replacements: 1.
