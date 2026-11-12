@@ -2,14 +2,14 @@
  * Quran text API responses are cached only after a successful online response.
  * Prayer times, AI, subscriptions and recitation streams are never cached.
  */
-const CACHE_VERSION = 'apnaquran-pwa-v2';
+const CACHE_VERSION = 'apnaquran-pwa-v3';
 const SHELL_CACHE = CACHE_VERSION + '-shell';
 const RUNTIME_CACHE = CACHE_VERSION + '-runtime';
 
 const PRECACHE_URLS = [
   '/', '/index.html', '/read.html', '/surah.html', '/listen.html',
   '/prayer-times.html', '/qibla.html', '/names.html', '/duas.html',
-  '/calendar.html', '/events.html', '/tafsir.html', '/sunnah.html',
+  '/calendar.html', '/events.html', '/sunnah.html',
   '/offline.html', '/site.webmanifest',
   '/favicon.ico', '/favicon-32x32.png', '/apple-touch-icon.png',
   '/img/icons/icon-192.png', '/img/icons/icon-512.png',
@@ -21,7 +21,7 @@ const PRECACHE_URLS = [
   '/js/app.js', '/js/home.js', '/js/read.js', '/js/surah.js',
   '/js/listen.js', '/js/location.js', '/js/prayer.js', '/js/qibla.js',
   '/js/names.js', '/js/duas.js', '/js/calendar.js', '/js/events.js',
-  '/js/tafsir.js', '/js/sunnah.js', '/js/talking-assistant.js',
+  '/js/sunnah.js', '/js/talking-assistant.js',
   '/js/adhan-local.js', '/js/hijri-location.js',
   '/js/footer.js', '/js/footer-subscribe.js'
 ];
