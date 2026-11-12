@@ -894,3 +894,18 @@ Total replacements: 19.
 
 Total replacements: 6.
 
+
+
+## Surah 61
+- Edition: `tafseer-library/ibn-kathir-urdu/source/61.json`
+- Method: conservative spelling corrections only; no paraphrasing or changes to Quranic Arabic, Hadith wording, names, or scholarly content.
+- Original source backup: `original-source/61.json` (left untouched; SHA verified)
+- Active file updated on branch: `feature/tafseer-library-complete`
+- Commit: 88b7f62c3523a3a67fe5c48c8272a4864b626131
+
+| Original | Corrected | Occurrences |
+|---|---|---:|
+| چناچہ | چنانچہ | 6 |
+| بیحد | بے حد | 0 |
+
+Total replacements: 6.
