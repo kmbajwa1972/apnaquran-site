@@ -443,3 +443,18 @@ Total replacements: 8.
 | بیحد | بے حد | 0 |
 
 Total replacements: 6.
+
+
+## Surah 30
+- Edition: `tafseer-library/ibn-kathir-urdu/source/30.json`
+- Method: conservative spelling corrections only; no paraphrasing or changes to Quranic Arabic, Hadith wording, names, or scholarly content.
+- Original source backup: `original-source/30.json` (left untouched; SHA verified)
+- Active file updated on branch: `feature/tafseer-library-complete`
+- Commit: 2a8808bc456fd86c63c1d0668fc6b380b21060f3
+
+| Original | Corrected | Occurrences |
+|---|---|---:|
+| چناچہ | چنانچہ | 8 |
+| بیحد | بے حد | 0 |
+
+Total replacements: 8.
