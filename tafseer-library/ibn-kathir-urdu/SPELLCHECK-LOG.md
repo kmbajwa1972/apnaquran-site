@@ -1014,3 +1014,18 @@ Total replacements: 2.
 | بیحد | بے حد | 2 |
 
 Total replacements: 4.
+
+
+## Surah 70
+- Edition: `tafseer-library/ibn-kathir-urdu/source/70.json`
+- Method: conservative spelling corrections only; no paraphrasing or changes to Quranic Arabic, Hadith wording, names, or scholarly content.
+- Original source backup: `original-source/70.json` (left untouched; SHA verified)
+- Active file updated on branch: `feature/tafseer-library-complete`
+- Commit: 2462a601f3fdee40f145babff64b1c43bc2e60de
+
+| Original | Corrected | Occurrences |
+|---|---|---:|
+| چناچہ | چنانچہ | 2 |
+| بیحد | بے حد | 1 |
+
+Total replacements: 3.
