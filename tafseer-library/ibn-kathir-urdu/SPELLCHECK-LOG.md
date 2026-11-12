@@ -939,3 +939,18 @@ Total replacements: 2.
 | بیحد | بے حد | 0 |
 
 Total replacements: 2.
+
+
+## Surah 65
+- Edition: `tafseer-library/ibn-kathir-urdu/source/65.json`
+- Method: conservative spelling corrections only; no paraphrasing or changes to Quranic Arabic, Hadith wording, names, or scholarly content.
+- Original source backup: `original-source/65.json` (left untouched; SHA verified)
+- Active file updated on branch: `feature/tafseer-library-complete`
+- Commit: efae53be9bc4d6ae355fd0645bc40bf51acb7202
+
+| Original | Corrected | Occurrences |
+|---|---|---:|
+| چناچہ | چنانچہ | 4 |
+| بیحد | بے حد | 0 |
+
+Total replacements: 4.
