@@ -112,3 +112,20 @@
   .tafsir-result.tafsir-paper .tafsir-ayah-arabic{font-size:36px}
   .tafsir-result.tafsir-paper .tafsir-inline-arabic{font-size:1.3em}
 }
+
+
+/* Improve Urdu readability in all Tafseer book reading areas */
+.tafsir-result.tafsir-paper .tafsir-text.is-urdu{
+  font-family:'Noto Nastaliq Urdu',serif;
+  font-size:18px;
+  font-weight:400;
+  line-height:2.25;
+  letter-spacing:0;
+  color:#171717;
+}
+@media(max-width:700px){
+  .tafsir-result.tafsir-paper .tafsir-text.is-urdu{
+    font-size:17px;
+    line-height:2.25;
+  }
+}
