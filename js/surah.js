@@ -1,4 +1,4 @@
-/* Surah reader — Arabic + Urdu + English, Shuraim audio, tafseer,
+/* Surah reader — Arabic + Urdu + English, Shuraim audio,
    bookmarks, last-read tracking, settings drawer. */
 (async function () {
   const root = $('#readerRoot');
@@ -8,8 +8,6 @@
 
   let settings = getSettings();
   let surahData = null;      // { ar, ur, en } aligned ayah arrays + meta
-  let tafsirList = [];
-  const tafsirCache = {};    // "s:a" -> text
 
   /* ---------------- SEO: per-surah canonical + meta description ---------------- */
   function setMeta(selector, attr, value) {
@@ -19,7 +17,7 @@
   }
   function updateSEO(m) {
     const url = `https://apnaquran.com/surah.html?s=${m.number}`;
-    const desc = `Read Surah ${m.englishName} (${m.englishNameTranslation}) — Surah ${m.number} of the Holy Quran — in Uthmani script with Urdu and English translation, Urdu tafseer, and ayah-by-ayah audio recitation by Qari Saud Al-Shuraim.`;
+    const desc = `Read Surah ${m.englishName} (${m.englishNameTranslation}) — Surah ${m.number} of the Holy Quran — in Uthmani script with Urdu and English translation, and ayah-by-ayah audio recitation by Qari Saud Al-Shuraim.`;
     setMeta('link[rel="canonical"]', 'href', url);
     setMeta('meta[name="description"]', 'content', desc);
     setMeta('meta[property="og:title"]', 'content', document.title);
@@ -42,15 +40,7 @@
     root.innerHTML = '<div class="loader"><div class="star8"></div><span>Loading surah…</span></div>';
     try {
       const ids = [AQ.ARABIC_EDITION, settings.urdu, settings.english].join(',');
-      const [json, tafsirs] = await Promise.all([
-        fetchJSON(`${AQ.API}/surah/${surahNo}/editions/${ids}`),
-        getUrduTafsirs()
-      ]);
-      tafsirList = tafsirs;
-      if (tafsirList.length && !tafsirList.some(t => t.id === settings.tafsir)) {
-        settings.tafsir = tafsirList[0].id;
-        saveSettings({ tafsir: settings.tafsir });
-      }
+      const json = await fetchJSON(`${AQ.API}/surah/${surahNo}/editions/${ids}`);
       const [ar, ur, en] = json.data;
       surahData = { meta: ar, ar: ar.ayahs, ur: ur.ayahs, en: en.ayahs };
       render();
@@ -145,13 +135,8 @@
         <button class="tool bm ${bmOn ? 'on' : ''}" aria-label="Bookmark ayah ${n}">
           <svg viewBox="0 0 24 24" fill="${bmOn ? 'currentColor' : 'none'}" stroke="currentColor" stroke-width="2"><path d="M6 3h12v18l-6-4-6 4z"/></svg> ${bmOn ? 'Saved' : 'Bookmark'}
         </button>
-        ${tafsirList.length ? `
-        <button class="tool tf" aria-label="Tafseer of ayah ${n}">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 5a2 2 0 0 1 2-2h6v18H6a2 2 0 0 0-2 2zM12 3h6a2 2 0 0 1 2 2v16a2 2 0 0 0-2-2h-6z"/></svg> Tafseer
-        </button>` : ''}
         <span style="margin-left:auto;color:var(--muted);font-size:12.5px">${surahNo}:${n}</span>
       </div>
-      <div class="tafsir-panel ur" id="tafsir-${n}"></div>
     </article>`;
   }
 
@@ -166,7 +151,6 @@
       const n = +art.dataset.n;
       if (e.target.closest('.tool.play')) playAyah(n);
       else if (e.target.closest('.tool.bm')) onBookmark(art, n);
-      else if (e.target.closest('.tool.tf')) onTafsir(art, n);
     });
   }
 
@@ -175,26 +159,6 @@
     const btn = art.querySelector('.tool.bm');
     btn.classList.toggle('on', on);
     btn.innerHTML = `<svg viewBox="0 0 24 24" fill="${on ? 'currentColor' : 'none'}" stroke="currentColor" stroke-width="2"><path d="M6 3h12v18l-6-4-6 4z"/></svg> ${on ? 'Saved' : 'Bookmark'}`;
-  }
-
-  async function onTafsir(art, n) {
-    const panel = $('#tafsir-' + n);
-    if (panel.classList.contains('open')) { panel.classList.remove('open'); return; }
-    panel.classList.add('open');
-    const key = surahNo + ':' + n;
-    if (tafsirCache[key]) { panel.innerHTML = tafsirCache[key]; return; }
-    panel.innerHTML = '<div class="skeleton" style="height:60px"></div>';
-    try {
-      const json = await fetchJSON(`${AQ.API}/ayah/${key}/${settings.tafsir}`);
-      const src = tafsirList.find(t => t.id === settings.tafsir);
-      const html = esc(json.data.text) +
-        `<div class="src">Tafseer: ${esc(src ? src.name : settings.tafsir)}</div>`;
-      tafsirCache[key] = html;
-      panel.innerHTML = html;
-    } catch {
-      panel.innerHTML = '<span style="direction:ltr;display:block;text-align:left;color:var(--muted)">Tafseer could not be loaded. Tap Tafseer to try again.</span>';
-      delete tafsirCache[key];
-    }
   }
 
   /* ---------------- audio ---------------- */
@@ -289,10 +253,6 @@
     $('#arSize').value = settings.arSize;
     fillSelect($('#urduSel'), AQ.URDU_EDITIONS, settings.urdu);
     fillSelect($('#engSel'), AQ.ENGLISH_EDITIONS, settings.english);
-    if (tafsirList.length) {
-      $('#tafsirSet').hidden = false;
-      fillSelect($('#tafsirSel'), tafsirList, settings.tafsir);
-    }
     $('#showUrdu').checked = settings.showUrdu;
     $('#showEnglish').checked = settings.showEnglish;
     $('#autoNext').checked = settings.autoNext;
@@ -315,10 +275,6 @@
   $('#engSel').addEventListener('change', e => {
     settings.english = e.target.value; saveSettings({ english: settings.english });
     stopAudio(); load();
-  });
-  $('#tafsirSel').addEventListener('change', e => {
-    settings.tafsir = e.target.value; saveSettings({ tafsir: settings.tafsir });
-    Object.keys(tafsirCache).forEach(k => delete tafsirCache[k]);
   });
   $('#showUrdu').addEventListener('change', e => {
     settings.showUrdu = e.target.checked; saveSettings({ showUrdu: settings.showUrdu });
