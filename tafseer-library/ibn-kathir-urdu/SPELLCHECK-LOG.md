@@ -638,3 +638,18 @@ Total replacements: 9.
 | بیحد | بے حد | 0 |
 
 Total replacements: 4.
+
+
+## Surah 43
+- Edition: `tafseer-library/ibn-kathir-urdu/source/43.json`
+- Method: conservative spelling corrections only; no paraphrasing or changes to Quranic Arabic, Hadith wording, names, or scholarly content.
+- Original source backup: `original-source/43.json` (left untouched; SHA verified)
+- Active file updated on branch: `feature/tafseer-library-complete`
+- Commit: 53f72e673ed09c9bedd7986e8dd2654a533c5d57
+
+| Original | Corrected | Occurrences |
+|---|---|---:|
+| چناچہ | چنانچہ | 2 |
+| بیحد | بے حد | 0 |
+
+Total replacements: 2.
