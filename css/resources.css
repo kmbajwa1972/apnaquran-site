@@ -62,3 +62,31 @@
 .tafsir-surah-arabic .tafsir-ayah-arabic{margin-bottom:12px}
 .tafsir-verse>p:not(.tafsir-ayah-arabic){margin:0;color:#f3eddf}
 @media(max-width:700px){.tafsir-ayah-arabic{font-size:27px;line-height:2.15}}
+
+
+/* Temporary paper-style preview: Ibn Kathir English only */
+.tafsir-result.tafsir-paper-test{
+  background:#fff;
+  border-color:#ded8ca;
+  color:#171717;
+  box-shadow:0 8px 24px rgba(0,0,0,.12);
+}
+.tafsir-result.tafsir-paper-test h3{color:#252525}
+.tafsir-result.tafsir-paper-test .tafsir-text,
+.tafsir-result.tafsir-paper-test .tafsir-text.is-english,
+.tafsir-result.tafsir-paper-test .tafsir-text.is-urdu,
+.tafsir-result.tafsir-paper-test .tafsir-text p,
+.tafsir-result.tafsir-paper-test .tafsir-verse>p:not(.tafsir-ayah-arabic){
+  color:#171717;
+}
+.tafsir-result.tafsir-paper-test .tafsir-text.is-english .tafsir-subheading{
+  color:#292929;
+}
+.tafsir-result.tafsir-paper-test .tafsir-ayah-arabic{
+  color:#111;
+  text-shadow:none;
+}
+.tafsir-result.tafsir-paper-test .tafsir-surah-arabic,
+.tafsir-result.tafsir-paper-test .tafsir-verse{
+  border-color:#e5e0d6;
+}
