@@ -30,8 +30,7 @@ const AQ = {
     showUrdu: true,
     showEnglish: true,
     arSize: 30,
-    autoNext: true,      // continue to next ayah after audio ends
-    tafsir: ''           // resolved dynamically from the API
+    autoNext: true       // continue to next ayah after audio ends
   },
 
   /* Standard juz (parah) starting points: [surah, ayah] */
@@ -100,20 +99,6 @@ async function getSurahList() {
   const json = await fetchJSON(AQ.API + '/surah');
   store.set('aq_surahlist', { ts: Date.now(), data: json.data });
   return json.data;
-}
-
-/* Urdu tafsir editions — discovered from the API, cached 7 days.
-   Returns [] gracefully if none are available. */
-async function getUrduTafsirs() {
-  const cached = store.get('aq_tafsirs_ur');
-  if (cached && cached.ts && Date.now() - cached.ts < 7 * 864e5) return cached.data;
-  let list = [];
-  try {
-    const json = await fetchJSON(AQ.API + '/edition?language=ur&type=tafsir', { retries: 1 });
-    list = (json.data || []).map(e => ({ id: e.identifier, name: e.name || e.englishName }));
-  } catch { /* keep [] */ }
-  store.set('aq_tafsirs_ur', { ts: Date.now(), data: list });
-  return list;
 }
 
 /* ---------------- bookmarks & last read ---------------- */
