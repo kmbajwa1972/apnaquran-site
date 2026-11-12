@@ -1054,3 +1054,18 @@ Total replacements: 6.
 - Active blob SHA: 7a07e546c24d6f58c1031bab53e0c642d8b87aa2
 - Remaining occurrences of `چناچہ` after the update: 2 (not altered pending inspection of the affected text)
 
+
+
+## Surah 74
+- Edition: `tafseer-library/ibn-kathir-urdu/source/74.json`
+- Method: conservative spelling corrections only; no paraphrasing or changes to Quranic Arabic, Hadith wording, names, or scholarly content.
+- Original source backup: `original-source/74.json` (left untouched; SHA verified)
+- Active file updated on branch: `feature/tafseer-library-complete`
+- Commit: 1dac36e0b380da5c93b6e81ad8f808db51b9be1f
+
+| Original | Corrected | Occurrences |
+|---|---|---:|
+| چناچہ | چنانچہ | 5 |
+| بیحد | بے حد | 1 |
+
+Total replacements: 6.
