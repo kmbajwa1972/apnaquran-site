@@ -233,3 +233,18 @@ Total replacements: 5.
 | بیحد | بے حد | 0 |
 
 Total replacements: 2.
+
+
+## Surah 16
+- Edition: `tafseer-library/ibn-kathir-urdu/source/16.json`
+- Method: conservative spelling corrections only; no paraphrasing or changes to Quranic Arabic, Hadith wording, names, or scholarly content.
+- Original source backup: `original-source/16.json` (left untouched; SHA verified)
+- Active file updated on branch: `feature/tafseer-library-complete`
+- Commit: 9082acb412efdfba498a19cece5547cec30ac09d
+
+| Original | Corrected | Occurrences |
+|---|---|---:|
+| چناچہ | چنانچہ | 13 |
+| بیحد | بے حد | 1 |
+
+Total replacements: 14.
