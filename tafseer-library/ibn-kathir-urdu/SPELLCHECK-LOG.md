@@ -383,3 +383,18 @@ Total replacements: 23.
 | بیحد | بے حد | 1 |
 
 Total replacements: 8.
+
+
+## Surah 26
+- Edition: `tafseer-library/ibn-kathir-urdu/source/26.json`
+- Method: conservative spelling corrections only; no paraphrasing or changes to Quranic Arabic, Hadith wording, names, or scholarly content.
+- Original source backup: `original-source/26.json` (left untouched; SHA verified)
+- Active file updated on branch: `feature/tafseer-library-complete`
+- Commit: 75deef81e55c5a99d8320cc0bf64170f8e0cad2e
+
+| Original | Corrected | Occurrences |
+|---|---|---:|
+| چناچہ | چنانچہ | 10 |
+| بیحد | بے حد | 0 |
+
+Total replacements: 10.
