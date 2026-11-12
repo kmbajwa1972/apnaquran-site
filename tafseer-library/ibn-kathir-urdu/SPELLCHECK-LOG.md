@@ -53,3 +53,18 @@ Ambiguous spellings, stylistic variants, repeated-word constructions, and older 
 | بیحد | بے حد | 4 |
 
 Total replacements: 51.
+
+
+## Surah 4
+- Edition: `tafseer-library/ibn-kathir-urdu/source/4.json`
+- Method: conservative spelling corrections only; no paraphrasing or changes to Quranic Arabic, Hadith wording, names, or scholarly content.
+- Original source backup: `original-source/4.json` (left untouched; SHA verified)
+- Active file updated on branch: `feature/tafseer-library-complete`
+- Commit: 59508773668d6652eff836187e42d7e664c39742
+
+| Original | Corrected | Occurrences |
+|---|---|---:|
+| چناچہ | چنانچہ | 68 |
+| بیحد | بے حد | 0 |
+
+Total replacements: 68.
