@@ -1309,3 +1309,18 @@ Total replacements: 1.
 | بیحد | بے حد | 1 |
 
 Total replacements: 2.
+
+
+## Surah 105
+- Edition: `tafseer-library/ibn-kathir-urdu/source/105.json`
+- Method: conservative spelling corrections only; no paraphrasing or changes to Quranic Arabic, Hadith wording, names, or scholarly content.
+- Original source backup: `original-source/105.json` (left untouched; SHA verified)
+- Active file updated on branch: `feature/tafseer-library-complete`
+- Commit: 68d7d3f5dd3826074eec4a87fd4fab314d3f64eb
+
+| Original | Corrected | Occurrences |
+|---|---|---:|
+| چناچہ | چنانچہ | 1 |
+| بیحد | بے حد | 0 |
+
+Total replacements: 1.
