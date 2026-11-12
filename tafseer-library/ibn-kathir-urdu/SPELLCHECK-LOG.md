@@ -1052,7 +1052,8 @@ Total replacements: 6.
 - Original source backup: `original-source/72.json` (left untouched; SHA verified: a9886c907f97b1cbd6e1cf87a41e805a07f1fa92)
 - Active file updated on branch: `feature/tafseer-library-complete`
 - Active blob SHA: 7a07e546c24d6f58c1031bab53e0c642d8b87aa2
-- Remaining occurrences of `چناچہ` after the update: 2 (not altered pending inspection of the affected text)
+- Additional clear corrections after context review: `چناچہ` → `چنانچہ` (2 occurrences)
+- Original backup SHA rechecked and unchanged
 
 
 
